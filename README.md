@@ -6,7 +6,7 @@ hf = open('sub-01_runs44_cluster50_states150_batches10_reps100.pickle', 'rb')
 model = pl.load(hf)
 hf.close()
 ```
-These particular parcellations have 150 different brain parcels. See below of an explanation of the other parameters in the file name. 
+These particular parcellations have 150 different brain parcels. See below for an explanation of the other parameters in the file name. 
 
 # From 4D nifti fMRI run to a numpy array
 Now, if you want to load a 4D imaging dataset and project it in the parcellation space, you will need to have `nilearn` and [load_confounds](https://github.com/SIMEXP/load_confounds) installed. The code will look like:
