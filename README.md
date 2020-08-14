@@ -16,7 +16,7 @@ file = `run.nii.gz`
 conf = Params24(file)
 tseries = model.transform(file, confounds=conf) 
 ``` 
-This is going to load the 4D data using a `Params24` denoising strategy, as well as the same options used to generate the parcels (including an 8 mm isotropic smoothing). What you get is a `tseries` numpy ndarray of size `n_samples` (the number of time frames) times `n_parcels + 1`. The first column is the brain global signal, and each following row is the activity weight of a given parcel.
+This is going to load the 4D data using a `Params24` denoising strategy, as well as the same options used to generate the parcels (including an 8 mm isotropic smoothing). What you get is a `tseries` numpy ndarray of size `n_samples` (the number of time frames) times `n_parcels + 1`. The first column is the brain global signal, and each following column is the activity weight of a given parcel.
 
 # From a numpy array to a 4D nifti fMRI run 
 Now suppose that you have an array `maps_parcels` of size `[K, 1 + n_parcels]` where each row represents a brain map in the parcellation space. You can get back a 4D nifti volume where each time frame corresponds to one of the `K` rows, using the following code:
