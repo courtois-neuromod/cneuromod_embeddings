@@ -1,3 +1,19 @@
+#Generating parcellation model
+The models are generated on beluga using slurm. The first step is to decide on the parameters:sub, runs, clusters, states and batches. These paramteres are editted in the `create_dypac_jobs.py` file. Running this script will then create a bash file with a python command that runs the `generate_embeddings.py` sript. For example:
+
+`python generate_embeddings.py --subject=sub-05 --session=all --runs=all  -n_clusters=20  -n_states=60 -n_batch=3 -n_replications=100`
+
+In order to create multiple commands change a parameter to a list instead of a string and then edit the foor-loop found in the script. 
+
+Once the `dypac_jobs.sh` file is ready, submit your job using the `dypac_submit_jobs.sh`. Adjust the memory and cpu requirements, load virtual environment and then run `bash dypac_jobs.sh`
+
+
+All files are found:
+
+`/project/rrg-pbellec/cneuromod_embeddings/`
+
+
+
 # Loading a parcellation model
 At the moment, the individual cneuromod parcellations have been generated in the folder `/data/cisl/dypac_output/29062020/embeddings/first_run` on the `elm` server. Each parcellation model is relatively large (300 MB). The parcellations are saved in pickle files called `sub-{XX}_runs{NN}_cluster50_states150_batches10_reps100.pickle` where `XX` is the number of the subject `1` to `6`, and `NN` is the number of runs used to generate the parcels (typically around 40). To load a parcellation model, use the following instructions:
 ``` 
