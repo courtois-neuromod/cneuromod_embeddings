@@ -1,11 +1,11 @@
-#Generating parcellation model
-The models are generated on beluga using slurm. The first step is to decide on the parameters:sub, runs, clusters, states and batches. These paramteres are editted in the `create_dypac_jobs.py` file. Running this script will then create a bash file with a python command that runs the `generate_embeddings.py` sript. For example:
+# Generating parcellation model
+The models are generated on beluga using slurm. The first step is to decide on the parameters: sub, runs, clusters, states and batches. These paramteres are edited in the `create_dypac_jobs.py` file. Running this script will then create a bash file with a python command that runs the `generate_embeddings.py` sript. For example:
 
 `python generate_embeddings.py --subject=sub-05 --session=all --runs=all  -n_clusters=20  -n_states=60 -n_batch=3 -n_replications=100`
 
-In order to create multiple commands change a parameter to a list instead of a string and then edit the foor-loop found in the script. 
+In order to create multiple commands, change a parameter to a list instead of a string and then edit the foor-loop found in the script. 
 
-Once the `dypac_jobs.sh` file is ready, submit your job using the `dypac_submit_jobs.sh`. Adjust the memory and cpu requirements, load virtual environment and then run `bash dypac_jobs.sh`
+Once the `dypac_jobs.sh` file is ready, submit your job using the `dypac_submit_jobs.sh`. Adjust the memory and cpu requirements, load virtual environment and then include `bash dypac_jobs.sh`
 
 
 All files are found:
