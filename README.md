@@ -45,7 +45,9 @@ For example, if you have a vector of values of brain decoding accuracy for each 
 Internally, dypac using a voxel-level nilearn masker. This masker is part of the model, and has already most preprocessing parameters set (with the exeptions of the confounds), as well as a mask of the grey matter specified. To use this masker to load 4D data into a (voxel-based) numpy array, use:
 ```python
 conf = Params24('file.nii.gz')
-tseries_voxel = model.masker_.transform('file.nii.gz', confounds=conf)  
+tseries_voxel = model.masker_.transform(['file.nii.gz'], confounds=[conf])  
+# note the [ ] around the image and confound names. That is because the dypac masker is a MultiNiftiMasker.
+# these [ ] are important. It will work without them, but the confounds will not get properly regressed!
 ``` 
 To go the other way around, i.e. from a (voxel-based) numpy array `maps_voxel` to 4D maps, use:
 ```python 
