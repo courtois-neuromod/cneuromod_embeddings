@@ -1,0 +1,2 @@
+dypac==0.5.2
+load_confounds==0.6.4
