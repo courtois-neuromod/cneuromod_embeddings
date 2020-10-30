@@ -1,2 +1,5 @@
+bids==0.0
 dypac==0.5.2
 load_confounds==0.6.4
+nilearn==0.6.2
+scikit_learn>=0.23.0
