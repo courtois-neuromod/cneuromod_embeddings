@@ -1,1 +1,1 @@
-python generate_embeddings.py --subject=sub-05 --session=all --runs=all  -n_clusters=20  -n_states=60 -n_batch=3 -n_replications=100 
+python generate_embeddings.py --subject=05 --dataset=friends --session=001 --task=s01  -n_clusters=5  -n_states=5 -n_batch=3 -n_replications=1 

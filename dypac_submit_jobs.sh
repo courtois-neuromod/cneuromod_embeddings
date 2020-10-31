@@ -1,12 +1,11 @@
 #!/bin/bash
 #SBATCH --account=rrg-pbellec
-#SBATCH --job-name=dypac_job
+#SBATCH --mail-user=l1g5o4b4c8u9i6v6@simexp.slack.com
 #SBATCH --mail-type=END,FAIL
-#SBATCH --time=30:00:00
+#SBATCH --time=00:40:00
 #SBATCH --cpus-per-task=25
 #SBATCH --mem=60G
-#SBATCH --output=dypac_output.out
+#SBATCH --array=1-6
+#SBATCH --output "output/slurm/dypac_output_$j.out"
 
-module load python/3.6
-source ~/hanad_env/bin/activate
-bash dypac_jobs.sh
+sed -n "$SLURM_ARRAY_TASK_ID p" < dypac_jobs.sh | bash

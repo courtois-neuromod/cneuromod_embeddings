@@ -40,13 +40,7 @@ def dypac_generate(
     print("the length of confounds list", len(conf))
 
     model.fit(func, confounds=conf)
-
-    if len(func) < 30:
-        path = "output/second_run/" + prefix + ".pickle"
-
-    else:
-        path = "output/" + prefix + ".pickle"
-
+    path = "output/" + prefix + ".pickle"
     pickle.dump(model, open(path, "wb"))
 
     print(path)
@@ -55,27 +49,11 @@ def dypac_generate(
     return 0
 
 
-#def get_prefix(files, clusters, states, batches, replications):
-#
-#    prefix = (
-#        prefix
-#        + "_cluster"
-#        + str(clusters)
-#        + "_states"
-#        + str(states)
-#        + "_batches"
-#        + str(batches)
-#        + "_reps"
-#        + str(replications)
-#    )
-#
-#    return prefix
-
 
 if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("-p", "--path", type=str, help="Specify the base path.")
+    parser.add_argument("-p", "--path", type=str, help="Specify the base path.", default="data/cneuromod")
     parser.add_argument("-d", "--datasets", type=str, help="Specify the dataset.")
     parser.add_argument("-der", "--derivatives", type=str, help="Specify the derivatives.", default="fmriprep-20.1.0/fmriprep")
     parser.add_argument("--space", type=str, help="Specify the space of the bold files.", default="MNI152NLin2009cAsym")
@@ -89,8 +67,6 @@ if __name__ == "__main__":
     parser.add_argument("-n_batch", type=int, help="Specify the number of batches.")
 
     args = parser.parse_args()
-
-#    base_path = "/project/rrg-pbellec/datasets/cneuromod_new/movie10/derivatives/fmriprep-20.1.0/fmriprep/"
 
     datasets = args.datasets.split(",")
     subjects = args.subjects.split(",")
@@ -119,8 +95,8 @@ if __name__ == "__main__":
 
 
     ##get the filename
-    prefix = ("sub"+args.subjects+"_runs"+str(len(func))+"_cluster"+str(args.n_clusters)
-        +"_states"+str(args.n_states)+"_batches"+str(args.n_batch)+"_reps"
+    prefix = ("sub-"+args.subjects+"dataset-"+args.datasets+"_tasks-"+args.tasks+"_cluster-"+str(args.n_clusters)
+        +"_states-"+str(args.n_states)+"_batches-"+str(args.n_batch)+"_reps-"
         +str(args.n_replications))
     print(prefix)
 
