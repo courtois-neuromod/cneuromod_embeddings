@@ -1,12 +1,12 @@
 cmd = dict()
-cmd["subject"] = ["05"]
+cmd["subject"] = ["01","02","03","04","05","06"]
 cmd["dataset"] = ["friends"]
-cmd["session"] = ["001"]
+cmd["session"] = ["all"]
 cmd["task"] = ["s01"]
-cmd["clusters"] = ["5"]
-cmd["states"] = ["5"]
-cmd["batches"] = ["3"]
-cmd["replication"] = ["1"]
+cmd["clusters"] = ["20"]
+cmd["states"] = ["60", "120"]
+cmd["batches"] = ["1"]
+cmd["replication"] = ["100"]
 
 cmds = []
 for subject in cmd["subject"]:
