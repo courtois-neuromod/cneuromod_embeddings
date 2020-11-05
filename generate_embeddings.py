@@ -14,7 +14,7 @@ warnings.filterwarnings("ignore")
 
 
 def dypac_generate(
-    func, conf, gm_path, n_clusters=10, n_states=5, n_batch=1, n_replications=40
+    func, conf, gm_path, n_clusters=10, n_states=5, n_batch=1, n_replications=40, fwhm=8
 ):
     print("Settings")
     print(
@@ -33,7 +33,7 @@ def dypac_generate(
         n_replications=n_replications,
         n_init_aggregation=1,
         detrend=False,
-        smoothing_fwhm=8,
+        smoothing_fwhm=fwhm,
         standardize=True,
     )
     print("the length of confounds list", len(conf))
@@ -55,6 +55,7 @@ if __name__ == "__main__":
     parser.add_argument("-n_states", type=int, help="Specify the number of states.")
     parser.add_argument("-n_replications", type=int, help="Specify the number of replications.")
     parser.add_argument("-n_batch", type=int, help="Specify the number of batches.")
+    parser.add_argument("-fwhm", type=int, help="Specify the smoothing fwhm.", default=8) 
 
     args = parser.parse_args()
 
@@ -89,7 +90,7 @@ if __name__ == "__main__":
     ##get the filename
     out_dir_name = ("dataset-"+args.datasets+"_tasks-"+args.tasks+"_cluster-"+str(args.n_clusters)
         +"_states-"+str(args.n_states)+"_batches-"+str(args.n_batch)+"_reps-"
-        +str(args.n_replications))
+        +str(args.n_replications)+"_fwhm-"+str(args.fwhm))
     prefix = "sub-"+args.subjects+"_"+out_dir_name
     print(prefix)
 
@@ -110,6 +111,7 @@ if __name__ == "__main__":
         n_states=args.n_states,
         n_batch=args.n_batch,
         n_replications=args.n_replications,
+        fwhm=args.fwhm
     )
     out_dir = os.path.join("output", out_dir_name)
     if not os.path.isdir(out_dir):
