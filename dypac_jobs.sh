@@ -1,1 +1,12 @@
-python generate_embeddings.py --subject=05 --dataset=friends --session=001 --task=s01  -n_clusters=5  -n_states=5 -n_batch=3 -n_replications=1 
+python generate_embeddings.py --subject=01 --dataset=friends --session=all --task=s01  -n_clusters=20  -n_states=60 -n_batch=1 -n_replications=100 
+python generate_embeddings.py --subject=01 --dataset=friends --session=all --task=s01  -n_clusters=20  -n_states=120 -n_batch=1 -n_replications=100 
+python generate_embeddings.py --subject=02 --dataset=friends --session=all --task=s01  -n_clusters=20  -n_states=60 -n_batch=1 -n_replications=100 
+python generate_embeddings.py --subject=02 --dataset=friends --session=all --task=s01  -n_clusters=20  -n_states=120 -n_batch=1 -n_replications=100 
+python generate_embeddings.py --subject=03 --dataset=friends --session=all --task=s01  -n_clusters=20  -n_states=60 -n_batch=1 -n_replications=100 
+python generate_embeddings.py --subject=03 --dataset=friends --session=all --task=s01  -n_clusters=20  -n_states=120 -n_batch=1 -n_replications=100 
+python generate_embeddings.py --subject=04 --dataset=friends --session=all --task=s01  -n_clusters=20  -n_states=60 -n_batch=1 -n_replications=100 
+python generate_embeddings.py --subject=04 --dataset=friends --session=all --task=s01  -n_clusters=20  -n_states=120 -n_batch=1 -n_replications=100 
+python generate_embeddings.py --subject=05 --dataset=friends --session=all --task=s01  -n_clusters=20  -n_states=60 -n_batch=1 -n_replications=100 
+python generate_embeddings.py --subject=05 --dataset=friends --session=all --task=s01  -n_clusters=20  -n_states=120 -n_batch=1 -n_replications=100 
+python generate_embeddings.py --subject=06 --dataset=friends --session=all --task=s01  -n_clusters=20  -n_states=60 -n_batch=1 -n_replications=100 
+python generate_embeddings.py --subject=06 --dataset=friends --session=all --task=s01  -n_clusters=20  -n_states=120 -n_batch=1 -n_replications=100 
