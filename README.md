@@ -1,7 +1,7 @@
 # Generating parcellation model
 The models are generated on beluga using slurm. The first step is to decide on the parameters: sub, runs, clusters, states and batches. These paramteres are edited in the `create_dypac_jobs.py` file. Running this script will then create a bash file with a python command that runs the `generate_embeddings.py` sript. For example:
 
-`python generate_embeddings.py --subject=sub-05 --session=all --runs=all  -n_clusters=20  -n_states=60 -n_batch=3 -n_replications=100`
+`python generate_embeddings.py --subject=05 --session=all --tasks=all  -n_clusters=20  -n_states=60 -n_batch=3 -n_replications=100`
 
 In order to create multiple commands, change a parameter to a list instead of a string and then edit the foor-loop found in the script. 
 
@@ -60,3 +60,9 @@ The parcellations have been generated using the `cneuromod-2020-alpha` release. 
 * The clusters were converted into one-hot encoding vectors, and concatenated across runs and windows, resulting into (50 clusters) x (100 windows) x (40 runs) = 200k distinct one hot vectors. 
 * Those one hot vectors were split into 10 equal batches of size 20k, and a trimmed k-means clustring was applied to extract 150 states, which are characterized by the average of all one-hot vectors within a state (called stability map). 
 * The 1500 state maps (150 states x 10 batches) were further clustered across the 10 batches into 150 final stability maps, which are stored in the model and used for data reduction.  
+
+
+# R2 maps
+R2 score of compression are computed on the data used to fit the dypac model, which is referred as `training` data, and on supplementary data not used to fit the model, which is referred as `validation` data. Thus once a dypac model is generated, a file with the same prefix, and the suffix `_r2_scores.hdf5` is also generated. The HDF5 file has two groups : `training` and `validation`. In each group there is one dataset per data file, the name of the dataset being the name of the corresponding file and the data is the R2 map.
+
+Other R2 maps can be produced with the `compute_r2.py` file. This file can accept additional tags and groups to add to the HDF5 file. For example for inter-subject r2 maps, the tag "inter" is added to the name of the file, so the suffix becomes `_inter_r2_scores.hdf5` and the group `inter` is used, with one subgroup per subject, and again one dataset per data file, e.g. `f['inter']['sub-01'][<filename>]`.
