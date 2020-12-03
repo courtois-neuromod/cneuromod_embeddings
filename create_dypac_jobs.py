@@ -8,7 +8,9 @@ cmd["clusters"] = ["50"]
 cmd["states"] = ["150", "300"]
 cmd["batches"] = ["1"]
 cmd["replication"] = ["100"]
-cmd["fwhm"] = ["5"]
+cmd["fwhm"] = ["5","8"]
+
+num = "_2"
 
 cmds = []
 for subject in cmd["subject"]:
@@ -35,16 +37,16 @@ for subject in cmd["subject"]:
                                         )
                                     )
 
-with open("dypac_jobs.sh", "w") as dy_job:
+with open("dypac_jobs{}.sh".format(num), "w") as dy_job:
     for c in cmds:
         dy_job.write(c)
 
-with open("dypac_submit_jobs.sh", "r") as dy_sub:
+with open("dypac_submit_jobs{}.sh".format(num), "r") as dy_sub:
     lines = dy_sub.readlines()
 
 for i in range(len(lines)):
     if "#SBATCH --array=" in lines[i]:
         lines[i] = "#SBATCH --array=1-{}\n".format(len(cmds))
 
-with open("dypac_submit_jobs.sh", "w") as dy_sub:
+with open("dypac_submit_jobs{}.sh".format(num), "w") as dy_sub:
     dy_sub.writelines(lines)
