@@ -63,6 +63,25 @@ The parcellations have been generated using the `cneuromod-2020-alpha` release. 
 
 
 # R2 maps
-R2 score of compression are computed on the data used to fit the dypac model, which is referred as `training` data, and on supplementary data not used to fit the model, which is referred as `validation` data. Thus once a dypac model is generated, a file with the same prefix, and the suffix `_r2_scores.hdf5` is also generated. The HDF5 file has two groups : `training` and `validation`. In each group there is one dataset per data file, the name of the dataset being the name of the corresponding file and the data is the R2 map.
+R2 score of compression are computed on the data used to fit the dypac model, which is referred as `training` data, and on supplementary data not used to fit the model, which is referred as `validation` data. Thus once a dypac model is generated, a file with the same prefix, and the suffix `_r2_scores.hdf5` is also generated. The HDF5 file has two groups : `training` and `validation`. In each group there is one dataset per data file, the name of the dataset being the name of the corresponding file and the data is the R2 map. Example : 
 
-Other R2 maps can be produced with the `compute_r2.py` file. This file can accept additional tags and groups to add to the HDF5 file. For example for inter-subject r2 maps, the tag "inter" is added to the name of the file, so the suffix becomes `_inter_r2_scores.hdf5` and the group `inter` is used, with one subgroup per subject, and again one dataset per data file, e.g. `f['inter']['sub-01'][<filename>]`.
+```
+f = h5py.load(open("dyapc_model_r2_scores.hdf5", "r"))
+r2_volume_training_1 = f["training"]["training_file_1.nii.gz"][:]
+r2_volume_validation_5 = f["validation"]["validation_file_5.nii.gz"][:]
+```
+
+Other R2 maps can be produced with the `compute_r2.py` file. This file can accept additional tags and groups to add to the HDF5 file. For example for inter-subject r2 maps, the tag "inter" is added to the name of the file, so the suffix becomes `_inter_r2_scores.hdf5` and the group `inter` is used, with one subgroup per subject, and again one dataset per data file. For example :
+
+```
+f = h5py.load(open("dyapc_model_inter_r2_scores.hdf5", "r"))
+r2_volume_sub01_task01 = f['inter']['sub-01']["sub-01_task-01.nii.gz"][:]
+r2_volume_sub06_task08 = f['inter']['sub-06']["sub-06_task-08.nii.gz"][:]
+```
+Another example is the R2 maps computed on other atlases (mist, smith or schaefer), for these no tag were used so there is just one group per subject :
+
+```
+f = h5py.load(open("mist444_r2_scores.hdf5", "r"))
+r2_volume_sub01_task01 = f['sub-01']["sub-01_task-01.nii.gz"][:]
+r2_volume_sub06_task08 = f['sub-06']["sub-06_task-08.nii.gz"][:]
+```
