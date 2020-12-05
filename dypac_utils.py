@@ -12,10 +12,10 @@ def load_model(pickle_in):
    return model, mask_img
 
 
-def load_dypac(subject, root_data, fwhm, cluster=50, state=150):
+def load_dypac(subject, root_data, fwhm, cluster=50, state=150, batch='even'):
    """Load a dypac model."""
-   path_data = os.path.join(root_data, f'dataset-friends_tasks-s01even_cluster-{cluster}_states-{state}_batches-1_reps-100_fwhm-{fwhm}')
-   file_model = os.path.join(path_data, f'{subject}_dataset-friends_tasks-s01even_cluster-{cluster}_states-{state}_batches-1_reps-100_fwhm-{fwhm}.pickle')
+   path_data = os.path.join(root_data, f'dataset-friends_tasks-s01{batch}_cluster-{cluster}_states-{state}_batches-1_reps-100_fwhm-{fwhm}')
+   file_model = os.path.join(path_data, f'{subject}_dataset-friends_tasks-s01{batch}_cluster-{cluster}_states-{state}_batches-1_reps-100_fwhm-{fwhm}.pickle')
    pickle_in = open(file_model, "rb")
    model, mask_img = load_model(pickle_in)
    return model, mask_img
@@ -28,6 +28,7 @@ def load_r2_intra(subject, root_data, fwhm, cluster=50, state=150):
     hdf5_file = h5py.File(file_score, 'r')
     return hdf5_file
 
+
 def load_r2_inter(subject, root_data, fwhm, cluster=50, state=150):
     """Load a stack of r2 maps."""
     path_data = os.path.join(root_data, f'dataset-friends_tasks-s01even_cluster-{cluster}_states-{state}_batches-1_reps-100_fwhm-{fwhm}')
@@ -35,12 +36,14 @@ def load_r2_inter(subject, root_data, fwhm, cluster=50, state=150):
     hdf5_file = h5py.File(file_score, 'r')
     return hdf5_file
 
+
 def load_r2_other(atlas, root_data, fwhm):
     """Load a stack of r2 maps with other atlases."""
     path_data = os.path.join(root_data, 'other_atlases')
     file_score = os.path.join(path_data, f'{atlas}_fwhm-{fwhm}_r2_score.hdf5')
     hdf5_file = h5py.File(file_score, 'r')
     return hdf5_file
+
 
 def mean_r2(hdf5_file, ref_img):
    vols = []
