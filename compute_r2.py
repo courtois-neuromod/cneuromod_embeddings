@@ -4,17 +4,15 @@ import os
 import argparse
 from load_confounds import Params36
 import pickle
+import dypac_masker
+from nilearn import datasets
 
-def compute_r2(model_path, file_paths, confounds, prefix=None, tag=None, out_dir=None,
-               group_name=None, derivatives="fmriprep-20.1.0/fmriprep", space="MNI152NLin2009cAsym"): 
+def compute_r2(model, file_paths, confounds, prefix, out_dir, tag=None,
+               group_name=None): 
 
-    prefix = prefix if prefix else os.path.splitext(os.path.split(model_path)[1])[0]
-    out_dir = out_dir if out_dir else os.path.split(model_path)[0] 
     tag = "_" + tag if tag else ""
     out_path = os.path.join(out_dir, prefix + tag + "_r2_scores.hdf5")
-    with open(model_path, "rb") as pickle_in:
-        model = pickle.load(pickle_in)
-
+    
     for i in range(len(file_paths)):
         r2 = model.score(file_paths[i], confound=confounds[i]).dataobj
         h5_file = h5py.File(out_path, "a")
@@ -28,7 +26,7 @@ def compute_r2(model_path, file_paths, confounds, prefix=None, tag=None, out_dir
                     grp = grp[group]
         dset = grp.create_dataset(os.path.split(file_paths[i])[1], data=r2)
         h5_file.close()
-#    os.system("setfacl -m g:rrg-pbellec:rwx {}".format(out_path))
+    #os.system("setfacl -m g:rrg-pbellec:rwx {}".format(out_path))
 
 
 if __name__ == "__main__":
@@ -37,6 +35,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("-m", "--model", type=str, help="Path to the dypac model.")
     parser.add_argument("-d", "--dataset", type=str, help="Path to the dataset.")
+    parser.add_argument("-b", "--bids_folder", type=str, help="Path to the bids folder of the saved layout of the dataset.", default=None)
     parser.add_argument("-der", "--derivatives", type=str, help="Specify the derivatives", default="fmriprep-20.1.0/fmriprep")
     parser.add_argument("--space", type=str, help="Specify the space of the bold files.", default="MNI152NLin2009cAsym")
     parser.add_argument("-s", "--subjects", type=str, help="Specify the subject.", default="all")
@@ -48,6 +47,7 @@ if __name__ == "__main__":
             help="Prefix to use for the output file name, if None the file name of the model is used.", default=None)
     parser.add_argument("-o", "--out_dir", type=str,
             help="Path to the directory where to save the results. If None, the directory of the model is used.", default=None)
+    parser.add_argument("-a", "--atlas", type=str, help="Name of atlas.", default=None)
 
     args = parser.parse_args()
 
@@ -59,20 +59,38 @@ if __name__ == "__main__":
     sessions = "" if sessions == ["all"] else sessions
     tasks = "" if tasks == ["all"] else tasks
 
+    prefix = args.prefix if args.prefix else os.path.splitext(os.path.split(args.model)[1])[0]
+    out_dir = args.out_dir if args.out_dir else os.path.split(args.model)[0] 
+
     derivatives_path = os.path.join(args.dataset, "derivatives", args.derivatives)
-    layout = BIDSLayout(args.dataset, derivatives=derivatives_path)
+    print ("deriv", derivatives_path)
+    layout = BIDSLayout(args.dataset, derivatives=derivatives_path, database_path=args.bids_folder)
+    with open(args.model, "rb") as pickle_in:
+        model = pickle.load(pickle_in)
+    if args.atlas:
+        if args.atlas == "schaefer":
+            atlas_path = "data/schaefer_2018/Schaefer2018_400Parcels_7Networks_order_FSLMNI152_1mm.nii.gz"
+            model = dypac_masker.LabelsMasker(model=model, labels=atlas_path)
+        elif args.atlas == "smith":
+            atlas_path = "data/smith_2009/rsn70.nii.gz"
+            model = dypac_masker.MapsMasker(model=model, maps=atlas_path)
+        elif "mist" in args.atlas:
+            scale = args.atlas[4:]
+            atlas_path = "data/MIST/Parcellations/MIST_{}.nii.gz".format(scale)
+            model = dypac_masker.LabelsMasker(model=model, labels=atlas_path)
 
     if len(subjects) > 1:
         for sub in subjects:
             file_paths = layout.get(subject=sub, session=sessions, task=tasks, suffix="^bold$", space=args.space,
                                     extension="nii.gz", scope="derivatives", regex_search=True, return_type="file")
             confounds = Params36().load(file_paths)
-            compute_r2(args.model, file_paths, confounds, args.prefix,
-                       args.tag, args.out_dir, args.group+"/sub-"+sub, args.derivatives, args.space)
+            compute_r2(model, file_paths, confounds, prefix, out_dir, args.tag, args.group+"/sub-"+sub)
             print("done with", sub)
     else:
         file_paths = layout.get(subject=subjects, session=sessions, task=tasks, suffix="^bold$", space=args.space,
                                 extension="nii.gz", scope="derivatives", regex_search=True, return_type="file")
+        print(file_paths)
+        print("---------------------------------")
         confounds = Params36().load(file_paths)
-        compute_r2(args.model, args.dataset, subjects, sessions, tasks, args.prefix,
-                   args.tag, args.out_dir, args.group, args.derivatives, args.space)
+        compute_r2(model, file_paths, confounds, prefix, out_dir, args.tag, args.group)
+
