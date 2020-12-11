@@ -29,7 +29,7 @@ def reproducibility(n_subject=7, fwhm=5, cluster=300, state=900):
 
 
 def main(args):
-    match_mtx = reproducibility(n_subject=2, fwhm=args.fwhm, cluster=args.cluster, state=args.state)
+    match_mtx = reproducibility(n_subject=7, fwhm=args.fwhm, cluster=args.cluster, state=args.state)
     save_matx(match_mtx, args.path_results, args.fwhm, args.cluster, args.state)
 
 if __name__ == '__main__':
