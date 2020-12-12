@@ -14,17 +14,17 @@ def save_matx(match_matx, path_results, fwhm, cluster, state):
     np.save(file_save, match_matx)
     
 
-def reproducibility(n_subject=7, fwhm=5, cluster=300, state=900):
+def reproducibility(n_subject=6, fwhm=5, cluster=300, state=900):
     match_mtx = {}
 
-    for ind_sub1 in range(1, n_subject):
-        sub1 = f'sub-0{ind_sub1}'
+    for ind_sub1 in range(n_subject):
+        sub1 = f'sub-0{ind_sub1 + 1}'
         for ind_sub2 in range(ind_sub1, n_subject):
-            sub2 = f'sub-0{ind_sub2}'
+            sub2 = f'sub-0{ind_sub2 + 1}'
             print(f'matching parcels - {sub1} with {sub2}')
             R = match_components(sub1=sub1, sub2=sub2, root_data=root_data, fwhm=fwhm, cluster=cluster, state=state)
-            match_mtx[ind_sub1-1, ind_sub2-1] = R
-            match_mtx[ind_sub2-1, ind_sub1-1] = R.transpose()
+            match_mtx[ind_sub1][ind_sub2] = R
+            match_mtx[ind_sub2][ind_sub1] = R.transpose()
     return match_mtx
 
 
