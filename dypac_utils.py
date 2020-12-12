@@ -49,9 +49,9 @@ def normalize_components(model, mask_img):
 
 def R_models(model1, model2, mask_img):
     xn = normalize_components(model1, mask_img)
-    xn = xn[:, model1.dwell_time_ > 0)
+    xn = xn[:, model1.dwell_time_ > 0]
     yn = normalize_components(model2, mask_img)
-    yn = yn[:, model2.dwell_time_ > 0)
+    yn = yn[:, model2.dwell_time_ > 0]
     R = np.matmul(xn.transpose(), yn) / yn.shape[0]
     return R
 
