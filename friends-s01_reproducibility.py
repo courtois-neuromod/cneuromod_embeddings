@@ -24,7 +24,7 @@ def reproducibility(n_subject=7, fwhm=5, cluster=300, state=900):
             print(f'matching parcels - {sub1} with {sub2}')
             R = match_components(sub1=sub1, sub2=sub2, root_data=root_data, fwhm=fwhm, cluster=cluster, state=state)
             match_mtx[:, :, ind_sub1-1, ind_sub2-1] = R
-            match_mtx[:, :, ind_sub2-1, ind_sub1-1] = R
+            match_mtx[:, :, ind_sub2-1, ind_sub1-1] = R.transpose()
     return match_mtx
 
 
