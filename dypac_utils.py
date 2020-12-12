@@ -14,12 +14,13 @@ from nilearn.input_data import NiftiMasker
 from nilearn.image import math_img
 
 
-def visu_repro(R):
+def visu_repro(root_data, xp, fwhm, cluster, state, n_subject=6):
+    R = np.load(os.path.join(root_data, xp, f'Rmatch_fwhm-{fwhm}_cluster-{cluster}_state-{state}.npy'))
     width_fig = 20
-    n_comp = 6
+    n_comp = n_subject
     fig = plt.figure(figsize=(width_fig, n_comp * 3))
-    for sub1 in range(6):
-        for sub2 in range(6):
+    for sub1 in range(n_subject):
+        for sub2 in range(n_subject):
             plt.subplot(6, 6, 1 + sub1 + sub2 * 6)
             match_val = np.max(R[:, :, sub1, sub2], axis=1)
             plt.hist(match_val, bins=100, density=True, stacked=True)
@@ -48,7 +49,9 @@ def normalize_components(model, mask_img):
 
 def R_models(model1, model2, mask_img):
     xn = normalize_components(model1, mask_img)
+    xn = xn[:, model1.dwell_time_ > 0)
     yn = normalize_components(model2, mask_img)
+    yn = yn[:, model2.dwell_time_ > 0)
     R = np.matmul(xn.transpose(), yn) / yn.shape[0]
     return R
 
