@@ -22,9 +22,9 @@ def reproducibility(n_subject=6, fwhm=5, cluster=300, state=900):
         match_mtx[sub] = dict.fromkeys(list_subject)
 
     for ind_sub1 in range(n_subject):
-        sub1 = f'sub-0{ind_sub1 + 1}'
+        sub1 = list_subject[ind_sub1]
         for ind_sub2 in range(ind_sub1, n_subject):
-            sub2 = f'sub-0{ind_sub2 + 1}'
+            sub2 = list_subject[ind_sub2]
             print(f'matching parcels - {sub1} with {sub2}')
             R = match_components(sub1=sub1, sub2=sub2, root_data=root_data, fwhm=fwhm, cluster=cluster, state=state)
             match_mtx[sub1][sub2] = R
@@ -33,7 +33,7 @@ def reproducibility(n_subject=6, fwhm=5, cluster=300, state=900):
 
 
 def main(args):
-    match_mtx = reproducibility(n_subject=7, fwhm=args.fwhm, cluster=args.cluster, state=args.state)
+    match_mtx = reproducibility(n_subject=6, fwhm=args.fwhm, cluster=args.cluster, state=args.state)
     save_matx(match_mtx, args.path_results, args.fwhm, args.cluster, args.state)
 
 if __name__ == '__main__':
