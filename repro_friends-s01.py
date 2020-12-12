@@ -18,10 +18,11 @@ def save_matx(match_matx, path_results, fwhm, cluster, state):
 def reproducibility(n_subject=6, fwhm=5, cluster=300, state=900):
     list_subject = subject_keys(n_subject)
     match_mtx = dict.fromkeys(list_subject)
+    for sub in list_subject:
+        match_mtx[sub] = dict.fromkeys(list_subject)
 
     for ind_sub1 in range(n_subject):
         sub1 = f'sub-0{ind_sub1 + 1}'
-        match_mtx[sub1] = dict.fromkeys(list_subject)
         for ind_sub2 in range(ind_sub1, n_subject):
             sub2 = f'sub-0{ind_sub2 + 1}'
             print(f'matching parcels - {sub1} with {sub2}')
