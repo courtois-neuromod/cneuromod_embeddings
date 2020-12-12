@@ -14,6 +14,13 @@ from nilearn.input_data import NiftiMasker
 from nilearn.image import math_img
 
 
+def subject_keys(n_subject):
+    list_subject = []
+    for ind in range(1, n_subject+1):
+        list_subject.append(f'sub-0{ind}')
+    return list_subject
+
+
 def visu_repro(root_data, xp, fwhm, cluster, state, n_subject=6):
     R = np.load(os.path.join(root_data, xp, f'Rmatch_fwhm-{fwhm}_cluster-{cluster}_state-{state}.npy'))
     width_fig = 20
