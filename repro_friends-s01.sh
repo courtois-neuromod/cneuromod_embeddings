@@ -1,6 +1,6 @@
 #/bin/bash
 
-export PATH_RESULTS='/data/cisl/pbellec/cneuromod_embeddings/xp_202012/friends-s01_reproducibility'
+export PATH_RESULTS='/data/cisl/pbellec/cneuromod_embeddings/xp_202012/repro_friends-s01'
 export PATH_DATA='/data/cisl/pbellec/cneuromod_embeddings/xp_202012'
 
 echo Input data located in $PATH_DATA
