@@ -31,7 +31,7 @@ def cortical_segmentation():
     """
     img_aal, mtx_aal, list_val = _load_aal()
     all_val = _expand_parcels(img_aal, mtx_aal, list_val)
-    mtx_extra = list_val_full[np.argmax(all_val, axis=3)]
+    mtx_extra = list_val[np.argmax(all_val, axis=3)]
     mask_central = (mtx_extra>=7000) & (mtx_extra<8000)
     mask_cerebellum = mtx_extra >= 9000
     mask_cortex = (mtx_extra > 0) & ~mask_central & ~mask_cerebellum
