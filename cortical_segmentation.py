@@ -39,3 +39,4 @@ def cortical_segmentation():
     img['central'] = image.new_img_like(img_aal, mask_central)
     img['cerebellum'] = image.new_img_like(img_aal, mask_cerebellum)
     img['cortex'] = image.new_img_like(img_aal, mask_cortex)
+    return img
