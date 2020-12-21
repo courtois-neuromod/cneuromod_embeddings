@@ -82,14 +82,37 @@ def _r2_other(root_data, atlas, n_subject=6, fwhm=5, type_mask='cortex'):
 
 
 def main(args):
-    val_intra = _r2_intra(
-        root_data=args.path_r2,
-        n_subject=6,
-        fwhm=args.fwhm,
-        cluster=args.cluster,
-        state=args.state,
-    )
-    save_matx(r2_mtx, args.path_results, args.fwhm, args.cluster, args.state)
+    if args.atlas == 'intra':
+        val_r2 = _r2_intra(
+            root_data=args.path_r2,
+            n_subject=6,
+            fwhm=args.fwhm,
+            cluster=args.cluster,
+            state=args.state,
+            type_mask='cortex'
+        )
+        _save_r2(val_r2, args.path_results, args.fwhm, args.cluster, args.state)
+
+    elif args.atlas == 'inter':
+        val_r2 = _r2_inter(
+            root_data=args.path_r2,
+            n_subject=6,
+            fwhm=args.fwhm,
+            cluster=args.cluster,
+            state=args.state,
+            type_mask='cortex'
+        )
+        _save_r2(val_r2, args.path_results, args.fwhm, args.cluster, args.state)
+
+    else:
+        val_r2 = _r2_other(
+            root_data=args.path_r2,
+            atlas=args.atlas,
+            n_subject=6,
+            fwhm=args.fwhm,
+            type_mask='cortex'
+        )
+        _save_r2(val_r2, args.path_results, args.fwhm, args.cluster, args.state)
 
 
 if __name__ == "__main__":
@@ -97,7 +120,8 @@ if __name__ == "__main__":
     parser.add_argument("root_data", help="Full path to the data.")
     parser.add_argument("path_results", help="Path to store the summary results.")
     parser.add_argument("--fwhm", type=int, help="smoothing parameter.")
-    parser.add_argument("--template", type=str, help="name of a parcellation template.")
+    parser.add_argument("--atlas", type=str, help="name of a parcellation atlas. Use intra for dypac within-subject, and inter for dypac between-subject")
+    parser.add_argument("--type_mask", type=str, help="type of grey matter mask (cortex, central, cerebellum).")
     parser.add_argument("--cluster", type=int, help="number of clusters.")
     parser.add_argument("--state", type=int, help="number of states.")
     args = parser.parse_args()
