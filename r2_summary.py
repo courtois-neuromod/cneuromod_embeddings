@@ -45,7 +45,7 @@ def _r2_inter(root_data, n_subject=6, fwhm=5, cluster=300, state=900, type_mask=
                 type_comp = np.append(type_comp, 'inter')
                 all_sub = np.append(all_sub, sub)
                 all_label = np.append(all_label, f'cluster{cluster}_state{state}')
-    return pd.DataFrame(data={"r2": val, "type": type_comp, "params": all_label}, "subject": all_sub)
+    return pd.DataFrame(data={"r2": val, "type": type_comp, "params": all_label, "subject": all_sub})
 
 
 def _r2_intra(root_data, n_subject=6, fwhm=5, cluster=300, state=900, type_mask='cortex'):
@@ -67,7 +67,7 @@ def _r2_intra(root_data, n_subject=6, fwhm=5, cluster=300, state=900, type_mask=
             type_comp = np.append(type_comp, 'intra')
             all_sub = np.append(all_sub, sub)
             all_label = np.append(all_label, f'cluster{cluster}_state{state}')
-    return pd.DataFrame(data={"r2": val, "type": type_comp, "params": all_label}, "subject": all_sub)
+    return pd.DataFrame(data={"r2": val, "type": type_comp, "params": all_label, "subject": all_sub})
 
 
 def _r2_other(root_data, atlas, n_subject=6, fwhm=5, type_mask='cortex'):
@@ -84,7 +84,7 @@ def _r2_other(root_data, atlas, n_subject=6, fwhm=5, type_mask='cortex'):
             val = np.append(val, np.mean(np.squeeze(hdf5_file[sub][file])[mask]))
             all_sub = np.append(all_sub, sub)
             all_label = np.append(all_label, atlas)
-    return pd.DataFrame(data={"r2": val, "params": all_label}, "subject": all_sub)
+    return pd.DataFrame(data={"r2": val, "params": all_label, "subject": all_sub})
 
 
 def main(args):
