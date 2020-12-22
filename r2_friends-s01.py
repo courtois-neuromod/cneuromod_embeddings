@@ -89,7 +89,7 @@ def main(args):
             fwhm=args.fwhm,
             cluster=args.cluster,
             state=args.state,
-            type_mask='cortex'
+            type_mask=args.type_mask
         )
         _save_r2(val_r2, args.path_results, args.fwhm, args.cluster, args.state)
 
@@ -100,7 +100,7 @@ def main(args):
             fwhm=args.fwhm,
             cluster=args.cluster,
             state=args.state,
-            type_mask='cortex'
+            type_mask=args.type_mask
         )
         _save_r2(val_r2, args.path_results, args.fwhm, args.cluster, args.state)
 
@@ -110,7 +110,7 @@ def main(args):
             atlas=args.atlas,
             n_subject=6,
             fwhm=args.fwhm,
-            type_mask='cortex'
+            type_mask=args.type_mask
         )
         _save_r2(val_r2, args.path_results, args.fwhm, args.cluster, args.state)
 
