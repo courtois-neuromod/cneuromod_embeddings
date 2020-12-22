@@ -29,6 +29,7 @@ def _r2_inter(root_data, n_subject=6, fwhm=5, cluster=300, state=900, type_mask=
     list_subject = subject_keys(n_subject)
     val = np.array([])
     all_label = np.array([])
+    all_sub = np.array([])
     type_comp = np.array([])
     for sub in list_subject:
         print(sub)
@@ -42,13 +43,15 @@ def _r2_inter(root_data, n_subject=6, fwhm=5, cluster=300, state=900, type_mask=
             for file2 in list_files2:
                 val = np.append(val, np.mean(np.squeeze(hdf5_file['inter'][sub2][file2])[mask]))
                 type_comp = np.append(type_comp, 'inter')
+                all_sub = np.append(all_sub, sub)
                 all_label = np.append(all_label, f'cluster{cluster}_state{state}')
-    return pd.DataFrame(data={"r2": val, "type": type_comp, "params": all_label})
+    return pd.DataFrame(data={"r2": val, "type": type_comp, "params": all_label}, "subject": all_sub)
 
 
 def _r2_intra(root_data, n_subject=6, fwhm=5, cluster=300, state=900, type_mask='cortex'):
     list_subject = subject_keys(n_subject)
     val = np.array([])
+    all_sub = np.array([])
     all_label = np.array([])
     type_comp = np.array([])
     for sub in list_subject:
@@ -62,13 +65,15 @@ def _r2_intra(root_data, n_subject=6, fwhm=5, cluster=300, state=900, type_mask=
         for file in list_files:
             val = np.append(val, np.mean(np.squeeze(hdf5_file['validation'][file])[mask]))
             type_comp = np.append(type_comp, 'intra')
+            all_sub = np.append(all_sub, sub)
             all_label = np.append(all_label, f'cluster{cluster}_state{state}')
-    return pd.DataFrame(data={"r2": val, "type": type_comp, "params": all_label})
+    return pd.DataFrame(data={"r2": val, "type": type_comp, "params": all_label}, "subject": all_sub)
 
 
 def _r2_other(root_data, atlas, n_subject=6, fwhm=5, type_mask='cortex'):
     list_subject = subject_keys(n_subject)
     val = np.array([])
+    all_sub = np.array([])
     all_label = np.array([])
     for sub in list_subject:
         print(sub)
@@ -77,8 +82,9 @@ def _r2_other(root_data, atlas, n_subject=6, fwhm=5, type_mask='cortex'):
         list_files = list(hdf5_file[sub].keys())
         for file in list_files:
             val = np.append(val, np.mean(np.squeeze(hdf5_file[sub][file])[mask]))
+            all_sub = np.append(all_sub, sub)
             all_label = np.append(all_label, atlas)
-    return pd.DataFrame(data={"r2": val, "params": all_label})
+    return pd.DataFrame(data={"r2": val, "params": all_label}, "subject": all_sub)
 
 
 def main(args):
