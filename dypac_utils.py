@@ -14,6 +14,14 @@ from nilearn.input_data import NiftiMasker
 from nilearn.image import math_img
 
 
+def key_params(atlas, fwhm, cluster, state):
+    if (atlas=='intra') | (atlas=='inter'):
+        params = f'{atlas}_fwhm-{fwhm}_cluster-{cluster}_state-{state}'
+    else: 
+        params = f'{atlas}_fwhm-{fwhm}'
+    return params
+
+
 def subject_keys(n_subject):
     list_subject = []
     for ind in range(1, n_subject+1):

@@ -4,16 +4,17 @@ import pickle
 import argparse
 import numpy as np
 import pandas as pd
-from dypac_utils import subject_keys, load_dypac, load_r2_intra, load_r2_inter, load_r2_other
+from dypac_utils import subject_keys, load_dypac, load_r2_intra, load_r2_inter, load_r2_other, key_params
 from cortical_segmentation import cortical_segmentation
 
 
-def _save_r2_df(r2_df, path_results, fwhm, cluster, state):
+def _save_r2(r2_df, path_results, atlas, fwhm, cluster, state):
+    params = key_params(atlas, fwhm, cluster, state)
     file_save = os.path.join(
         path_results, f"r2_fwhm-{fwhm}_cluster-{cluster}_state-{state}.p"
     )
     print(file_save)
-    r2_df.to_pickl(file_save)
+    r2_df.to_pickle(file_save)
 
 
 def _load_mask(subject, root_data, type_mask, fwhm, cluster, state):
@@ -90,35 +91,35 @@ def _r2_other(root_data, atlas, n_subject=6, fwhm=5, type_mask='cortex'):
 def main(args):
     if args.atlas == 'intra':
         val_r2 = _r2_intra(
-            root_data=args.path_r2,
+            root_data=args.root_data,
             n_subject=6,
             fwhm=args.fwhm,
             cluster=args.cluster,
             state=args.state,
             type_mask=args.type_mask
         )
-        _save_r2(val_r2, args.path_results, args.fwhm, args.cluster, args.state)
+        _save_r2(val_r2, args.path_results, args.atlas, args.fwhm, args.cluster, args.state)
 
     elif args.atlas == 'inter':
         val_r2 = _r2_inter(
-            root_data=args.path_r2,
+            root_data=args.root_data,
             n_subject=6,
             fwhm=args.fwhm,
             cluster=args.cluster,
             state=args.state,
             type_mask=args.type_mask
         )
-        _save_r2(val_r2, args.path_results, args.fwhm, args.cluster, args.state)
+        _save_r2(val_r2, args.path_results, args.atlas, args.fwhm, args.cluster, args.state)
 
     else:
         val_r2 = _r2_other(
-            root_data=args.path_r2,
+            root_data=args.root_data,
             atlas=args.atlas,
             n_subject=6,
             fwhm=args.fwhm,
             type_mask=args.type_mask
         )
-        _save_r2(val_r2, args.path_results, args.fwhm, args.cluster, args.state)
+        _save_r2(val_r2, args.path_results, args.atlas, args.fwhm, args.cluster, args.state)
 
 
 if __name__ == "__main__":
@@ -128,7 +129,7 @@ if __name__ == "__main__":
     parser.add_argument("--fwhm", type=int, help="smoothing parameter.")
     parser.add_argument("--atlas", type=str, help="name of a parcellation atlas. Use intra for dypac within-subject, and inter for dypac between-subject")
     parser.add_argument("--type_mask", type=str, help="type of grey matter mask (cortex, central, cerebellum).")
-    parser.add_argument("--cluster", type=int, help="number of clusters.")
-    parser.add_argument("--state", type=int, help="number of states.")
+    parser.add_argument("--cluster", type=int, default=0, help="number of clusters.")
+    parser.add_argument("--state", type=int, default=0, help="number of states.")
     args = parser.parse_args()
     main(args)
