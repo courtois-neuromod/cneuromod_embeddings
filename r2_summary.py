@@ -11,7 +11,7 @@ from cortical_segmentation import cortical_segmentation
 def _save_r2(r2_df, path_results, atlas, fwhm, cluster, state):
     params = key_params(atlas, fwhm, cluster, state)
     file_save = os.path.join(
-        path_results, f"r2_fwhm-{fwhm}_cluster-{cluster}_state-{state}.p"
+        path_results, f"r2_fwhm-{params}.p"
     )
     print(file_save)
     r2_df.to_pickle(file_save)
