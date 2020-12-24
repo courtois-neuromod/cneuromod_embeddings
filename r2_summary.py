@@ -4,16 +4,17 @@ import pickle
 import argparse
 import numpy as np
 import pandas as pd
-from dypac_utils import subject_keys, load_dypac, load_r2_intra, load_r2_inter, load_r2_other
+from dypac_utils import subject_keys, load_dypac, load_r2_intra, load_r2_inter, load_r2_other, key_params
 from cortical_segmentation import cortical_segmentation
 
 
-def _save_r2_df(r2_df, path_results, fwhm, cluster, state):
+def _save_r2(r2_df, path_results, atlas, fwhm, cluster, state):
+    params = key_params(atlas, fwhm, cluster, state)
     file_save = os.path.join(
-        path_results, f"r2_fwhm-{fwhm}_cluster-{cluster}_state-{state}.p"
+        path_results, f"r2_fwhm-{params}.p"
     )
     print(file_save)
-    r2_df.to_pickl.(file_save)
+    r2_df.to_pickle(file_save)
 
 
 def _load_mask(subject, root_data, type_mask, fwhm, cluster, state):
@@ -29,6 +30,7 @@ def _r2_inter(root_data, n_subject=6, fwhm=5, cluster=300, state=900, type_mask=
     list_subject = subject_keys(n_subject)
     val = np.array([])
     all_label = np.array([])
+    all_sub = np.array([])
     type_comp = np.array([])
     for sub in list_subject:
         print(sub)
@@ -40,15 +42,17 @@ def _r2_inter(root_data, n_subject=6, fwhm=5, cluster=300, state=900, type_mask=
         for sub2 in list_sub2:
             list_files2 = list(hdf5_file['inter'][sub2].keys())
             for file2 in list_files2:
-                val = np.append(val, np.mean(np.squeeze(hdf5_file['inter'][sub2][file2])[mask[type_mask]]))
+                val = np.append(val, np.mean(np.squeeze(hdf5_file['inter'][sub2][file2])[mask]))
                 type_comp = np.append(type_comp, 'inter')
+                all_sub = np.append(all_sub, sub)
                 all_label = np.append(all_label, f'cluster{cluster}_state{state}')
-    return pd.DataFrame("r2": val, "type": type_comp, "params": all_label)
+    return pd.DataFrame(data={"r2": val, "type": type_comp, "params": all_label, "subject": all_sub})
 
 
 def _r2_intra(root_data, n_subject=6, fwhm=5, cluster=300, state=900, type_mask='cortex'):
     list_subject = subject_keys(n_subject)
     val = np.array([])
+    all_sub = np.array([])
     all_label = np.array([])
     type_comp = np.array([])
     for sub in list_subject:
@@ -60,15 +64,17 @@ def _r2_intra(root_data, n_subject=6, fwhm=5, cluster=300, state=900, type_mask=
         list_files = list(hdf5_file['validation'].keys())
 
         for file in list_files:
-            val = np.append(val, np.mean(np.squeeze(hdf5_file['validation'][file])[mask[type_mask]]))
+            val = np.append(val, np.mean(np.squeeze(hdf5_file['validation'][file])[mask]))
             type_comp = np.append(type_comp, 'intra')
+            all_sub = np.append(all_sub, sub)
             all_label = np.append(all_label, f'cluster{cluster}_state{state}')
-    return pd.DataFrame("r2": val, "type": type_comp, "params": all_label)
+    return pd.DataFrame(data={"r2": val, "type": type_comp, "params": all_label, "subject": all_sub})
 
 
 def _r2_other(root_data, atlas, n_subject=6, fwhm=5, type_mask='cortex'):
     list_subject = subject_keys(n_subject)
     val = np.array([])
+    all_sub = np.array([])
     all_label = np.array([])
     for sub in list_subject:
         print(sub)
@@ -77,42 +83,43 @@ def _r2_other(root_data, atlas, n_subject=6, fwhm=5, type_mask='cortex'):
         list_files = list(hdf5_file[sub].keys())
         for file in list_files:
             val = np.append(val, np.mean(np.squeeze(hdf5_file[sub][file])[mask]))
+            all_sub = np.append(all_sub, sub)
             all_label = np.append(all_label, atlas)
-    return pd.DataFrame("r2": val, "params": all_label)
+    return pd.DataFrame(data={"r2": val, "params": all_label, "subject": all_sub})
 
 
 def main(args):
     if args.atlas == 'intra':
         val_r2 = _r2_intra(
-            root_data=args.path_r2,
+            root_data=args.root_data,
             n_subject=6,
             fwhm=args.fwhm,
             cluster=args.cluster,
             state=args.state,
             type_mask=args.type_mask
         )
-        _save_r2(val_r2, args.path_results, args.fwhm, args.cluster, args.state)
+        _save_r2(val_r2, args.path_results, args.atlas, args.fwhm, args.cluster, args.state)
 
     elif args.atlas == 'inter':
         val_r2 = _r2_inter(
-            root_data=args.path_r2,
+            root_data=args.root_data,
             n_subject=6,
             fwhm=args.fwhm,
             cluster=args.cluster,
             state=args.state,
             type_mask=args.type_mask
         )
-        _save_r2(val_r2, args.path_results, args.fwhm, args.cluster, args.state)
+        _save_r2(val_r2, args.path_results, args.atlas, args.fwhm, args.cluster, args.state)
 
     else:
         val_r2 = _r2_other(
-            root_data=args.path_r2,
+            root_data=args.root_data,
             atlas=args.atlas,
             n_subject=6,
             fwhm=args.fwhm,
             type_mask=args.type_mask
         )
-        _save_r2(val_r2, args.path_results, args.fwhm, args.cluster, args.state)
+        _save_r2(val_r2, args.path_results, args.atlas, args.fwhm, args.cluster, args.state)
 
 
 if __name__ == "__main__":
@@ -122,7 +129,7 @@ if __name__ == "__main__":
     parser.add_argument("--fwhm", type=int, help="smoothing parameter.")
     parser.add_argument("--atlas", type=str, help="name of a parcellation atlas. Use intra for dypac within-subject, and inter for dypac between-subject")
     parser.add_argument("--type_mask", type=str, help="type of grey matter mask (cortex, central, cerebellum).")
-    parser.add_argument("--cluster", type=int, help="number of clusters.")
-    parser.add_argument("--state", type=int, help="number of states.")
+    parser.add_argument("--cluster", type=int, default=0, help="number of clusters.")
+    parser.add_argument("--state", type=int, default=0, help="number of states.")
     args = parser.parse_args()
     main(args)
