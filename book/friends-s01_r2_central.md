@@ -12,7 +12,9 @@ kernelspec:
   language: python
   name: python3
 ---
-# Selection of hyper-parameters
+# R2 summary in the central structures
+Here the summary statistics are computed in a mask including the thalami and basal ganglia.
+
 ```{code-cell}
 import os
 import matplotlib.pyplot as plt
@@ -31,7 +33,10 @@ Set up file names... where to find the data.
 
 
 ```{code-cell}
-path_results = '/data/cisl/pbellec/cneuromod_embeddings/xp_202012/r2_friends-s01_cortex/'
+:tags: [hide-input]
+path_data = '/home/pbellec/git/cneuromod_embeddings/cneuromod_embeddings/friends-s01/'
+path_results = os.path.join(path_data, 'r2_friends-s01_central')
+
 fwhm = 5
 
 # DYPAC
@@ -64,10 +69,10 @@ schaefer = os.path.join(path_results, f'r2_fwhm-schaefer_fwhm-{fwhm}.p')
 smith70 = os.path.join(path_results, f'r2_fwhm-smith_fwhm-{fwhm}.p')
 ```
 
-## Average R2 in the cortex, FWHM=5
+## Average R2 in the central, FWHM=5
 
 ### DYPAC intra vs DIFUMO
-Comparing R2 quality (average in the cortex) between individual dypac900 and difumoXX (256, 512, 1024). The difumo parcellations are really impressive for group parcellations, but dypac individual has a systematic edge.
+Comparing R2 quality (average in the central) between individual dypac900 and difumoXX (256, 512, 1024). The difumo parcellations are really impressive for group parcellations, but dypac individual has a systematic edge.
 
 ```{code-cell}
 val_r2 = pd.read_pickle(difumo256)
@@ -114,7 +119,7 @@ plt.title(f'FWHM={fwhm}')
 ```
 
 ### intra vs inter subject R2
-This figure compares intra-subject embedding quality (parcellation and data come from the same subject) vs inter-subject embedding quality (parcellation and data come from different subject). Average R2 in the cortex is systematically higher intra-subject than inter-subject.
+This figure compares intra-subject embedding quality (parcellation and data come from the same subject) vs inter-subject embedding quality (parcellation and data come from different subject). Average R2 in the central is systematically higher intra-subject than inter-subject.
 
 ```{code-cell}
 val_r2 = pd.read_pickle(dypac60)
@@ -134,10 +139,10 @@ plt.ylabel('R2 embedding quality')
 plt.title(f'FWHM={fwhm}')
 ```
 
-## File names: average R2 in the cortex, FWHM=8
+## File names: average R2 in the central, FWHM=8
 
 ```{code-cell}
-path_results = '/data/cisl/pbellec/cneuromod_embeddings/xp_202012/r2_friends-s01_cortex/'
+path_results = '/data/cisl/pbellec/cneuromod_embeddings/xp_202012/r2_friends-s01_central/'
 fwhm = 8
 
 # DYPAC
