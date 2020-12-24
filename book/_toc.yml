@@ -1,6 +1,7 @@
 # Table of contents
 # Learn more at https://jupyterbook.org/customize/toc.html
 - file: intro
-- file: content
+- file: friends-s01_overview.md
   sections:
-    - file: friends-s01.md
+    - file: friends-s01_r2_cortex.md
+    - file: friends-s01_r2_central.md
