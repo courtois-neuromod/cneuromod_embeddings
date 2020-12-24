@@ -1,15 +1,16 @@
 #/bin/bash
 
+myInvocation="$(printf %q "$BASH_SOURCE")$((($#)) && printf ' %q' "$@")"
 export TYPE_MASK=$2
-export PATH_RESULTS=$1'/r2_friends-s01_'$TYPE_MASK
+export PATH_RESULTS=$1'/r2_friends-s01_'$TYPE_MASK'/'
 export PATH_DATA=$1
 
 echo Input data located in $PATH_DATA
 echo Results will be saved in $PATH_RESULTS
 
-mkdir $PATH_RESULTS 
+mkdir $PATH_RESULTS
+echo $myInvocation > $PATH_RESULTS"script.log"
 
-exit
 python r2_summary.py --type_mask $TYPE_MASK --atlas intra --fwhm 5 --cluster 20  --state 60  $PATH_DATA $PATH_RESULTS &
 python r2_summary.py --type_mask $TYPE_MASK --atlas intra --fwhm 5 --cluster 20  --state 120 $PATH_DATA $PATH_RESULTS &
 python r2_summary.py --type_mask $TYPE_MASK --atlas intra --fwhm 5 --cluster 50  --state 150 $PATH_DATA $PATH_RESULTS &
