@@ -12,23 +12,23 @@ kernelspec:
   language: python
   name: python3
 ---
-# Selection of hyper-paramaters
+# Selection of hyper-parameters
 ```{code-cell}
 import os
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
-from r2_summary import _r2_intra, _r2_inter, _r2_other
+from cneuromod_embeddings.r2_summary import _r2_intra, _r2_inter, _r2_other
 ```
 
-## Seaborn parameters
+Set the Seaborn parameters
 
 ```{code-cell}
 sns.set_theme(style="whitegrid")
 sns.set(font_scale=1.5)
 ```
+Set up file names... where to find the data.
 
-## File names: average R2 in the cortex, FWHM=5
 
 ```{code-cell}
 path_results = '/data/cisl/pbellec/cneuromod_embeddings/xp_202012/r2_friends-s01_cortex/'
@@ -63,6 +63,8 @@ schaefer = os.path.join(path_results, f'r2_fwhm-schaefer_fwhm-{fwhm}.p')
 # Smith
 smith70 = os.path.join(path_results, f'r2_fwhm-smith_fwhm-{fwhm}.p')
 ```
+
+## Average R2 in the cortex, FWHM=5
 
 ### DYPAC intra vs DIFUMO
 Comparing R2 quality (average in the cortex) between individual dypac900 and difumoXX (256, 512, 1024). The difumo parcellations are really impressive for group parcellations, but dypac individual has a systematic edge.

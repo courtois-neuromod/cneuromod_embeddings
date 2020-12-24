@@ -4,8 +4,8 @@ import pickle
 import argparse
 import numpy as np
 import pandas as pd
-from dypac_utils import subject_keys, load_dypac, load_r2_intra, load_r2_inter, load_r2_other, key_params
-from cortical_segmentation import cortical_segmentation
+from cneuromod_embeddings.dypac_utils import subject_keys, load_dypac, load_r2_intra, load_r2_inter, load_r2_other, key_params
+from cneuromod_embeddings.cortical_segmentation import cortical_segmentation
 
 
 def _save_r2(r2_df, path_results, atlas, fwhm, cluster, state):
