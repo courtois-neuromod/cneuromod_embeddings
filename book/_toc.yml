@@ -3,6 +3,7 @@
 - file: intro
 - file: friends-s01_overview.md
   sections:
+    - file: repro_friends-s01.md
     - file: friends-s01_r2_cortex.md
     - file: friends-s01_r2_central.md
     - file: friends-s01_r2_cerebellum.md

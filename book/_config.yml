@@ -11,7 +11,7 @@ copyright                   : "2020"  # Copyright year to be placed in the foote
 logo                        : images/logo.png  # A path to the book logo
 exclude_patterns            : [_build, Thumbs.db, .DS_Store, "**.ipynb_checkpoints"]
 html:
-  favicon                   : images/icon.png  # A path to a favicon image
+  favicon                   : images/logo.png  # A path to a favicon image
   use_repository_button     : true
   use_issues_button         : true
   home_page_in_navbar       : true

@@ -13,6 +13,13 @@ from nilearn.image import mean_img
 from nilearn.input_data import NiftiMasker
 from nilearn.image import math_img
 
+def dypac_params():
+    params = dict.fromkeys(['fwhm', 'cluster', 'state'])
+    params['fwhm'] = (5, 8)
+    params['cluster'] = (20, 20, 50, 50, 300)
+    params['state'] = (60, 120, 150, 300, 900)
+    return params
+
 
 def key_params(atlas, fwhm, cluster, state):
     if (atlas=='intra') | (atlas=='inter'):

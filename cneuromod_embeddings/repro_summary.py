@@ -17,10 +17,11 @@ def load_repro(root_data, fwhm, cluster, state):
     return R
 
 
-def summary_repro(root_data):
+def repro_df(root_data):
     val = np.array([])
     all_label = np.array([])
     all_fwhm = np.array([])
+    all_sub = np.array([])
     type_comp = np.array([])
     params = dypac_params()
     list_subject = subject_keys(n_subject=6)
@@ -30,16 +31,17 @@ def summary_repro(root_data):
             R = load_repro(root_data, fwhm, cluster, state)
             for sub1 in list_subject:
                 for sub2 in list_subject:
-                    match_val = np.max(R[sub1][sub2], axis=1
+                    match_val = np.max(R[sub1][sub2], axis=1)
                     val = np.append(val, match_val)
                     label = f'cluster-{cluster}_state-{state}'
                     all_label = np.append(all_label, np.repeat(label, match_val.shape[0]))
                     all_fwhm = np.append(all_fwhm, np.repeat(fwhm, match_val.shape[0]))
+                    all_sub = np.append(all_sub, np.repeat(sub1, match_val.shape[0]))
                     if sub1 == sub2:
                         type_comp = np.append(type_comp, np.repeat('intra', match_val.shape[0]))
                     else:
                         type_comp = np.append(type_comp, np.repeat('inter', match_val.shape[0]))
-    return pd.DataFrame({'spatial_r': val, 'params': all_label, 'fwhm': all_fwhm, 'type_comp': type_comp})
+    return pd.DataFrame({'spatial_r': val, 'params': all_label, 'subject': all_sub, 'fwhm': all_fwhm, 'type_comp': type_comp})
 
 
 def save_matx(match_matx, path_results, fwhm, cluster, state):
