@@ -3,10 +3,52 @@ import os
 import pickle
 import argparse
 import numpy as np
-from dypac_utils import match_components, subject_keys
+import pandas as pd
+from cneuromod_embeddings.dypac_utils import dypac_params, subject_keys, key_params, match_components, subject_keys
 
 
 root_data = '/data/cisl/pbellec/cneuromod_embeddings/xp_202012/'
+
+    
+def key_repro(params):
+    list_keys = np.array([])
+    for fwhm in params['fwhm']:
+        for ind, cluster in enumerate(params['cluster']):
+            state = params['state'][ind]
+            key = f'fwhm-{fwhm}_cluster-{cluster}_state-{state}'
+            list_keys = np.append(list_keys, key)
+    return list_keys
+
+
+def load_repro(root_data):
+    val = np.array([])
+    all_fwhm = np.array([])
+    all_label = np.array([])
+    type_comp = np.array([])
+    skip_fwhm = False
+    params = dypac_params()
+    list_subject = subject_keys(n_subject=6)
+    for fwhm in params['fwhm']:
+        for ind, cluster in enumerate(params['cluster']):
+            state = params['state'][ind]
+            key = f'fwhm-{fwhm}_cluster-{cluster}_state-{state}'
+
+    for key in list_keys:
+        print(key)
+        file_repro = os.path.join(root_data, f'Rmatch_{key}.p')
+        R = pickle.load(open(file_repro, 'rb'))
+        for sub1 in list_subject:
+            for sub2 in list_subject:
+                match_val = np.max(R[sub1][sub2], axis=1)
+                val = np.append(val, match_val)
+                label = re.search('.......(.+)', key).group(1)
+                all_label = np.append(all_label, np.repeat(label, match_val.shape[0]))
+                all_fwhm = np.append(all_fwhm, 
+                if sub1 == sub2:
+                    type_comp = np.append(type_comp, np.repeat('intra', match_val.shape[0]))
+                else:
+                    type_comp = np.append(type_comp, np.repeat('inter', match_val.shape[0]))
+    return pd.DataFrame({'spatial_r': val, 'params': all_label, 'type_comp': type_comp})
 
 
 def save_matx(match_matx, path_results, fwhm, cluster, state):
