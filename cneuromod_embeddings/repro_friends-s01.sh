@@ -1,7 +1,7 @@
 #/bin/bash
 myInvocation="$(printf %q "$BASH_SOURCE")$((($#)) && printf ' %q' "$@")"
 export FWHM=$2
-export PATH_RESULTS=$1'/repro_friends-s01'
+export PATH_RESULTS=$1'/repro_friends-s01_'$FWHM'/' 
 export PATH_DATA=$1
 
 echo Input data located in $PATH_DATA
