@@ -13,6 +13,12 @@ from nilearn.image import mean_img
 from nilearn.input_data import NiftiMasker
 from nilearn.image import math_img
 
+def get_root_data(xp_name):
+    root_path, basename = os.path.split(__file__)
+    root_data = os.path.join(root_path, xp_name)
+    return root_data
+
+
 def dypac_params():
     params = dict.fromkeys(['fwhm', 'cluster', 'state'])
     params['fwhm'] = (5, 8)
