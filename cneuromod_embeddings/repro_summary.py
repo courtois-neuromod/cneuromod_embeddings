@@ -3,12 +3,14 @@ import os
 import pickle
 import argparse
 import numpy as np
+import matplotlib.pyplot as plt
 import pandas as pd
+from nilearn import plotting
 from nilearn.image import math_img
 from cneuromod_embeddings import dypac_utils as du
 
 
-def visu_match(start, n_comp, model1, model2, order, match_pair):
+def visu_match(start, n_comp, model1, model2, order, match_pair, match_val):
     width_fig = 20
     fig = plt.figure(figsize=(width_fig, n_comp * 3))
     for num in range(n_comp):
@@ -26,7 +28,7 @@ def visu_match(start, n_comp, model1, model2, order, match_pair):
             colorbar=False,
             draw_cross=False,
             title=f"test",
-            cmap="viridis",
+            cmap="bwr",
             cut_coords=cut_coords,
         )
         plotting.plot_stat_map(
@@ -38,7 +40,7 @@ def visu_match(start, n_comp, model1, model2, order, match_pair):
             colorbar=False,
             draw_cross=False,
             title=f"retest (match {match_val[ind1]:0.2f})",
-            cmap="viridis",
+            cmap="bwr",
             cut_coords=cut_coords,
         )
 
