@@ -11,7 +11,7 @@ from sklearn.preprocessing import StandardScaler
 
 from nilearn.image import mean_img
 from nilearn.input_data import NiftiMasker
-from nilearn.image import math_img
+
 
 def get_root_data(xp_name):
     root_path, basename = os.path.split(__file__)
@@ -20,25 +20,25 @@ def get_root_data(xp_name):
 
 
 def dypac_params():
-    params = dict.fromkeys(['fwhm', 'cluster', 'state'])
-    params['fwhm'] = (5, 8)
-    params['cluster'] = (20, 20, 50, 50, 300)
-    params['state'] = (60, 120, 150, 300, 900)
+    params = dict.fromkeys(["fwhm", "cluster", "state"])
+    params["fwhm"] = (5, 8)
+    params["cluster"] = (20, 20, 50, 50, 300)
+    params["state"] = (60, 120, 150, 300, 900)
     return params
 
 
 def key_params(atlas, fwhm, cluster, state):
-    if (atlas=='intra') | (atlas=='inter'):
-        params = f'{atlas}_fwhm-{fwhm}_cluster-{cluster}_state-{state}'
+    if (atlas == "intra") | (atlas == "inter"):
+        params = f"{atlas}_fwhm-{fwhm}_cluster-{cluster}_state-{state}"
     else:
-        params = f'{atlas}_fwhm-{fwhm}'
+        params = f"{atlas}_fwhm-{fwhm}"
     return params
 
 
 def subject_keys(n_subject):
     list_subject = []
-    for ind in range(1, n_subject+1):
-        list_subject.append(f'sub-0{ind}')
+    for ind in range(1, n_subject + 1):
+        list_subject.append(f"sub-0{ind}")
     return list_subject
 
 
@@ -70,6 +70,7 @@ def load_dypac(subject, root_data, fwhm=5, cluster=50, state=150, batch="even"):
     )
     pickle_in = open(file_model, "rb")
     model, mask_img = load_model(pickle_in)
+    model.components_ = model.components_[model.dwell_time_ > 0, :]
     return model, mask_img
 
 
