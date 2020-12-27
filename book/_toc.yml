@@ -1,8 +1,10 @@
 # Table of contents
 # Learn more at https://jupyterbook.org/customize/toc.html
 - file: intro
-- file: friends-s01_overview.md
-  sections:
+- part: results
+  chapters:
+  - file: friends-s01_overview.md
+    sections:
     - file: friends-s01_reproducibility.md
     - file: friends-s01_match_state-60.md
     - file: friends-s01_match_state-900.md

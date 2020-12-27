@@ -29,7 +29,7 @@ launch_buttons:
   binderhub_url: "https://mybinder.org"
 
 launch_buttons:
-  thebe                  : true
+  thebe                  : false
 
 execute:
-  execute_notebooks: no
+  execute_notebooks: cache
