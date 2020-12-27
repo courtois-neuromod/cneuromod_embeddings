@@ -13,7 +13,7 @@ kernelspec:
 
 # Test-retest reproducibility 
 We first quantified the spatial reproducibility of parcels in `friends-s01` training and validation data. 
- * **Reproducibility measure.** A spatial correlation is generated for each pair of parcels, one in the training and one in the validation set, within the union of the subject-specific grey matter mask from both parcels. 
+ * **Reproducibility measure.** A spatial correlation is generated for each pair of parcels, one in the training and one in the validation set. This spatial correlation is calculated within the union of the subject-specific grey matter mask from both parcellations. 
  * **Intra-subject reproducibility.** For each parcel in the training set, we report the maximal spatial correlation with any parcels of the validation. This process generates a distribution of intra-subject reproducibility across parcels. 
  * **Inter-subject reproducibility.** We also apply the same matching procedure, but comparing pairs of parcels coming from different subjects, within the training set. This generates a distribution of inter-subject reproducibility across parcels. 
 
