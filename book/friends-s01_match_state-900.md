@@ -50,7 +50,7 @@ visu_match(0, 5, model1, model2, order, match_pair, match_val)
 
 
 ```{code-cell} ipython3
-:"tags": ["hide-",]
+:"tags": ["hide-cell",]
 visu_match(450, 5, model1, model2, order, match_pair, match_val)
 ```
 
