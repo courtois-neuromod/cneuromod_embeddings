@@ -12,7 +12,7 @@ kernelspec:
 ---
 
 # Parcel matching (state=60)
-To apprecite qualitatively the reproducibility of parcels between the `friends-s01` training and validation sets, we ranked each parcel of the training set based on its intra-subject reproducibility metric with the validation set. We started by examining the large distributed networks which led to the highest gap between intra- vs inter-subject reproducibility. We present a selection of parcels with high, medium, and low reproducibility, both at the intra- and inter-subject level.  
+To apprecite qualitatively the reproducibility of parcels between the `friends-s01` training and validation sets, we ranked each parcel of the training set based on its intra-subject reproducibility metric with the validation set. We started by examining the large distributed networks which led to the highest gap between intra- vs inter-subject reproducibility (`cluster-20_state-60`, with `fwhm=5`). We present a selection of parcels with high, medium, and low reproducibility, both at the intra- and inter-subject level.  
 
 ```{admonition} Computational reproducibility 
 The results for this experiment have been precomputed usin the scripts `repro_summary.py` and `repro_friends-s01.sh`. The results are accessed using a number of helper tools available in the `dypac_utils` and `repro_summary` modules. The following hidden block of code loads the necessary libraries to generate the figures, sets the path to find the pre-comupted results as well as some visualisation parameters.
