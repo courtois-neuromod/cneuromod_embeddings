@@ -49,7 +49,7 @@ plt.ylabel('Parcel reproducibility (even vs odd runs friends-s01)')
 plt.title(f'FWHM={fwhm} all subjects pooled')
 ```
 
-Repeating the experiment with `fhwm=8` leads to similar conclusions, with two notable differences: (1) distributions are tighter, both intra- and inter- subject, and (2) inter-subject reproducibility increases, and susbstantially overlaps intra-subject distribution for `cluster-300_state-900`. This suggests that higher levels of spatial blurring help stabilize the dynamic parcels, but also removes some subject-specific details. 
+Repeating the experiment with `fhwm=8` leads to similar conclusions, with two notable differences: (1) the distributions of intra-subject reproducibility gets tighter, (2) inter-subject reproducibility increases, and susbstantially overlaps intra-subject distribution for `cluster-300_state-900`. This suggests that higher levels of spatial blurring help stabilize the dynamic parcels, but also removes some subject-specific details. 
 ```{code-cell} ipython3
 :"tags": ["hide-input",]
 fwhm=8
