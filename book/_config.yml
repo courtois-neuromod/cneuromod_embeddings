@@ -33,3 +33,4 @@ launch_buttons:
 
 execute:
   execute_notebooks: cache
+  timeout                   : 120    # The maximum time (in seconds) each notebook cell is allowed to run.
