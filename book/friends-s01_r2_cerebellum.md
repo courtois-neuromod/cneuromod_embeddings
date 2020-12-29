@@ -12,7 +12,8 @@ kernelspec:
   language: python
   name: python3
 ---
-# R2 summary in the cerebellum
+(friends-s01:r2_cerebellum)=
+# R2 in the cerebellum
 ```{code-cell}
 import os
 import matplotlib.pyplot as plt

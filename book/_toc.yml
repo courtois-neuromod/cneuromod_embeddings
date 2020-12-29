@@ -17,3 +17,6 @@
     - file: friends-s01_r2_maps.md
     - file: friends-s01_r2_central.md
     - file: friends-s01_r2_cerebellum.md
+- part: References
+  chapters:
+  - file: references

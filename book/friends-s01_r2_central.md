@@ -12,7 +12,8 @@ kernelspec:
   language: python
   name: python3
 ---
-# R2 summary in the central structures
+(friends-s01:r2_central)=
+# R2 in central structures
 Here the summary statistics are computed in a mask including the thalami and basal ganglia.
 
 ```{code-cell}
