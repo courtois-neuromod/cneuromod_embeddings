@@ -12,6 +12,7 @@ kernelspec:
   language: python
   name: python3
 ---
+(friends-s01:r2_cortex)=
 # R2 in the cortex
 We examined next the fidelity of embedding fMRI time series in parcellation space, using time series from the validation subset of `friends-s01` and parcellations generated in the training subset, either from the same subject (intra-subject R2), or from a different subject (inter-subject R2). We also generated R2 maps using public group parcellations. As a preliminary analysis, we visualized R2 maps averaged across all runs, and noticed that central structures (thalami, basal ganglia) and the cerebellum had markedly lower R2 values. We thus decided to consider the distribution of R2 only in the cortex for the selection of hyper-parameters, which is presented here. The distribution of {ref}`friends-s01:r2_central` and {ref}`friends-s01:r2_cerebellum` are available in Supplementary Material.
 
