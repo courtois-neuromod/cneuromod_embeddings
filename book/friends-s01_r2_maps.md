@@ -102,7 +102,7 @@ for ind, atlas in enumerate(list_atlas):
 ```
 
 ## Cortex, central structures and cerebellum masks
-Motivated by these observations, we decided to quantify separately the R2 measures in the cortex, central structures and cerebellum, and focus on the cortex to select hyper-parameters and evaluate the generalization of embeddings in the rest of the study. We extracted for this purpose a subset of regions from the AAL atlas, dilated the AAL atlases to cover all of brain voxels, and intersected the resulting masks with individual grey matter masks used in this study (after resampling in individual structural space). The code to implement these operations is available in the module `cortical_segmentation.py`. It is possible to load the different types of masks using `_load_mask` in the `r2_summary.py` moduel, as illustrated in the code below: 
+Motivated by these observations, we decided to quantify separately the R2 measures in the cortex, central structures and cerebellum, and focus on the cortex to select hyper-parameters and evaluate the generalization of embeddings in the rest of the study. We extracted for this purpose a subset of regions from the AAL atlas, dilated the AAL atlases to cover all of brain voxels, and intersected the resulting masks with individual grey matter masks used in this study (after resampling in individual structural space). The code to implement these operations is available in the module `cortical_segmentation.py`. It is possible to load the different types of masks using `_load_mask` in the `r2_summary.py` module, as illustrated in the code below: 
 ```{code-cell} ipython3
 :"tags": ["hide-input",]
 from nilearn.image import new_img_like
@@ -110,11 +110,16 @@ from cneuromod_embeddings.r2_summary import _load_mask
 # the cluster and state parameters are just use to indicate which dypac 
 # model to use to load the individual grey matter mask
 # This mask is identical for all dypac models of the same subject
+
 list_type = ['cortex', 'central', 'cerebellum']
-for type_mask in list_type:
+n_comp = len(list_type)
+width_fig = 20
+fig = plt.figure(figsize=(width_fig, n_comp * 3))
+
+for ind, type_mask in enumerate(list_type):
     mask = _load_mask(subject=subject, root_data=root_data, type_mask=type_mask, fwhm=fwhm, cluster=cluster, state=state)
-    plotting.plot_stat_map(new_img_like(mask_img, mask), display_mode='ortho', threshold=0.1,
-            vmax=1, title=f'{subject}_mask_{type_mask}')
+    plotting.plot_roi(new_img_like(mask_img, mask), display_mode='ortho', threshold=0.1,
+            vmax=1, title=f'{subject}_mask_{type_mask}', axes=plt.subplot(n_comp, 1, ind + 1))
 
 ```
 
