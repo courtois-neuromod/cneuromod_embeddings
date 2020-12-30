@@ -14,7 +14,7 @@ kernelspec:
 ---
 (friends-s01:r2_cortex)=
 # R2 in the cortex
-We examined next the fidelity of embedding fMRI time series in parcellation space, using time series from the validation subset of `friends-s01` and parcellations generated in the training subset, either from the same subject (intra-subject R2), or from a different subject (inter-subject R2). We also generated R2 maps using public group parcellations. As a preliminary analysis, we visualized R2 maps averaged across all runs, and noticed that central structures (thalami, basal ganglia) and the cerebellum had markedly lower R2 values. We thus decided to consider the distribution of R2 only in the cortex for the selection of hyper-parameters, which is presented here. The distribution of {ref}`friends-s01:r2_central` and {ref}`friends-s01:r2_cerebellum` are available in Supplementary Material.
+We examined next the fidelity of embedding fMRI time series in parcellation space, using time series from the validation subset of `friends-s01` and parcellations generated in the training subset, either from the same subject (intra-subject R2), or from a different subject (inter-subject R2). We also generated R2 maps using public group parcellations. As a preliminary analysis, we visualized {ref}`friends-s01:r2_maps` averaged across all runs, and noticed that central structures (thalami, basal ganglia) and the cerebellum had markedly lower R2 values (see Supplementary Material). We thus decided to consider the distribution of R2 only in the cortex for the selection of hyper-parameters, which is presented here. The distribution of {ref}`friends-s01:r2_central` and {ref}`friends-s01:r2_cerebellum` are available in Supplementary Material.
 
 ```{admonition} Computational reproducibility 
 The results for this experiment have been precomputed usin the scripts `r2_summary.py` and `r2_friends-s01.sh`. The results are accessed using a number of helper tools available in the `r2_summary` module. The following hidden block of code loads the necessary libraries to generate the figures, sets the path to find the pre-comupted results as well as some visualisation parameters.
@@ -87,7 +87,7 @@ plt.ylabel('R2 embedding quality')
 plt.title(f'FWHM={fwhm}')
 ```
 
-### DYPAC intra vs MIST
+### DYPAC intra vs other group parcellations
 We then compared DYPAC parcels (`cluster-300_state-900`) with more traditional parcellation approaches such as low-dimensional independent component analysis {cite}`Smith2009-pt`(70 parcels), the MIST multi-resolution parcellations {cite}`Urchs2019-xc` (197 and 444 parcels) as well as the Schaefer atlas {cite}`Schaefer2018-ww` (400 parcels). The expected gains in R2 with increasing resolution in group parcellation is clear for all subjects, as previously shown by {cite}`Urchs2019-xc` and others. The `state-900` DYPAC parcels showed roughly 100% improvement in R2 for all subjects, from about 0.25 for the best static group parcellations to roughly 0.5 par DYPAC. 
 
 ```{code-cell}
@@ -197,7 +197,7 @@ plt.ylabel('R2 embedding quality')
 plt.title(f'FWHM={fwhm}')
 ```
 
-### DYPAC intra vs MIST
+### DYPAC intra vs other group parcellations
 The exact same observations hold for traditional parcellations: same qualitative conclusion for `fwhm=8` and `fwhm=5`, but near doubling of R2 with increased smoothing.
 
 ```{code-cell}
@@ -215,7 +215,7 @@ plt.title(f'FWHM={fwhm}')
 ```
 
 ### MIST multi resolution
-Once again with `fwhm=8` we see the number of `state` being a huge driver of R4. But we can also note that modest numbers of states (120, 150) are enough to reach high levels of R2 (0.5), while 900 states provide very high R2 (0.7). The low resolution solutions are thus an accurate summary of fluctuations at low spatial resolution. So even if the R2 of 120 and 150 states is comparatively lower with `fwhm=5` they still capture important characteristics of the data, and should be investigated in parallel to a granular and high precision solution (`cluster-300_state-900`).
+Once again with `fwhm=8` we see the number of `state` being a huge driver of R2. But we can also note that modest numbers of states (120, 150) are enough to reach high levels of R2 (0.5), while 900 states provide very high R2 (0.7). The low resolution solutions are thus an accurate summary of fluctuations at low spatial resolution. So even if the R2 of 120 and 150 states is comparatively lower with `fwhm=5` they still capture important characteristics of the data, and should be investigated in parallel to a granular and high precision solution (`cluster-300_state-900`).
 
 ```{code-cell}
 :"tags": ["hide-cell",]

@@ -14,24 +14,24 @@ kernelspec:
 ---
 (friends-s01:r2_central)=
 # R2 in central structures
-Here the summary statistics are computed in a mask including the thalami and basal ganglia.
+This analysis is supplementary to the results reported in{ref}`friends-s01:r2_cortex`. The difference is that here the summary statistics are computed in a mask including the thalami and basal ganglia, instead of the cortex.  
 
 ```{code-cell}
+:tags: [hide-input]
 import os
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 from cneuromod_embeddings.r2_summary import _r2_intra, _r2_inter, _r2_other
-```
 
-Set the Seaborn parameters
-
-```{code-cell}
 sns.set_theme(style="whitegrid")
 sns.set(font_scale=1.5)
 ```
-Set up file names... where to find the data.
 
+## R2 with `fwhm=5`
+
+### DYPAC intra vs DIUFMO
+Unlike the cortex, DYPAC parcellations (`cluster-300_state-900`) do not embed precisely fMRI time series in central structures. The difference with `DIFUMO256` is rather small, but it gets outperformed by `DIFUMO512` and `DIFUMO1024`. 
 
 ```{code-cell}
 :tags: [hide-input]
@@ -70,12 +70,8 @@ schaefer = os.path.join(path_results, f'r2_fwhm-schaefer_fwhm-{fwhm}.p')
 smith70 = os.path.join(path_results, f'r2_fwhm-smith_fwhm-{fwhm}.p')
 ```
 
-## Average R2 in the central, FWHM=5
-
-### DYPAC intra vs DIFUMO
-Comparing R2 quality (average in the central) between individual dypac900 and difumoXX (256, 512, 1024). The difumo parcellations are really impressive for group parcellations, but dypac individual has a systematic edge.
-
 ```{code-cell}
+:tags: [hide-input]
 val_r2 = pd.read_pickle(difumo256)
 val_r2 = val_r2.append(pd.read_pickle(difumo512))
 val_r2 = val_r2.append(pd.read_pickle(difumo1024))
@@ -87,10 +83,11 @@ plt.ylabel('R2 embedding quality')
 plt.title(f'FWHM={fwhm}')
 ```
 
-### DYPAC intra vs MIST
-When comparing dypac (cluster-300_state-900) with more traditional approaches such as low dimensional ICA (Smith70) or static group parcellations (MIST, Schaefer) the gains are massive.
-
+### DYPAC intra vs other group parcellations
+DYPAC parcellation (`cluster-300_state-900`) is still competitive with more traditional group parcellations, having the best R2 in 4/6 subjects, and near the top for the two other subjects. However, the dimensionality of DYPAC tested here is also higher than even the most detailed group parcellation (`mist444`). It should also be noted that the Schaefer parcellation does not cover central structures, and has thus an R2 score of 0.
+ 
 ```{code-cell}
+:tags: [hide-input]
 val_r2 = pd.read_pickle(smith70)
 val_r2 = val_r2.append(pd.read_pickle(mist197))
 val_r2 = val_r2.append(pd.read_pickle(mist444))
@@ -103,10 +100,10 @@ plt.ylabel('R2 embedding quality')
 plt.title(f'FWHM={fwhm}')
 ```
 
-### MIST multi resolution
-This figure directly investigates the impart of cluster and stateon the dypac R2. It makes clear that the final number of states is the primary driver of R2. But even with 60 states, dypac is competitive with the best static group atlases (with hundreds of parcels), and 120 states already outperforms them. But it takes 900 individuals dypac states to outperform difumo1024.
-
+### DYPAC multi-resolution
+When investigating the impact of numbers of `cluster` and `state` on the R2 of DYPAC parcellations, we can see that as expected increase in the number of states generally leads to higher R2. But for the first time we see exceptions: for two subjects (`sub-02` and `sub-06`), the larger number of states (`cluster-300_state-900`) actually has a lower average R2 than `cluster-50_state-300`. The values at medium resolutions are also in line with traditional group static parcellations.  
 ```{code-cell}
+:tags: [hide-input]
 val_r2 = pd.read_pickle(dypac60)
 val_r2 = val_r2.append(pd.read_pickle(dypac120))
 val_r2 = val_r2.append(pd.read_pickle(dypac150))
@@ -120,9 +117,10 @@ plt.title(f'FWHM={fwhm}')
 ```
 
 ### intra vs inter subject R2
-This figure compares intra-subject embedding quality (parcellation and data come from the same subject) vs inter-subject embedding quality (parcellation and data come from different subject). Average R2 in the central is systematically higher intra-subject than inter-subject.
+Finally, intra-subject R2 is still higher than inter-subject R2, but compared with the cortex, there is a lot of overlap between the two distributions for all parameters `cluster` and `state`, with maximal overalp being observed again with `cluster-300_state-900`. 
 
 ```{code-cell}
+:tags: [hide-input]
 val_r2 = pd.read_pickle(dypac60)
 val_r2 = val_r2.append(pd.read_pickle(dypac120))
 val_r2 = val_r2.append(pd.read_pickle(dypac150))
@@ -140,9 +138,12 @@ plt.ylabel('R2 embedding quality')
 plt.title(f'FWHM={fwhm}')
 ```
 
-## File names: average R2 in the central, FWHM=8
+## R2 with `fwhm=8` 
+### DYPAC intra vs DIFUMO
 
+Interstingly, with `fwhm=8`, the results change almost completely. DYPAC parcellation (`cluster-300_state-900`) now outperforms even `difumo1024` for every subjects, in a way that is similar to what was observed in the cortex. 
 ```{code-cell}
+:tags: [hide-input]
 path_results = '/data/cisl/pbellec/cneuromod_embeddings/xp_202012/r2_friends-s01_central/'
 fwhm = 8
 
@@ -176,10 +177,8 @@ schaefer = os.path.join(path_results, f'r2_fwhm-schaefer_fwhm-{fwhm}.p')
 smith70 = os.path.join(path_results, f'r2_fwhm-smith_fwhm-{fwhm}.p')
 ```
 
-### DYPAC intra vs DIFUMO
-When repeating the experiment with `fwhm=8` the qualitative conclusions on dypac vs difumo are identical with `fwhm=5`. But a striking difference is a huge boost in R2 (almost doubling) for both parcelation. This shows that the R2 metric is very sensitive to the level of smoothness in the data.
-
 ```{code-cell}
+:tags: [hide-input]
 val_r2 = pd.read_pickle(difumo256)
 val_r2 = val_r2.append(pd.read_pickle(difumo512))
 val_r2 = val_r2.append(pd.read_pickle(difumo1024))
@@ -191,10 +190,11 @@ plt.ylabel('R2 embedding quality')
 plt.title(f'FWHM={fwhm}')
 ```
 
-### DYPAC intra vs MIST
-The exact same observations hold for traditional parcellations: same qualitative conclusion for `fwhm=8` and `fwhm=5`, but near doubling of R2 with increased smoothing.
+### DYPAC intra vs other group parcellations
+When compared with traditional group parcellations, with `fwhm=8`, DYPAC parcellation (`cluster-300_state-900`) now lead to a massive increase of about 200% in R2. 
 
 ```{code-cell}
+:tags: [hide-input]
 val_r2 = pd.read_pickle(smith70)
 val_r2 = val_r2.append(pd.read_pickle(mist197))
 val_r2 = val_r2.append(pd.read_pickle(mist444))
@@ -207,10 +207,11 @@ plt.ylabel('R2 embedding quality')
 plt.title(f'FWHM={fwhm}')
 ```
 
-### MIST multi resolution
-Once again with `fwhm=8` we see the number of `state` being a huge driver of R4. But we can also note that modest numbers of states (120, 150) are enough to reach high levels of R2 (0.5), while 900 states provide very high R2 (0.7). The low resolution solutions are thus an accurate summary of fluctuations at low spatial resolution. So even if the R2 of 120 and 150 states is comparatively lower with `fwhm=5` they still capture important characteristics of the data, and should be investigated in parallel to a granular and high precision solution (`cluster-300_state-900`).
+### DYPAC multi-resolution
+When looking at the impact of parameters `cluster` and `state`, the usual increase in R2 for larger `state` is observed. However, there is now a very large boost in R2 for all subjects when going from `cluster-50_state-300` to `cluster-300_state-900`, which is very different from what observed in the cortex, or in the central structures with `fwhm=5`. 
 
 ```{code-cell}
+:tags: [hide-input]
 val_r2 = pd.read_pickle(dypac60)
 val_r2 = val_r2.append(pd.read_pickle(dypac120))
 val_r2 = val_r2.append(pd.read_pickle(dypac150))
@@ -224,9 +225,10 @@ plt.title(f'FWHM={fwhm}')
 ```
 
 ### Intra vs inter subject R2
-Same conclusion for `fwhm=8` and `fwhm=5`: intra-subject R2 is markedly superior to inter-subject R2. However the gap tightens with `fwhm=8`.
+Finally, the intra-subject R2 values remain larger than inter-subject R2, but there is now a lot of overlap between the two distributions, and for `cluster-300_state-900` the difference has become small. This is a trend observed in the cortex and with `fwhm=5` as well, but it is much stronger with `fwhm=8` in the central structure, suggesting that a single group parcellation may be appropriate in central structures at such low resolution. 
 
 ```{code-cell}
+:tags: [hide-input]
 val_r2 = pd.read_pickle(dypac60)
 val_r2 = val_r2.append(pd.read_pickle(dypac120))
 val_r2 = val_r2.append(pd.read_pickle(dypac150))

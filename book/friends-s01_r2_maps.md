@@ -10,7 +10,7 @@ kernelspec:
   language: python
   name: python3
 ---
-
+(friends-s01:r2_maps)=
 # R2 maps 
 Before generating summary distributions of R2 embedding quality, as presented in Section {ref}`friends-s01:r2_cortex`, we wanted to visually inspect the maps. The figures presented here are for subject `sub-01`, but similar observations were made for all subjects. When executed in an interactive environment, it is possible to explore the results of other subject by changing the value of the variable `subject` in the code below. 
 
