@@ -14,7 +14,7 @@ kernelspec:
 ---
 (friends-s01:r2_central)=
 # R2 in central structures
-This analysis is supplementary to the results reported in{ref}`friends-s01:r2_cortex`. The difference is that here the summary statistics are computed in a mask including the thalami and basal ganglia, instead of the cortex.  
+This analysis is supplementary to the results reported in{ref} `friends-s01:r2_cortex`. The difference is that here the summary statistics are computed in a mask including the thalami and basal ganglia, instead of the cortex.  
 
 ```{code-cell}
 :tags: [hide-input]

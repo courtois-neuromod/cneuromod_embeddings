@@ -14,21 +14,25 @@ kernelspec:
 ---
 (friends-s01:r2_cerebellum)=
 # R2 in the cerebellum
+This analysis is supplementary to the results reported in {ref}`friends-s01:r2_cortex`. The difference is that here the summary statistics are computed in a mask including the cerebellum, instead of the cortex.
+
 ```{code-cell}
+:tags: [hide-input]
 import os
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 from cneuromod_embeddings.r2_summary import _r2_intra, _r2_inter, _r2_other
-```
 
-Set the Seaborn parameters
-
-```{code-cell}
 sns.set_theme(style="whitegrid")
 sns.set(font_scale=1.5)
 ```
-Set up file names... where to find the data.
+
+## R2 with `fwhm=5`
+
+Overall, with `fwhm=5`, the results are very similar to what was observed in the cortex, except the R2 values are lower (by about 0.1).
+
+### DYPAC intra vs DIUFMO
 
 
 ```{code-cell}
@@ -68,12 +72,8 @@ schaefer = os.path.join(path_results, f'r2_fwhm-schaefer_fwhm-{fwhm}.p')
 smith70 = os.path.join(path_results, f'r2_fwhm-smith_fwhm-{fwhm}.p')
 ```
 
-## Average R2 in the cerebellum, FWHM=5
-
-### DYPAC intra vs DIFUMO
-Comparing R2 quality (average in the cerebellum) between individual dypac900 and difumoXX (256, 512, 1024). The difumo parcellations are really impressive for group parcellations, but dypac individual has a systematic edge.
-
 ```{code-cell}
+:tags: [hide-input]
 val_r2 = pd.read_pickle(difumo256)
 val_r2 = val_r2.append(pd.read_pickle(difumo512))
 val_r2 = val_r2.append(pd.read_pickle(difumo1024))
@@ -85,10 +85,10 @@ plt.ylabel('R2 embedding quality')
 plt.title(f'FWHM={fwhm}')
 ```
 
-### DYPAC intra vs MIST
-When comparing dypac (cluster-300_state-900) with more traditional approaches such as low dimensional ICA (Smith70) or static group parcellations (MIST, Schaefer) the gains are massive.
+### DYPAC intra vs other group parcellations
 
 ```{code-cell}
+:tags: [hide-input]
 val_r2 = pd.read_pickle(smith70)
 val_r2 = val_r2.append(pd.read_pickle(mist197))
 val_r2 = val_r2.append(pd.read_pickle(mist444))
@@ -101,10 +101,11 @@ plt.ylabel('R2 embedding quality')
 plt.title(f'FWHM={fwhm}')
 ```
 
-### MIST multi resolution
-This figure directly investigates the impart of cluster and stateon the dypac R2. It makes clear that the final number of states is the primary driver of R2. But even with 60 states, dypac is competitive with the best static group atlases (with hundreds of parcels), and 120 states already outperforms them. But it takes 900 individuals dypac states to outperform difumo1024.
+### DYPAC multi-resolution
+
 
 ```{code-cell}
+:tags: [hide-input]
 val_r2 = pd.read_pickle(dypac60)
 val_r2 = val_r2.append(pd.read_pickle(dypac120))
 val_r2 = val_r2.append(pd.read_pickle(dypac150))
@@ -118,9 +119,9 @@ plt.title(f'FWHM={fwhm}')
 ```
 
 ### intra vs inter subject R2
-This figure compares intra-subject embedding quality (parcellation and data come from the same subject) vs inter-subject embedding quality (parcellation and data come from different subject). Average R2 in the cerebellum is systematically higher intra-subject than inter-subject.
 
 ```{code-cell}
+:tags: [hide-input]
 val_r2 = pd.read_pickle(dypac60)
 val_r2 = val_r2.append(pd.read_pickle(dypac120))
 val_r2 = val_r2.append(pd.read_pickle(dypac150))
@@ -138,9 +139,12 @@ plt.ylabel('R2 embedding quality')
 plt.title(f'FWHM={fwhm}')
 ```
 
-## File names: average R2 in the cerebellum, FWHM=8
+## R2 with `fwhm=8`
+Overall, with `fwhm=8`, the results are very similar to what was observed in the cortex. Unlike `fwhm=5`, the R2 values are quite similar in the cerebellum and the cortex. The only difference is that the difference between DYPAC and DIFUMO is more pronounced in the cerebellum (i.e. DIFUMO does not perform as well in the cerebellum as in the cortex for `fwhm=8`), and the improvement in R2 for `cluster-300_state-900` is more important in the cerebellum than in the cortex. 
+
 
 ```{code-cell}
+:tags: [hide-input]
 path_results = '/data/cisl/pbellec/cneuromod_embeddings/xp_202012/r2_friends-s01_cerebellum/'
 fwhm = 8
 
@@ -175,9 +179,9 @@ smith70 = os.path.join(path_results, f'r2_fwhm-smith_fwhm-{fwhm}.p')
 ```
 
 ### DYPAC intra vs DIFUMO
-When repeating the experiment with `fwhm=8` the qualitative conclusions on dypac vs difumo are identical with `fwhm=5`. But a striking difference is a huge boost in R2 (almost doubling) for both parcelation. This shows that the R2 metric is very sensitive to the level of smoothness in the data.
 
 ```{code-cell}
+:tags: [hide-input]
 val_r2 = pd.read_pickle(difumo256)
 val_r2 = val_r2.append(pd.read_pickle(difumo512))
 val_r2 = val_r2.append(pd.read_pickle(difumo1024))
@@ -189,10 +193,10 @@ plt.ylabel('R2 embedding quality')
 plt.title(f'FWHM={fwhm}')
 ```
 
-### DYPAC intra vs MIST
-The exact same observations hold for traditional parcellations: same qualitative conclusion for `fwhm=8` and `fwhm=5`, but near doubling of R2 with increased smoothing.
+### DYPAC intra vs other group parcellations
 
 ```{code-cell}
+:tags: [hide-input]
 val_r2 = pd.read_pickle(smith70)
 val_r2 = val_r2.append(pd.read_pickle(mist197))
 val_r2 = val_r2.append(pd.read_pickle(mist444))
@@ -205,10 +209,10 @@ plt.ylabel('R2 embedding quality')
 plt.title(f'FWHM={fwhm}')
 ```
 
-### MIST multi resolution
-Once again with `fwhm=8` we see the number of `state` being a huge driver of R4. But we can also note that modest numbers of states (120, 150) are enough to reach high levels of R2 (0.5), while 900 states provide very high R2 (0.7). The low resolution solutions are thus an accurate summary of fluctuations at low spatial resolution. So even if the R2 of 120 and 150 states is comparatively lower with `fwhm=5` they still capture important characteristics of the data, and should be investigated in parallel to a granular and high precision solution (`cluster-300_state-900`).
+### DYPAC multi-resolution
 
 ```{code-cell}
+:tags: [hide-input]
 val_r2 = pd.read_pickle(dypac60)
 val_r2 = val_r2.append(pd.read_pickle(dypac120))
 val_r2 = val_r2.append(pd.read_pickle(dypac150))
@@ -222,9 +226,9 @@ plt.title(f'FWHM={fwhm}')
 ```
 
 ### Intra vs inter subject R2
-Same conclusion for `fwhm=8` and `fwhm=5`: intra-subject R2 is markedly superior to inter-subject R2. However the gap tightens with `fwhm=8`.
 
 ```{code-cell}
+:tags: [hide-input]
 val_r2 = pd.read_pickle(dypac60)
 val_r2 = val_r2.append(pd.read_pickle(dypac120))
 val_r2 = val_r2.append(pd.read_pickle(dypac150))
