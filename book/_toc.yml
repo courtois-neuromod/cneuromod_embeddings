@@ -1,15 +1,20 @@
 # Table of contents
 # Learn more at https://jupyterbook.org/customize/toc.html
+- file: abstract
 - file: intro
-- part: Results
-  chapters:
+- file: methods
+- file: results
+  sections:
   - file: friends-s01_overview.md
     sections:
     - file: friends-s01_reproducibility.md
     - file: friends-s01_r2_cortex.md
- 
-- part: Supplementary Material    
-  chapters:
+- file: discussion
+- file: conclusion 
+- file: acknowledgments
+- file: references 
+- file: supplementary    
+  sections:
   - file: supplementary_friends-s01.md
     sections:
     - file: friends-s01_match_state-60.md
@@ -17,6 +22,3 @@
     - file: friends-s01_r2_maps.md
     - file: friends-s01_r2_central.md
     - file: friends-s01_r2_cerebellum.md
-- part: References
-  chapters:
-  - file: references
