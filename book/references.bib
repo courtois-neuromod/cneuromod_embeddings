@@ -1,5 +1,394 @@
 
 
+@ARTICLE{Du2020-tm,
+  title    = "{NeuroMark}: An automated and adaptive {ICA} based pipeline to
+              identify reproducible {fMRI} markers of brain disorders",
+  author   = "Du, Yuhui and Fu, Zening and Sui, Jing and Gao, Shuang and Xing,
+              Ying and Lin, Dongdong and Salman, Mustafa and Abrol, Anees and
+              Rahaman, Md Abdur and Chen, Jiayu and Hong, L Elliot and
+              Kochunov, Peter and Osuch, Elizabeth A and Calhoun, Vince D and
+              {Alzheimer's Disease Neuroimaging Initiative}",
+  abstract = "Many mental illnesses share overlapping or similar clinical
+              symptoms, confounding the diagnosis. It is important to
+              systematically characterize the degree to which unique and
+              similar changing patterns are reflective of brain disorders.
+              Increasing sharing initiatives on neuroimaging data have provided
+              unprecedented opportunities to study brain disorders. However, it
+              is still an open question on replicating and translating findings
+              across studies. Standardized approaches for capturing
+              reproducible and comparable imaging markers are greatly needed.
+              Here, we propose a pipeline based on the priori-driven
+              independent component analysis, NeuroMark, which is capable of
+              estimating brain functional network measures from functional
+              magnetic resonance imaging (fMRI) data that can be used to link
+              brain network abnormalities among different datasets, studies,
+              and disorders. NeuroMark automatically estimates features
+              adaptable to each individual subject and comparable across
+              datasets/studies/disorders by taking advantage of the reliable
+              brain network templates extracted from 1828 healthy controls as
+              guidance. Four studies including 2442 subjects were conducted
+              spanning six brain disorders (schizophrenia, autism spectrum
+              disorder, mild cognitive impairment, Alzheimer's disease, bipolar
+              disorder, and major depressive disorder) to evaluate validity of
+              the proposed pipeline from different perspectives (replication of
+              brain abnormalities, cross-study comparison, identification of
+              subtle brain changes, and multi-disorder classification using
+              identified biomarkers). Our results highlight that NeuroMark
+              effectively identified replicated brain network abnormalities of
+              schizophrenia across different datasets; revealed interesting
+              neural clues on the overlap and specificity between autism and
+              schizophrenia; demonstrated brain functional impairments present
+              to varying degrees in mild cognitive impairments and Alzheimer's
+              disease; and captured biomarkers that achieved good performance
+              in classifying bipolar disorder and major depressive disorder.",
+  journal  = "Neuroimage Clin",
+  volume   =  28,
+  pages    = "102375",
+  month    =  aug,
+  year     =  2020,
+  keywords = "Brain disorders; Independent component analysis; NeuroMark;
+              Reproducible and comparable biomarkers; fMRI",
+  language = "en"
+}
+
+@ARTICLE{Harrison2020-jk,
+  title    = "Modelling subject variability in the spatial and temporal
+              characteristics of functional modes",
+  author   = "Harrison, Samuel J and Bijsterbosch, Janine D and Segerdahl,
+              Andrew R and Fitzgibbon, Sean P and Farahibozorg, Seyedeh-Rezvan
+              and Duff, Eugene P and Smith, Stephen M and Woolrich, Mark W",
+  abstract = "Recent work has highlighted the scale and ubiquity of subject
+              variability in observations from functional MRI data (fMRI).
+              Furthermore, it is highly likely that errors in the estimation of
+              either the spatial presentation of, or the coupling between,
+              functional regions can confound cross-subject analyses, making
+              accurate and unbiased representations of functional data
+              essential for interpreting any downstream analyses. Here, we
+              extend the framework of probabilistic functional modes (PFMs)
+              (Harrison et al., 2015) to capture cross-subject variability not
+              only in the mode spatial maps, but also in the functional
+              coupling between modes and in mode amplitudes. A new
+              implementation of the inference now also allows for the analysis
+              of modern, large-scale data sets, and the combined inference and
+              analysis package, PROFUMO, is available from
+              git.fmrib.ox.ac.uk/samh/profumo. A new implementation of the
+              inference now also allows for the analysis of modern, large-scale
+              data sets. Using simulated data, resting-state data from 1000
+              subjects collected as part of the Human Connectome Project (Van
+              Essen et al., 2013), and an analysis of 14 subjects in a variety
+              of continuous task-states (Kieliba et al., 2019), we demonstrate
+              how PFMs are able to capture, within a single model, a rich
+              description of how the spatio-temporal structure of resting-state
+              fMRI activity varies across subjects. We also compare the new PFM
+              model to the well established independent component analysis with
+              dual regression (ICA-DR) pipeline. This reveals that, under PFM
+              assumptions, much more of the (behaviorally relevant)
+              cross-subject variability in fMRI activity should be attributed
+              to the variability in spatial maps, and that, after accounting
+              for this, functional coupling between modes primarily reflects
+              current cognitive state. This has fundamental implications for
+              the interpretation of cross-sectional studies of functional
+              connectivity that do not capture cross-subject variability to the
+              same extent as PFMs.",
+  journal  = "Neuroimage",
+  volume   =  222,
+  pages    = "117226",
+  month    =  aug,
+  year     =  2020,
+  language = "en"
+}
+
+@ARTICLE{Damoiseaux2006-od,
+  title     = "Consistent resting-state networks across healthy subjects",
+  author    = "Damoiseaux, J S and Rombouts, S A R B and Barkhof, F and
+               Scheltens, P and Stam, C J and Smith, S M and Beckmann, C F",
+  abstract  = "Functional MRI (fMRI) can be applied to study the functional
+               connectivity of the human brain. It has been suggested that
+               fluctuations in the blood oxygenation level-dependent (BOLD)
+               signal during rest reflect the neuronal baseline activity of the
+               brain, representing the state of the human brain in the absence
+               of goal-directed neuronal action and external input, and that
+               these slow fluctuations correspond to functionally relevant
+               resting-state networks. Several studies on resting fMRI have
+               been conducted, reporting an apparent similarity between the
+               identified patterns. The spatial consistency of these resting
+               patterns, however, has not yet been evaluated and quantified. In
+               this study, we apply a data analysis approach called tensor
+               probabilistic independent component analysis to resting-state
+               fMRI data to find coherencies that are consistent across
+               subjects and sessions. We characterize and quantify the
+               consistency of these effects by using a bootstrapping approach,
+               and we estimate the BOLD amplitude modulation as well as the
+               voxel-wise cross-subject variation. The analysis found 10
+               patterns with potential functional relevance, consisting of
+               regions known to be involved in motor function, visual
+               processing, executive functioning, auditory processing, memory,
+               and the so-called default-mode network, each with BOLD signal
+               changes up to 3\%. In general, areas with a high mean percentage
+               BOLD signal are consistent and show the least variation around
+               the mean. These findings show that the baseline activity of the
+               brain is consistent across subjects exhibiting significant
+               temporal dynamics, with percentage BOLD signal change comparable
+               with the signal changes found in task-related experiments.",
+  journal   = "Proc. Natl. Acad. Sci. U. S. A.",
+  publisher = "National Acad Sciences",
+  volume    =  103,
+  number    =  37,
+  pages     = "13848--13853",
+  month     =  sep,
+  year      =  2006,
+  language  = "en"
+}
+
+@ARTICLE{Schaefer2018-ww,
+  title    = "{Local-Global} Parcellation of the Human Cerebral Cortex from
+              Intrinsic Functional Connectivity {MRI}",
+  author   = "Schaefer, A and Kong, R and Gordon, E M and Laumann,
+              T O and Zuo, X-N and Holmes, A J and Eickhoff,
+              S B and Yeo, B T T",
+  abstract = "A central goal in systems neuroscience is the parcellation of the
+              cerebral cortex into discrete neurobiological ``atoms''.
+              Resting-state functional magnetic resonance imaging (rs-fMRI)
+              offers the possibility of in vivo human cortical parcellation.
+              Almost all previous parcellations relied on 1 of 2 approaches.
+              The local gradient approach detects abrupt transitions in
+              functional connectivity patterns. These transitions potentially
+              reflect cortical areal boundaries defined by histology or
+              visuotopic fMRI. By contrast, the global similarity approach
+              clusters similar functional connectivity patterns regardless of
+              spatial proximity, resulting in parcels with homogeneous
+              (similar) rs-fMRI signals. Here, we propose a gradient-weighted
+              Markov Random Field (gwMRF) model integrating local gradient and
+              global similarity approaches. Using task-fMRI and rs-fMRI across
+              diverse acquisition protocols, we found gwMRF parcellations to be
+              more homogeneous than 4 previously published parcellations.
+              Furthermore, gwMRF parcellations agreed with the boundaries of
+              certain cortical areas defined using histology and visuotopic
+              fMRI. Some parcels captured subareal (somatotopic and visuotopic)
+              features that likely reflect distinct computational units within
+              known cortical areas. These results suggest that gwMRF
+              parcellations reveal neurobiologically meaningful features of
+              brain organization and are potentially useful for future
+              applications requiring dimensionality reduction of voxel-wise
+              fMRI data. Multiresolution parcellations generated from 1489
+              participants are publicly available
+              (https://github.com/ThomasYeoLab/CBIG/tree/master/stable\_projects/brain\_parcellation/Schaefer2018\_LocalGlobal).",
+  journal  = "Cereb. Cortex",
+  volume   =  28,
+  number   =  9,
+  pages    = "3095--3114",
+  month    =  sep,
+  year     =  2018,
+  language = "en"
+}
+
+@ARTICLE{Yeo2011-fd,
+  title    = "The organization of the human cerebral cortex estimated by
+              intrinsic functional connectivity",
+  author   = "Yeo, B T T and Krienen, F M and Sepulcre, J and
+              Sabuncu, M R and Lashkari, D and Hollinshead, M and
+              Roffman, J L and Smoller, J W and Z{\"o}llei, L and
+              Polimeni, J R and Fischl, B and Liu, H and
+              Buckner, R L",
+  abstract = "Information processing in the cerebral cortex involves
+              interactions among distributed areas. Anatomical connectivity
+              suggests that certain areas form local hierarchical relations
+              such as within the visual system. Other connectivity patterns,
+              particularly among association areas, suggest the presence of
+              large-scale circuits without clear hierarchical relations. In
+              this study the organization of networks in the human cerebrum was
+              explored using resting-state functional connectivity MRI. Data
+              from 1,000 subjects were registered using surface-based
+              alignment. A clustering approach was employed to identify and
+              replicate networks of functionally coupled regions across the
+              cerebral cortex. The results revealed local networks confined to
+              sensory and motor cortices as well as distributed networks of
+              association regions. Within the sensory and motor cortices,
+              functional connectivity followed topographic representations
+              across adjacent areas. In association cortex, the connectivity
+              patterns often showed abrupt transitions between network
+              boundaries. Focused analyses were performed to better understand
+              properties of network connectivity. A canonical sensory-motor
+              pathway involving primary visual area, putative middle temporal
+              area complex (MT+), lateral intraparietal area, and frontal eye
+              field was analyzed to explore how interactions might arise within
+              and between networks. Results showed that adjacent regions of the
+              MT+ complex demonstrate differential connectivity consistent with
+              a hierarchical pathway that spans networks. The functional
+              connectivity of parietal and prefrontal association cortices was
+              next explored. Distinct connectivity profiles of neighboring
+              regions suggest they participate in distributed networks that,
+              while showing evidence for interactions, are embedded within
+              largely parallel, interdigitated circuits. We conclude by
+              discussing the organization of these large-scale cerebral
+              networks in relation to monkey anatomy and their potential
+              evolutionary expansion in humans to support cognition.",
+  journal  = "J. Neurophysiol.",
+  volume   =  106,
+  number   =  3,
+  pages    = "1125--1165",
+  month    =  sep,
+  year     =  2011,
+  language = "en"
+}
+
+
+@ARTICLE{Craddock2012-ln,
+  title    = "A whole brain {fMRI} atlas generated via spatially constrained
+              spectral clustering",
+  author   = "Craddock, R C and James, G A and Holtzheimer, P E and Hu, X P and Mayberg, H S",
+  abstract = "Connectivity analyses and computational modeling of human brain
+              function from fMRI data frequently require the specification of
+              regions of interests (ROIs). Several analyses have relied on
+              atlases derived from anatomical or cyto-architectonic boundaries
+              to specify these ROIs, yet the suitability of atlases for resting
+              state functional connectivity (FC) studies has yet to be
+              established. This article introduces a data-driven method for
+              generating an ROI atlas by parcellating whole brain resting-state
+              fMRI data into spatially coherent regions of homogeneous FC.
+              Several clustering statistics are used to compare methodological
+              trade-offs as well as determine an adequate number of clusters.
+              Additionally, we evaluate the suitability of the parcellation
+              atlas against four ROI atlases (Talairach and Tournoux,
+              Harvard-Oxford, Eickoff-Zilles, and Automatic Anatomical
+              Labeling) and a random parcellation approach. The evaluated
+              anatomical atlases exhibit poor ROI homogeneity and do not
+              accurately reproduce FC patterns present at the voxel scale. In
+              general, the proposed functional and random parcellations perform
+              equivalently for most of the metrics evaluated. ROI size and
+              hence the number of ROIs in a parcellation had the greatest
+              impact on their suitability for FC analysis. With 200 or fewer
+              ROIs, the resulting parcellations consist of ROIs with anatomic
+              homology, and thus offer increased interpretability. Parcellation
+              results containing higher numbers of ROIs (600 or 1,000) most
+              accurately represent FC patterns present at the voxel scale and
+              are preferable when interpretability can be sacrificed for
+              accuracy. The resulting atlases and clustering software have been
+              made publicly available at:
+              http://www.nitrc.org/projects/cluster\_roi/.",
+  journal  = "Hum. Brain Mapp.",
+  volume   =  33,
+  number   =  8,
+  pages    = "1914--1928",
+  month    =  aug,
+  year     =  2012,
+  language = "en"
+}
+
+
+@ARTICLE{Salvador2005-cl,
+  title    = "Neurophysiological architecture of functional magnetic resonance
+              images of human brain",
+  author   = "Salvador, R and Suckling, J and Coleman, M R and
+              Pickard, J D and Menon, D and Bullmore, Ed",
+  abstract = "We investigated large-scale systems organization of the whole
+              human brain using functional magnetic resonance imaging (fMRI)
+              data acquired from healthy volunteers in a no-task or 'resting'
+              state. Images were parcellated using a prior anatomical template,
+              yielding regional mean time series for each of 90 regions (major
+              cortical gyri and subcortical nuclei) in each subject.
+              Significant pairwise functional connections, defined by the group
+              mean inter-regional partial correlation matrix, were mostly
+              either local and intrahemispheric or symmetrically
+              interhemispheric. Low-frequency components in the time series
+              subtended stronger inter-regional correlations than
+              high-frequency components. Intrahemispheric connectivity was
+              generally related to anatomical distance by an inverse square
+              law; many symmetrical interhemispheric connections were stronger
+              than predicted by the anatomical distance between bilaterally
+              homologous regions. Strong interhemispheric connectivity was
+              notably absent in data acquired from a single patient, minimally
+              conscious following a brainstem lesion. Multivariate analysis by
+              hierarchical clustering and multidimensional scaling consistently
+              defined six major systems in healthy volunteers-- corresponding
+              approximately to four neocortical lobes, medial temporal lobe and
+              subcortical nuclei- - that could be further decomposed into
+              anatomically and functionally plausible subsystems, e.g. dorsal
+              and ventral divisions of occipital cortex. An undirected graph
+              derived by thresholding the healthy group mean partial
+              correlation matrix demonstrated local clustering or cliquishness
+              of connectivity and short mean path length compatible with prior
+              data on small world characteristics of non-human cortical
+              anatomy. Functional MRI demonstrates a neurophysiological
+              architecture of the normal human brain that is anatomically
+              sensible, strongly symmetrical, disrupted by acute brain injury,
+              subtended predominantly by low frequencies and consistent with a
+              small world network topology.",
+  journal  = "Cereb. Cortex",
+  volume   =  15,
+  number   =  9,
+  pages    = "1332--1342",
+  month    =  sep,
+  year     =  2005,
+  language = "en"
+}
+
+@ARTICLE{Goutte1999-zb,
+  title    = "On clustering {fMRI} time series",
+  author   = "Goutte, C and Toft, P and Rostrup, E and Nielsen, F and Hansen, L
+              K",
+  abstract = "Analysis of fMRI time series is often performed by extracting one
+              or more parameters for the individual voxels. Methods based,
+              e.g., on various statistical tests are then used to yield
+              parameters corresponding to probability of activation or
+              activation strength. However, these methods do not indicate
+              whether sets of voxels are activated in a similar way or in
+              different ways. Typically, delays between two activated signals
+              are not identified. In this article, we use clustering methods to
+              detect similarities in activation between voxels. We employ a
+              novel metric that measures the similarity between the activation
+              stimulus and the fMRI signal. We present two different clustering
+              algorithms and use them to identify regions of similar
+              activations in an fMRI experiment involving a visual stimulus.",
+  journal  = "Neuroimage",
+  volume   =  9,
+  number   =  3,
+  pages    = "298--310",
+  month    =  mar,
+  year     =  1999,
+  language = "en"
+}
+
+
+@ARTICLE{Calhoun2001-kd,
+  title     = "A method for making group inferences from functional {MRI} data
+               using independent component analysis",
+  author    = "Calhoun, V D and Adali, T and Pearlson, G D and Pekar, J J",
+  abstract  = "Independent component analysis (ICA) is a promising analysis
+               method that is being increasingly applied to fMRI data. A
+               principal advantage of this approach is its applicability to
+               cognitive paradigms for which detailed models of brain activity
+               are not available. Independent component analysis has been
+               successfully utilized to analyze single-subject fMRI data sets,
+               and an extension of this work would be to provide for group
+               inferences. However, unlike univariate methods (e.g., regression
+               analysis, Kolmogorov-Smirnov statistics), ICA does not naturally
+               generalize to a method suitable for drawing inferences about
+               groups of subjects. We introduce a novel approach for drawing
+               group inferences using ICA of fMRI data, and present its
+               application to a simple visual paradigm that alternately
+               stimulates the left or right visual field. Our group ICA
+               analysis revealed task-related components in left and right
+               visual cortex, a transiently task-related component in bilateral
+               occipital/parietal cortex, and a non-task-related component in
+               bilateral visual association cortex. We address issues involved
+               in the use of ICA as an fMRI analysis method such as: (1) How
+               many components should be calculated? (2) How are these
+               components to be combined across subjects? (3) How should the
+               final results be thresholded and/or presented? We show that the
+               methodology we present provides answers to these questions and
+               lay out a process for making group inferences from fMRI data
+               using independent component analysis.",
+  journal   = "Hum. Brain Mapp.",
+  publisher = "Wiley Online Library",
+  volume    =  14,
+  number    =  3,
+  pages     = "140--151",
+  month     =  nov,
+  year      =  2001,
+  language  = "en"
+}
+
 @ARTICLE{Salehi2020-bh,
   title    = "There is no single functional atlas even for a single individual:
               Functional parcel definitions change with task",
