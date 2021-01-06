@@ -1,0 +1,388 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Discussion &#8212; cneuromod-embeddings</title>
+    
+  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="_static/logo.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Conclusion" href="conclusion.html" />
+    <link rel="prev" title="R2 in the cortex" href="friends-s01_r2_cortex.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">cneuromod-embeddings</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="abstract.html">
+   Abstract
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="methods.html">
+   Methods
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="results.html">
+   Results
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="friends-s01_overview.html">
+     friends-s01
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="friends-s01_reproducibility.html">
+       Test-retest reproducibility
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="friends-s01_r2_cortex.html">
+       R2 in the cortex
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Discussion
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="conclusion.html">
+   Conclusion
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="acknowledgments.html">
+   Acknowledgments
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="references.html">
+   References
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="supplementary.html">
+   Supplementary material
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="supplementary_friends-s01.html">
+     Supplementary friends-s01
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="friends-s01_match_state-60.html">
+       Parcel matching (state=60)
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="friends-s01_match_state-900.html">
+       Parcel matching (
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         state=900
+        </span>
+       </code>
+       )
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="friends-s01_r2_maps.html">
+       R2 maps
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="friends-s01_r2_central.html">
+       R2 in central structures
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="friends-s01_r2_cerebellum.html">
+       R2 in the cerebellum
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/discussion.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/courtois-neuromod/cneuromod_embeddings"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/courtois-neuromod/cneuromod_embeddings/issues/new?title=Issue%20on%20page%20%2Fdiscussion.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary-of-results">
+   Summary of results
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#scalability">
+   scalability
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="discussion">
+<h1>Discussion<a class="headerlink" href="#discussion" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="summary-of-results">
+<h2>Summary of results<a class="headerlink" href="#summary-of-results" title="Permalink to this headline">¶</a></h2>
+<p>In this work, we aimed to generalize the identification of dynamic states of brain parcellations at the full brain level for individuals. Our first main finding was the existence of different dynamic states of parcellations across the brain. We also found its state stability maps had promising compression quality of the reduced data. Some dynamic states were markedly different in terms of the brain regions involved and some states were spatially overlapping despite being derived from the same subject in the context of movie data. We also distinguished three different levels of spatial reproducibility among the identified dynamic states of parcellations, i.e. high, medium and low reproducibility both at the within-subject level (between the two independent sets) and the between-subjects levels. We also found better compression quality at the within-subject level compared to the between-subject level. Another main finding of this paper was the existence of very high spatial reproducibility for some state stability maps both at the within-between subjects level; i.e. Pearson correlation &gt; 0.7. Still, we found the reproducibility at the within- subjects level outperformed the reproducibility at the between-subject level.</p>
+</div>
+<div class="section" id="scalability">
+<h2>scalability<a class="headerlink" href="#scalability" title="Permalink to this headline">¶</a></h2>
+<p>Despite the existence of different attempts to apply the space-time decomposition of fMRI data, there are still two main limitations of previous approaches. First, the lack of scalability to the high dimensionality of functional MRI data (e.g., ICA approach). This motivated the introduction of PROFUMO, a matrix factorisation model that identified subject-specific spatial maps using a variational Bayesian approach with spatiotemporal priors instead of ICA dual regression (Harrison et al., 2015, CITE). Other previous approaches required terabytes of functional data to converge to good quality solutions [Dadi et al. 2020]. That could be problematic, especially in the case of the clinical datasets; e.g. Alzheimer disease datasets [REF].</p>
+<p>In the literature of brain parcellation, both our approach and Dadi and colleagues 2020 showed the existence of different modes of variations at the full brain level. Also, both approaches reported promising results by identifying different modes of variations of the cerebral cortex [Boukhdhir et al., 2020, Dadi et al. 2020]. The main difference with our work was that Dadi and colleagues used a collection of brain atlases with different resolutions; i.e. 64 to 1024 static brain parcels to extract soft parcels. These parcels were identified using a huge dataset of 2.4TB. However, in our approach, few hours of data were enough to identify time-space decomposition at the full brain level based simply on aggregating k-Means one-hot encoders. These one-hot encoders were generated in short windows using functional signals. Salehi and colleagues also shared with us their consistent theoretical formalization of brain parcellations. That is, authors suggested brain parcellation was not fixed and showed the existence of parcellations for different cognitive states, including the motor task, the working memory task and the resting state task [Salehi et al., 2018]. The main difference with our approach was the generation of static parcellation per task using several minutes of fMRI data per parcellation [Salehi et al., 2018]. Before these approaches, many researchers studied the rich dynamic architecture of brain networks using the dynamic functional connectivity [Iraji et al. 2018, Abrol et al., 2017; Allen et al., 2014; Vince D. Calhoun et al., 2014; Donnelly‐Kehoe et al., 2019; Hutchison et al., 2013; Korhonen et al., 2017]]. These researchers suggested the neuroscience community needed new computational methods to unravel the repetitive spatial patterns over time and develop new methods for simplified representations in the context of complex and high-dimensional feature space of dynamic fMRI data (Chen et al., 2017). These methods would facilitate the analysis of the individual differences in internal cognitive states over short time scales (Chen et al., 2017).</p>
+<p>To evaluate the quality of the space-time decomposition of the cerebral cortex into dynamic states of parcellations, we evaluated the compression quality of the real functional signal both at the within-subject and the between-subjects levels. We found that the within-subject compression scores outperformed the between-subjects compression scores. For instance, we observed some state stability maps had near perfect R-squared scores as a compression measure (with an average R-squared score of 0.63), while between-subject state stability maps had 0.39 average R-squared score (See Fig. 2). In the literature, the compression quality scores were lower than our scores in terms of R-squares scores (with an average R-squared measure of 0.55 in the case of 512 states), however, a direct comparison is still required between our approach and state of the art approaches [Dadi et al. 2020].  We also observed that most voxels throughout the brain had high R-squared scores at the within-subject level as shown in the R-squared map in Fig. 3 (Row=1, column=1). Only subcortical regions had lower compression quality with lower R-squared scores. In the literature, for instance the subcortical regions had challenging issues in fMRI scans, including the physiological noise and the spatial resolution [REF]. Therefore, we observed higher information loss (or lower R-squared scores with around 0.5 scores, See Fig. 3) in the subcortical regions voxels compared to the rest of the cerebral cortex (most voxels had &gt; 0.7 R-squared measures). Overall, promising findings showed that our approach generated a good representation of fMRI data with high fidelity to the original signal and a lower loss of information in the reduced version.</p>
+<p>We also conducted a reproducibility analysis to evaluate the goodness of the generated dynamic states of parcellations. We found different levels of reproducibility scores going from high scores to low scores. We found that the average reproducibility scores at the within-subject level (average score=0.62, See Fig. 4). In our previous work, we reported higher average reproducibility scores associated with three seed subnetworks in a resting state condition, including the PM-VIS, the dACC and the PCC with respectively 0.97, 0.82 and 0.9 average reproducibility scores. The differences in the average reproducibility scores could be explained by the differences in reproducibility for different regions of the brain. We distinguished three groups of state stability maps associated with different regions according to their reproducibility scores. The visual maps showed different subnetworks could be included in different groups, including the PCC regions, the visual regions and the salience network regions. The existence of different levels of reproducibility could be associated with the differences in the cognitive states of a given subject during the movie watching and between the two replicated sets. Also, some dynamic states of parcellations had very poor reproducibility with noisy state stability maps (scores &gt; 0.5). In the future, we are planning to provide further analysis to identify noisy patterns among other neurobiological meaningful state stability maps. Still, these findings were consistent with ICA- based components which in part were associated with noise patterns in fMRI data [(Beckmann et al., 2005; Damoiseaux et al., 2006; Zuo et al., 2010)]. Another important finding in this work was that our within-subject reproducibility scores distribution had a high overlap with the between-subjects reproducibility scores (only 25% of within-subject reproducibility scores exceeded the between-subject reproducibility). In a previous work, we showed there were two disjoint distributions between within- and between-subject reproducibility scores in the case of three subnetworks and resting state data [Boukhdhir et al. 2020]. Even though the theoretical basis was the same, the differences in reproducibility distributions at the within- and the between-subjects levels differed in the cases of the resting state and the movie data.  These findings could be associated with the movie watching fMRI. That is, the cognitive engagement of subnetworks across subjects was more consistent due to the same stimuli in the movie which was not the case in the random fluctuations of resting state data.  Future interesting research directions could be to study the differences in the spatial changes in dynamic states of parcellations across time and in the context of movie data to quantify the alignment of spatial maps over time.</p>
+<p>In the future, we are planning to compare the compression quality of our approach with other  existing approaches both in the cases of static and soft parcellations, including the ICA and DiFuMo [Dadi et al., 2020, Demoiseaux et al]. This would allow us to position our contribution with respect to other approaches to identify when it performed better and its limitations. We also aim to generalize our approach to different datasets; i.e. hcptrt dataset, and generate performance measures; i.e. the reproducibility and the compression quality. That would allow us to see whether we still have the same performance results on other datasets in different contexts; i.e., task state, resting state.  Also, an interesting research area to investigate is to study differences in state stability maps between healthy controls and psychiatric disorders. This helps to isolate the specific changes in brain dynamics reflected on brain parcels over time in both cases.</p>
+<p>Neuroimaging research datasets were dramatically increasing in size during the past five years. Additionally, there was an emergent trend of the application of deep learning models in the neuroscience field. However, there were few guidelines in the literature on how to handle the high dimensionality of neuroimaging data. In the field of brain parcellation, few approaches suggested scalable algorithms to parcellate the brain. Thus, the replication of brain parcellations on different datasets has been challenging for the past two decades. For instance, Nilearn platforme hosted several brain atlases, including BASC [REF], Yeo’s atlas [REF] to facilitate their use by other researchers. Most of these atlases were generated at the group level. Altogether, this motivated neuroscientist researchers to have practical guidelines to replicate parcellations at the subject level regardless of the dataset size. Therefore, we are planning to provide a technical report that describes our algorithm implementation added to memory and time profiling to show its scalability and ease to run on custom datasets.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="friends-s01_r2_cortex.html" title="previous page">R2 in the cortex</a>
+    <a class='right-next' id="next-link" href="conclusion.html" title="next page">Conclusion</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By CNeuroMod team<br/>
+        
+            &copy; Copyright 2020.<br/>
+          <div class="extra_footer">
+            This jupyterbook was prepared for submission at <a href="https://neurolibre.com">Neurolibre</a>.
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

@@ -1,0 +1,555 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>R2 maps &#8212; cneuromod-embeddings</title>
+    
+  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="_static/logo.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="R2 in central structures" href="friends-s01_r2_central.html" />
+    <link rel="prev" title="Parcel matching (state=900)" href="friends-s01_match_state-900.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">cneuromod-embeddings</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="abstract.html">
+   Abstract
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="methods.html">
+   Methods
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="results.html">
+   Results
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="friends-s01_overview.html">
+     friends-s01
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="friends-s01_reproducibility.html">
+       Test-retest reproducibility
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="friends-s01_r2_cortex.html">
+       R2 in the cortex
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="discussion.html">
+   Discussion
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="conclusion.html">
+   Conclusion
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="acknowledgments.html">
+   Acknowledgments
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="references.html">
+   References
+  </a>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="supplementary.html">
+   Supplementary material
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2 current active collapsible-parent">
+    <a class="reference internal" href="supplementary_friends-s01.html">
+     Supplementary friends-s01
+    </a>
+    <ul class="current collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="friends-s01_match_state-60.html">
+       Parcel matching (state=60)
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="friends-s01_match_state-900.html">
+       Parcel matching (
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         state=900
+        </span>
+       </code>
+       )
+      </a>
+     </li>
+     <li class="toctree-l3 current active">
+      <a class="current reference internal" href="#">
+       R2 maps
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="friends-s01_r2_central.html">
+       R2 in central structures
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="friends-s01_r2_cerebellum.html">
+       R2 in the cerebellum
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="_sources/friends-s01_r2_maps.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/friends-s01_r2_maps.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/courtois-neuromod/cneuromod_embeddings"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/courtois-neuromod/cneuromod_embeddings/issues/new?title=Issue%20on%20page%20%2Ffriends-s01_r2_maps.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/courtois-neuromod/cneuromod_embeddings/main?urlpath=tree/friends-s01_r2_maps.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#r2-with-fwhm-5">
+   R2 with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     fwhm=5
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#r2-with-fwhm-8">
+   R2 with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     fwhm=8
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cortex-central-structures-and-cerebellum-masks">
+   Cortex, central structures and cerebellum masks
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="r2-maps">
+<span id="friends-s01-r2-maps"></span><h1>R2 maps<a class="headerlink" href="#r2-maps" title="Permalink to this headline">¶</a></h1>
+<p>Before generating summary distributions of R2 embedding quality, as presented in Section <a class="reference internal" href="friends-s01_r2_cortex.html#friends-s01-r2-cortex"><span class="std std-ref">R2 in the cortex</span></a>, we wanted to visually inspect the maps. The figures presented here are for subject <code class="docutils literal notranslate"><span class="pre">sub-01</span></code>, but similar observations were made for all subjects. When executed in an interactive environment, it is possible to explore the results of other subject by changing the value of the variable <code class="docutils literal notranslate"><span class="pre">subject</span></code> in the code below.</p>
+<div class="admonition-computational-reproducibility admonition">
+<p class="admonition-title">Computational reproducibility</p>
+<p>The results for this experiment have been precomputed usin the scripts <code class="docutils literal notranslate"><span class="pre">xx.py</span></code> and <code class="docutils literal notranslate"><span class="pre">xx.sh</span></code>. The results are accessed using a number of helper tools available in the <code class="docutils literal notranslate"><span class="pre">dypac_utils</span></code> module. The following hidden block of code loads the necessary libraries to generate the figures.</p>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">plotting</span>
+<span class="kn">from</span> <span class="nn">cneuromod_embeddings.dypac_utils</span> <span class="kn">import</span> <span class="n">get_root_data</span><span class="p">,</span> <span class="n">load_dypac</span><span class="p">,</span> <span class="n">load_r2_intra</span><span class="p">,</span> <span class="n">load_r2_inter</span><span class="p">,</span> <span class="n">load_r2_other</span><span class="p">,</span> <span class="n">mean_r2</span><span class="p">,</span> <span class="n">mean_inter_r2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="r2-with-fwhm-5">
+<h2>R2 with <code class="docutils literal notranslate"><span class="pre">fwhm=5</span></code><a class="headerlink" href="#r2-with-fwhm-5" title="Permalink to this headline">¶</a></h2>
+<p>The following brain slices present R2 maps using individual DYPAC parcellations (<code class="docutils literal notranslate"><span class="pre">cluster-300_state-900</span></code>). On the left, the embedding fMRI time series and the parcels come from the same subject (intra-subject R2), and on the right from different subjects (inter-subject R2). The values for intra-subject R2 are clearly much higher than for inter-subject R2. Values in central structures (basal ganglia and thalami are very low, and do not even use the low 0.1 threshold applied on the visualization). A similar observation can be done for the cerebellum.</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subject</span> <span class="o">=</span> <span class="s1">&#39;sub-01&#39;</span>
+<span class="n">fwhm</span> <span class="o">=</span> <span class="s1">&#39;5&#39;</span>
+<span class="n">cluster</span> <span class="o">=</span> <span class="mi">300</span>
+<span class="n">state</span> <span class="o">=</span> <span class="mi">900</span>
+<span class="n">root_data</span> <span class="o">=</span> <span class="n">get_root_data</span><span class="p">(</span><span class="s1">&#39;friends-s01&#39;</span><span class="p">)</span>
+<span class="n">model</span><span class="p">,</span> <span class="n">mask_img</span> <span class="o">=</span> <span class="n">load_dypac</span><span class="p">(</span><span class="n">subject</span><span class="o">=</span><span class="n">subject</span><span class="p">,</span> <span class="n">root_data</span><span class="o">=</span><span class="n">root_data</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="n">fwhm</span><span class="p">,</span> <span class="n">cluster</span><span class="o">=</span><span class="n">cluster</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span><span class="n">state</span><span class="p">)</span>
+
+<span class="n">width_fig</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="n">width_fig</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">hdf5_file</span> <span class="o">=</span> <span class="n">load_r2_intra</span><span class="p">(</span><span class="n">subject</span><span class="o">=</span><span class="n">subject</span><span class="p">,</span> <span class="n">root_data</span><span class="o">=</span><span class="n">root_data</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="n">fwhm</span><span class="p">,</span> <span class="n">cluster</span><span class="o">=</span><span class="n">cluster</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span><span class="n">state</span><span class="p">)</span>
+<span class="n">r2_intra</span> <span class="o">=</span> <span class="n">mean_r2</span><span class="p">(</span><span class="n">hdf5_file</span><span class="p">[</span><span class="s1">&#39;validation&#39;</span><span class="p">],</span> <span class="n">ref_img</span><span class="o">=</span><span class="n">mask_img</span><span class="p">)</span>
+<span class="n">plotting</span><span class="o">.</span><span class="n">plot_stat_map</span><span class="p">(</span><span class="n">r2_intra</span><span class="p">,</span> <span class="n">cut_coords</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span> <span class="n">display_mode</span><span class="o">=</span><span class="s1">&#39;ortho&#39;</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> 
+    <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;r2_</span><span class="si">{</span><span class="n">subject</span><span class="si">}</span><span class="s1">_intra&#39;</span><span class="p">,</span> <span class="n">colorbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">hdf5_file</span> <span class="o">=</span> <span class="n">load_r2_inter</span><span class="p">(</span><span class="n">subject</span><span class="o">=</span><span class="n">subject</span><span class="p">,</span> <span class="n">root_data</span><span class="o">=</span><span class="n">root_data</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="n">fwhm</span><span class="p">,</span> <span class="n">cluster</span><span class="o">=</span><span class="n">cluster</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span><span class="n">state</span><span class="p">)</span>
+<span class="n">r2_inter</span> <span class="o">=</span> <span class="n">mean_inter_r2</span><span class="p">(</span><span class="n">hdf5_file</span><span class="p">[</span><span class="s1">&#39;inter&#39;</span><span class="p">],</span> <span class="n">ref_img</span><span class="o">=</span><span class="n">mask_img</span><span class="p">)</span>
+<span class="n">plotting</span><span class="o">.</span><span class="n">plot_stat_map</span><span class="p">(</span><span class="n">r2_inter</span><span class="p">,</span> <span class="n">cut_coords</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span> <span class="n">display_mode</span><span class="o">=</span><span class="s1">&#39;ortho&#39;</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> 
+    <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;r2_</span><span class="si">{</span><span class="n">subject</span><span class="si">}</span><span class="s1">_inter&#39;</span><span class="p">,</span> <span class="n">colorbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;nilearn.plotting.displays.OrthoSlicer at 0x7fc5f99a7ba8&gt;
+</pre></div>
+</div>
+<img alt="_images/friends-s01_r2_maps_3_1.png" src="_images/friends-s01_r2_maps_3_1.png" />
+</div>
+</div>
+<p>When using group parcellations, the R2 values are quite low, except for the DIFUMO parcellations which are known for the quality of embedding fMRI activation maps <a class="bibtex reference internal" href="references.html#dadi2020-gb" id="id1">[6]</a>. However, the R2 in the central structures and the cerebellum also appear to be lower than the cortex. The Schaefer parcellation in particular does not cover central structures, and the R2 is consequently 0.</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">list_atlas</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;smith&#39;</span><span class="p">,</span> <span class="s1">&#39;mist197&#39;</span><span class="p">,</span> <span class="s1">&#39;mist444&#39;</span><span class="p">,</span> <span class="s1">&#39;schaefer&#39;</span><span class="p">,</span> <span class="s1">&#39;difumo256&#39;</span><span class="p">,</span> <span class="s1">&#39;difumo512&#39;</span><span class="p">,</span> <span class="s1">&#39;difumo1024&#39;</span><span class="p">]</span>
+<span class="n">n_comp</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">list_atlas</span><span class="p">)</span>
+<span class="n">width_fig</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="n">width_fig</span><span class="p">,</span> <span class="n">n_comp</span> <span class="o">*</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">ind</span><span class="p">,</span> <span class="n">atlas</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">list_atlas</span><span class="p">):</span>
+    <span class="n">hdf5_file</span> <span class="o">=</span> <span class="n">load_r2_other</span><span class="p">(</span><span class="n">atlas</span><span class="o">=</span><span class="n">atlas</span><span class="p">,</span> <span class="n">root_data</span><span class="o">=</span><span class="n">root_data</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="n">fwhm</span><span class="p">)</span>
+    <span class="n">r2_atlas</span> <span class="o">=</span> <span class="n">mean_r2</span><span class="p">(</span><span class="n">hdf5_file</span><span class="p">[</span><span class="n">subject</span><span class="p">],</span> <span class="n">ref_img</span><span class="o">=</span><span class="n">mask_img</span><span class="p">)</span>
+    <span class="n">plotting</span><span class="o">.</span><span class="n">plot_stat_map</span><span class="p">(</span><span class="n">r2_atlas</span><span class="p">,</span> <span class="n">cut_coords</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span> <span class="n">display_mode</span><span class="o">=</span><span class="s1">&#39;ortho&#39;</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> 
+            <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;r2_</span><span class="si">{</span><span class="n">subject</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">atlas</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">colorbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
+            <span class="n">axes</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">n_comp</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">ind</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/friends-s01_r2_maps_5_0.png" src="_images/friends-s01_r2_maps_5_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="r2-with-fwhm-8">
+<h2>R2 with <code class="docutils literal notranslate"><span class="pre">fwhm=8</span></code><a class="headerlink" href="#r2-with-fwhm-8" title="Permalink to this headline">¶</a></h2>
+<p>With <code class="docutils literal notranslate"><span class="pre">fwhm=8</span></code> the intra-subject R2 values are much higher, reaching very high values (<code class="docutils literal notranslate"><span class="pre">&gt;0.7</span></code>) in most of the cortex. Intrestingly, the R2 values in central structures and the cerebellum also increase substantially. The inter-subject R2 are still lower than intra-subject R2, but they also increase compared with <code class="docutils literal notranslate"><span class="pre">fwhm=5</span></code>.</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fwhm</span> <span class="o">=</span> <span class="s1">&#39;8&#39;</span>
+<span class="n">model</span><span class="p">,</span> <span class="n">mask_img</span> <span class="o">=</span> <span class="n">load_dypac</span><span class="p">(</span><span class="n">subject</span><span class="o">=</span><span class="n">subject</span><span class="p">,</span> <span class="n">root_data</span><span class="o">=</span><span class="n">root_data</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="n">fwhm</span><span class="p">,</span> <span class="n">cluster</span><span class="o">=</span><span class="n">cluster</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span><span class="n">state</span><span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="n">width_fig</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">hdf5_file</span> <span class="o">=</span> <span class="n">load_r2_intra</span><span class="p">(</span><span class="n">subject</span><span class="o">=</span><span class="n">subject</span><span class="p">,</span> <span class="n">root_data</span><span class="o">=</span><span class="n">root_data</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="n">fwhm</span><span class="p">,</span> <span class="n">cluster</span><span class="o">=</span><span class="n">cluster</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span><span class="n">state</span><span class="p">)</span>
+<span class="n">r2_intra</span> <span class="o">=</span> <span class="n">mean_r2</span><span class="p">(</span><span class="n">hdf5_file</span><span class="p">[</span><span class="s1">&#39;validation&#39;</span><span class="p">],</span> <span class="n">ref_img</span><span class="o">=</span><span class="n">mask_img</span><span class="p">)</span>
+<span class="n">plotting</span><span class="o">.</span><span class="n">plot_stat_map</span><span class="p">(</span><span class="n">r2_intra</span><span class="p">,</span> <span class="n">cut_coords</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span> <span class="n">display_mode</span><span class="o">=</span><span class="s1">&#39;ortho&#39;</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+    <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;r2_</span><span class="si">{</span><span class="n">subject</span><span class="si">}</span><span class="s1">_intra&#39;</span><span class="p">,</span> <span class="n">colorbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">hdf5_file</span> <span class="o">=</span> <span class="n">load_r2_inter</span><span class="p">(</span><span class="n">subject</span><span class="o">=</span><span class="n">subject</span><span class="p">,</span> <span class="n">root_data</span><span class="o">=</span><span class="n">root_data</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="n">fwhm</span><span class="p">,</span> <span class="n">cluster</span><span class="o">=</span><span class="n">cluster</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span><span class="n">state</span><span class="p">)</span>
+<span class="n">r2_inter</span> <span class="o">=</span> <span class="n">mean_inter_r2</span><span class="p">(</span><span class="n">hdf5_file</span><span class="p">[</span><span class="s1">&#39;inter&#39;</span><span class="p">],</span> <span class="n">ref_img</span><span class="o">=</span><span class="n">mask_img</span><span class="p">)</span>
+<span class="n">plotting</span><span class="o">.</span><span class="n">plot_stat_map</span><span class="p">(</span><span class="n">r2_inter</span><span class="p">,</span> <span class="n">cut_coords</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span> <span class="n">display_mode</span><span class="o">=</span><span class="s1">&#39;ortho&#39;</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+    <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;r2_</span><span class="si">{</span><span class="n">subject</span><span class="si">}</span><span class="s1">_inter&#39;</span><span class="p">,</span> <span class="n">colorbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;nilearn.plotting.displays.OrthoSlicer at 0x7fc5f233b8d0&gt;
+</pre></div>
+</div>
+<img alt="_images/friends-s01_r2_maps_7_1.png" src="_images/friends-s01_r2_maps_7_1.png" />
+</div>
+</div>
+<p>For group parcellations, the R2 values also increase, including the central structures and the cerebellum.</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">list_atlas</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;smith&#39;</span><span class="p">,</span> <span class="s1">&#39;mist197&#39;</span><span class="p">,</span> <span class="s1">&#39;mist444&#39;</span><span class="p">,</span> <span class="s1">&#39;schaefer&#39;</span><span class="p">,</span> <span class="s1">&#39;difumo256&#39;</span><span class="p">,</span> <span class="s1">&#39;difumo512&#39;</span><span class="p">,</span> <span class="s1">&#39;difumo1024&#39;</span><span class="p">]</span>
+<span class="n">n_comp</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">list_atlas</span><span class="p">)</span>
+<span class="n">width_fig</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="n">width_fig</span><span class="p">,</span> <span class="n">n_comp</span> <span class="o">*</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">ind</span><span class="p">,</span> <span class="n">atlas</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">list_atlas</span><span class="p">):</span>
+    <span class="n">hdf5_file</span> <span class="o">=</span> <span class="n">load_r2_other</span><span class="p">(</span><span class="n">atlas</span><span class="o">=</span><span class="n">atlas</span><span class="p">,</span> <span class="n">root_data</span><span class="o">=</span><span class="n">root_data</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="n">fwhm</span><span class="p">)</span>
+    <span class="n">r2_atlas</span> <span class="o">=</span> <span class="n">mean_r2</span><span class="p">(</span><span class="n">hdf5_file</span><span class="p">[</span><span class="n">subject</span><span class="p">],</span> <span class="n">ref_img</span><span class="o">=</span><span class="n">mask_img</span><span class="p">)</span>
+    <span class="n">plotting</span><span class="o">.</span><span class="n">plot_stat_map</span><span class="p">(</span><span class="n">r2_atlas</span><span class="p">,</span> <span class="n">cut_coords</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span> <span class="n">display_mode</span><span class="o">=</span><span class="s1">&#39;ortho&#39;</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+            <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;r2_</span><span class="si">{</span><span class="n">subject</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">atlas</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">colorbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">axes</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">n_comp</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">ind</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/friends-s01_r2_maps_9_0.png" src="_images/friends-s01_r2_maps_9_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="cortex-central-structures-and-cerebellum-masks">
+<h2>Cortex, central structures and cerebellum masks<a class="headerlink" href="#cortex-central-structures-and-cerebellum-masks" title="Permalink to this headline">¶</a></h2>
+<p>Motivated by these observations, we decided to quantify separately the R2 measures in the cortex, central structures and cerebellum, and focus on the cortex to select hyper-parameters and evaluate the generalization of embeddings in the rest of the study. We extracted for this purpose a subset of regions from the AAL atlas, dilated the AAL atlases to cover all of brain voxels, and intersected the resulting masks with individual grey matter masks used in this study (after resampling in individual structural space). The code to implement these operations is available in the module <code class="docutils literal notranslate"><span class="pre">cortical_segmentation.py</span></code>. It is possible to load the different types of masks using <code class="docutils literal notranslate"><span class="pre">_load_mask</span></code> in the <code class="docutils literal notranslate"><span class="pre">r2_summary.py</span></code> module, as illustrated in the code below:</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nilearn.image</span> <span class="kn">import</span> <span class="n">new_img_like</span>
+<span class="kn">from</span> <span class="nn">cneuromod_embeddings.r2_summary</span> <span class="kn">import</span> <span class="n">_load_mask</span>
+<span class="c1"># the cluster and state parameters are just use to indicate which dypac </span>
+<span class="c1"># model to use to load the individual grey matter mask</span>
+<span class="c1"># This mask is identical for all dypac models of the same subject</span>
+
+<span class="n">list_type</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;cortex&#39;</span><span class="p">,</span> <span class="s1">&#39;central&#39;</span><span class="p">,</span> <span class="s1">&#39;cerebellum&#39;</span><span class="p">]</span>
+<span class="n">n_comp</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">list_type</span><span class="p">)</span>
+<span class="n">width_fig</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="n">width_fig</span><span class="p">,</span> <span class="n">n_comp</span> <span class="o">*</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">ind</span><span class="p">,</span> <span class="n">type_mask</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">list_type</span><span class="p">):</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">_load_mask</span><span class="p">(</span><span class="n">subject</span><span class="o">=</span><span class="n">subject</span><span class="p">,</span> <span class="n">root_data</span><span class="o">=</span><span class="n">root_data</span><span class="p">,</span> <span class="n">type_mask</span><span class="o">=</span><span class="n">type_mask</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="n">fwhm</span><span class="p">,</span> <span class="n">cluster</span><span class="o">=</span><span class="n">cluster</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span><span class="n">state</span><span class="p">)</span>
+    <span class="n">plotting</span><span class="o">.</span><span class="n">plot_roi</span><span class="p">(</span><span class="n">new_img_like</span><span class="p">(</span><span class="n">mask_img</span><span class="p">,</span> <span class="n">mask</span><span class="p">),</span> <span class="n">display_mode</span><span class="o">=</span><span class="s1">&#39;ortho&#39;</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+            <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">subject</span><span class="si">}</span><span class="s1">_mask_</span><span class="si">{</span><span class="n">type_mask</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">n_comp</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ind</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/friends-s01_r2_maps_11_0.png" src="_images/friends-s01_r2_maps_11_0.png" />
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="friends-s01_match_state-900.html" title="previous page">Parcel matching (<code class="docutils literal notranslate"><span class="pre">state=900</span></code>)</a>
+    <a class='right-next' id="next-link" href="friends-s01_r2_central.html" title="next page">R2 in central structures</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By CNeuroMod team<br/>
+        
+            &copy; Copyright 2020.<br/>
+          <div class="extra_footer">
+            This jupyterbook was prepared for submission at <a href="https://neurolibre.com">Neurolibre</a>.
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

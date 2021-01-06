@@ -1,0 +1,444 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Introduction &#8212; cneuromod-embeddings</title>
+    
+  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="_static/logo.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Methods" href="methods.html" />
+    <link rel="prev" title="Abstract" href="abstract.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">cneuromod-embeddings</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="abstract.html">
+   Abstract
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="methods.html">
+   Methods
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="results.html">
+   Results
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="friends-s01_overview.html">
+     friends-s01
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="friends-s01_reproducibility.html">
+       Test-retest reproducibility
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="friends-s01_r2_cortex.html">
+       R2 in the cortex
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="discussion.html">
+   Discussion
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="conclusion.html">
+   Conclusion
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="acknowledgments.html">
+   Acknowledgments
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="references.html">
+   References
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="supplementary.html">
+   Supplementary material
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="supplementary_friends-s01.html">
+     Supplementary friends-s01
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="friends-s01_match_state-60.html">
+       Parcel matching (state=60)
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="friends-s01_match_state-900.html">
+       Parcel matching (
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         state=900
+        </span>
+       </code>
+       )
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="friends-s01_r2_maps.html">
+       R2 maps
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="friends-s01_r2_central.html">
+       R2 in central structures
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="friends-s01_r2_cerebellum.html">
+       R2 in the cerebellum
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="_sources/intro.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/intro.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/courtois-neuromod/cneuromod_embeddings"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/courtois-neuromod/cneuromod_embeddings/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/courtois-neuromod/cneuromod_embeddings/main?urlpath=tree/intro.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#main-objective">
+   Main objective
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dynamic-brain-parcels">
+   Dynamic brain parcels
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reproducibility">
+   Reproducibility
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#homogeneity">
+   Homogeneity
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#generalization-across-cognitive-contexts">
+   Generalization across cognitive contexts
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#specific-objectives">
+   Specific objectives
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="main-objective">
+<h2>Main objective<a class="headerlink" href="#main-objective" title="Permalink to this headline">¶</a></h2>
+<p>Brain parcels are ubiquitous in network neuroscience, as parcels play the role of nodes in graph models of brain networks <a class="bibtex reference internal" href="references.html#bullmore2009-dh" id="id1">[3]</a>. As the fMRI field increasingly put a focus on individual-level predictions <a class="bibtex reference internal" href="references.html#gratton2020-kz" id="id2">[11]</a>, a series of recent studies have aimed to characterize individual functional parcels with long (several hours), “deep phenotyping” functional magnetic resonance (fMRI) datasets <a class="bibtex reference internal" href="references.html#poldrack2021-yp" id="id3">[13]</a>. Gordon and colleagues (2017) <a class="bibtex reference internal" href="references.html#gordon2017-gd" id="id4">[9]</a> notably showed reliable subject-specific variants in brain parcels at rest in the Midnight Brain Scan (MBS) dataset. Salehi and colleagues (2020) <a class="bibtex reference internal" href="references.html#salehi2020-bh" id="id5">[14]</a> demonstrated that fMRI brain parcels varied systematically across tasks, even for a given individual. Boukhdir and colleagues (2020) <a class="bibtex reference internal" href="references.html#boukhdhir2020" id="id6">[2]</a> then showed, again in MBS, that dynamic states of brain parcellation could be identified at rest using short sliding windows. It is not clear to what extent the task-specific parcels of Salehi and colleagues match the dynamic parcels at rest identified by Boukhdhir and colleagues. In this paper, our main objective is to assess whether dynamic parcels generalize across a variety of cognitive contexts, based on measures of reproducibility and homogeneity. We specifically investigate a collection of movie watching, resting-state, as well as a battery of controlled cognitive tasks from the Human Connectome Project (HCP) <a class="bibtex reference internal" href="references.html#van-essen2013-ph" id="id7">[20]</a>, using the 2020 data release of the Courtois project on neuronal modelling (~40 hours of fMRI data per subject, N=6) [REF].</p>
+</div>
+<div class="section" id="dynamic-brain-parcels">
+<h2>Dynamic brain parcels<a class="headerlink" href="#dynamic-brain-parcels" title="Permalink to this headline">¶</a></h2>
+<p>Traditional functional brain parcellations are “hard” assignments, i.e. each brain voxel belongs to one and only one parcel with well-defined boundaries. Hard brain parcellations in fMRI emerged in the late 90s and early 2000s, generated through cluster analysis <a class="bibtex reference internal" href="references.html#goutte1999-zb" id="id8">[10]</a><a class="bibtex reference internal" href="references.html#salvador2005-cl" id="id9">[15]</a>, and some hard functional brain parcellations are still being developed to this date, e.g. <a class="bibtex reference internal" href="references.html#craddock2012-ln" id="id10">[5]</a><a class="bibtex reference internal" href="references.html#yeo2011-fd" id="id11">[21]</a><a class="bibtex reference internal" href="references.html#schaefer2018-ww" id="id12">[16]</a>. Hard parcellations are static in nature: parcels are identical for each time point. Alternatively, many studies use “soft” parcels, where each voxel is attributed a weight of membership to a given parcel. Soft parcellations typically overlap, which makes them dynamic in nature. As each parcel is associated with a time course, the activity of a given voxel can be dominated by different overlapping parcels over time. Soft functional parcels initially became popular in the years 2000 with the application of Independent component analysis (ICA) to fMRI <a class="bibtex reference internal" href="references.html#calhoun2001-kd" id="id13">[4]</a><a class="bibtex reference internal" href="references.html#damoiseaux2006-od" id="id14">[7]</a><a class="bibtex reference internal" href="references.html#smith2009-pt" id="id15">[17]</a>, and modern variants aim to better characterize inter-individual variations and scale better to large datasets using a variety of techniques, e.g. <a class="bibtex reference internal" href="references.html#harrison2020-jk" id="id16">[12]</a><a class="bibtex reference internal" href="references.html#dadi2020-gb" id="id17">[6]</a><a class="bibtex reference internal" href="references.html#du2020-tm" id="id18">[8]</a>. Our recent work <a class="bibtex reference internal" href="references.html#boukhdhir2020" id="id19">[2]</a> draws a bridge between hard and soft parcellations. We generated hard parcels over short sliding windows with a very basic clustering algorithm (k-means), and then grouped similar parcels over time into “states”, using a second (temporal) cluster analysis. Dynamic parcels were then defined as average hard parcels within each state, and the resulting soft parcels represented a probability for each brain voxel to participate in this hard parcel. We found those dynamic (soft) parcels to be highly reproducible and subject-specific.</p>
+</div>
+<div class="section" id="reproducibility">
+<h2>Reproducibility<a class="headerlink" href="#reproducibility" title="Permalink to this headline">¶</a></h2>
+<p>We evaluate the quality of dynamic parcels in different cognitive contexts using reproducibility and homogeneity, following the approach of Thirion and colleagues (2014) <a class="bibtex reference internal" href="references.html#thirion2014-jf" id="id20">[18]</a>. In the context of individual fMRI analysis, reproducibility is assessed by generating parcels on two independent samples of fMRI data (called test and retest), acquired on the same subject, and compare these test-retest parcels through some quantitative reproducibility metric. For hard parcels, the most common reproducibility metric is the Dice coefficient [REF]<a class="footnote-reference brackets" href="#footnote-dice" id="id21">1</a>, ranging from zero (no overlap) to 1 (parcels are identical). The reproducibility of individual hard parcels was studied in MBS as a function of the duration of the test and retest dataset, and the Dice coefficient was shown to plateau at around <span class="math notranslate nohighlight">\(0.7\)</span> with about 30 minutes of resting state data <a class="bibtex reference internal" href="references.html#gordon2017-gd" id="id22">[9]</a>. This plateau at <span class="math notranslate nohighlight">\(0.7\)</span> is in line with the Dice observed over a wide range of clustering techniques by Arslan and colleagues <a class="bibtex reference internal" href="references.html#arslan2017-tz" id="id23">[1]</a> in the HCP sample <a class="bibtex reference internal" href="references.html#van-essen2013-ph" id="id24">[20]</a>. Soft parcellations are more challenging to compare, as there is no one-to-one voxel-to-parcel correspondence, and it was proposed to match parcels between the test and retest dataset before quantifying the similarity of parcels with a spatial correlation coefficient, see e.g. <a class="bibtex reference internal" href="references.html#zuo2010-vn" id="id25">[22]</a>. Survey reproducibility indices for ICA at the individual level…</p>
+</div>
+<div class="section" id="homogeneity">
+<h2>Homogeneity<a class="headerlink" href="#homogeneity" title="Permalink to this headline">¶</a></h2>
+<p>An important difference between static and dynamic parcellations was how fMRI data were compressed in parcels. In the case of a static parcellation, the compression was univariate. Each parcel represented the average functional activity at a specific spatial location in the cerebral cortex. An average signal was generated for each parcel, or a principal component analysis was applied to the signal inside the parcel [Eickhoff et al., 2018]. In the case of dynamic parcellations, the compression was multivariate as the parcels (or spatial modes of decomposition) were used altogether using a multivariate regression analysis to fit a full brain activity volumes over time <a class="bibtex reference internal" href="references.html#calhoun2001-kd" id="id26">[4]</a> resulting in spatially overlapping parcels, i.e., the same voxel was involved with different states. Recently, some researchers showed the application of a dynamic approach improved the fidelity of the compressed data to the actual neurobiological changes over time in space. For instance, Dadi and colleagues used the spatial sparsity constraint to generate dynamic brain parcels [Dadi et al. 2020]. Authors showed the compression of activation maps was improved using soft and dynamic parcellations over a range of classic static parcellations [Dadi et al. 2020]. Here, authors showed the existence of variability in temporal features that were not confounded with spatial features [Harrison et al,  2020]. Even though there existed several static functional approaches in the literature, there was no consensus on which approach better reduce the high dimensionality of the functional data [Cite surveys Arslan et al. 2017]. That is, the compression rate of static parcellations seem to reflect primarily the size of parcels (resolution), and state-of-the-art algorithms offer little to no advantage compared to random brain parcellation (see Fig 7 of Urchs et al. 2019).</p>
+</div>
+<div class="section" id="generalization-across-cognitive-contexts">
+<h2>Generalization across cognitive contexts<a class="headerlink" href="#generalization-across-cognitive-contexts" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="specific-objectives">
+<h2>Specific objectives<a class="headerlink" href="#specific-objectives" title="Permalink to this headline">¶</a></h2>
+<p>In this paper, we build upon the findings of Boukhdhir and colleagues and we extend the dynamic parcellation approach to extract full brain dynamic states of functional parcellations at the individual level [Boukhdhir et al. 2020]. We define a dynamic state of parcellation as the time-space decomposition that occurs for short time durations in the resting state condition. This approach is based on aggregating sliding-window parcellations for a given region to obtain stability maps of the different dynamic states of parcellations. We generate these dynamic states for the six subjects of the Courtois Neuromod dataset and we aim to evaluate the compression quality of the state stability maps at the full brain level. We also aim to study similarities and variations within-subject (between sets of independent data for the same subject) and across subjects.</p>
+<hr class="docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="footnote-dice"><span class="brackets"><a class="fn-backref" href="#id21">1</a></span></dt>
+<dd><p>Let <span class="math notranslate nohighlight">\(v\)</span> be a voxel, and <span class="math notranslate nohighlight">\(T_v, R_v\)</span> be the parcels containing <span class="math notranslate nohighlight">\(v\)</span> for the test and retest respectively. The Dice coefficient <span class="math notranslate nohighlight">\(D_v\)</span> is the size of the intersection between <span class="math notranslate nohighlight">\(T_v\)</span> and <span class="math notranslate nohighlight">\(R_v\)</span> relative to the average size of the two parcels, or <span class="math notranslate nohighlight">\(2\times |T_v \cap R_z|/(|T_z| + |R(v)|)\)</span>. The local Dice <span class="math notranslate nohighlight">\(D_v\)</span> can be further averaged across all voxels <span class="math notranslate nohighlight">\(v\)</span> to provide a global parcellation reproducibility score.</p>
+</dd>
+</dl>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="abstract.html" title="previous page">Abstract</a>
+    <a class='right-next' id="next-link" href="methods.html" title="next page">Methods</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By CNeuroMod team<br/>
+        
+            &copy; Copyright 2020.<br/>
+          <div class="extra_footer">
+            This jupyterbook was prepared for submission at <a href="https://neurolibre.com">Neurolibre</a>.
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
