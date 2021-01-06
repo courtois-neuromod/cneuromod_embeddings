@@ -1,6 +1,6 @@
 # cneuromod-embeddings
 
-This book presents a series of experiment to validate the quality of individual fMRI data using dynamic brain parcels in the Courtois NeuroMod (CNeuroMod) data sample, including a variety of tasks and movies. 
+This [book](https://courtois-neuromod.github.io/cneuromod_embeddings/) presents a series of experiment to validate the quality of individual fMRI data using dynamic brain parcels in the Courtois NeuroMod (CNeuroMod) data sample, including a variety of tasks and movies. 
 
 ## Usage
 
