@@ -23,7 +23,7 @@ for subject in cmd["subject"]:
                             for replications in cmd["replication"]:
                                 for fwhm in cmd["fwhm"]:
                                     cmds.append(
-                                        """python generate_embeddings.py --subject={sub} --dataset={dat} --session={ses} --task={tas} --val={val} -n_clusters={cluster} -n_states={state} -n_batch={batch} -n_replications={replication} -fwhm={fwhm} \n""".format(
+                                        """python cneuromod_embeddings/generate_embeddings.py --subject={sub} --dataset={dat} --session={ses} --task={tas} --val={val} -n_clusters={cluster} -n_states={state} -n_batch={batch} -n_replications={replication} -fwhm={fwhm} \n""".format(
                                             sub=subject,
                                             dat=dataset,
                                             ses=session,
@@ -37,16 +37,16 @@ for subject in cmd["subject"]:
                                         )
                                     )
 
-with open("dypac_jobs{}.sh".format(num), "w") as dy_job:
+with open("cneuromod_embeddings/dypac_jobs{}.sh".format(num), "w") as dy_job:
     for c in cmds:
         dy_job.write(c)
 
-with open("dypac_submit_jobs{}.sh".format(num), "r") as dy_sub:
+with open("cneuromod_embeddings/dypac_submit_jobs{}.sh".format(num), "r") as dy_sub:
     lines = dy_sub.readlines()
 
 for i in range(len(lines)):
     if "#SBATCH --array=" in lines[i]:
         lines[i] = "#SBATCH --array=1-{}\n".format(len(cmds))
 
-with open("dypac_submit_jobs{}.sh".format(num), "w") as dy_sub:
+with open("cneuromod_embeddings/dypac_submit_jobs{}.sh".format(num), "w") as dy_sub:
     dy_sub.writelines(lines)
