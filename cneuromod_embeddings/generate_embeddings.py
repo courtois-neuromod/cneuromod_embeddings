@@ -119,10 +119,13 @@ if __name__ == "__main__":
     anat_path = os.path.join(args.path, "anat")
     anat_derivatives_path = os.path.join(anat_path, "derivatives", args.derivatives)
     anat_layout = BIDSLayout(anat_path, derivatives=anat_derivatives_path)
-    gm_path = anat_layout.get(subject=subjects, space=args.space, label="GM", scope="derivatives", return_type="file")[0]
+    if len(subjects) == 1:
+        gm_path = anat_layout.get(subject=subjects, space=args.space, label="GM",
+                                  scope="derivatives", return_type="file")[0]
+    else:
+        gm_path = "data/MNI_GM_mask/mni_icbm152_gm_tal_nlin_sym_09a.nii.gz"
     print("gm_path = ", gm_path)
 
-    ## TODO: use default value for grey_matter if mutliple subjects
     wt_start = time.time()
     pt_start = time.process_time()
     model = dypac_generate(
