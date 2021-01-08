@@ -1,12 +1,24 @@
-python generate_embeddings.py --subject=01 --dataset=friends --session=all --task=s01  -n_clusters=20  -n_states=60 -n_batch=1 -n_replications=100 
-python generate_embeddings.py --subject=01 --dataset=friends --session=all --task=s01  -n_clusters=20  -n_states=120 -n_batch=1 -n_replications=100 
-python generate_embeddings.py --subject=02 --dataset=friends --session=all --task=s01  -n_clusters=20  -n_states=60 -n_batch=1 -n_replications=100 
-python generate_embeddings.py --subject=02 --dataset=friends --session=all --task=s01  -n_clusters=20  -n_states=120 -n_batch=1 -n_replications=100 
-python generate_embeddings.py --subject=03 --dataset=friends --session=all --task=s01  -n_clusters=20  -n_states=60 -n_batch=1 -n_replications=100 
-python generate_embeddings.py --subject=03 --dataset=friends --session=all --task=s01  -n_clusters=20  -n_states=120 -n_batch=1 -n_replications=100 
-python generate_embeddings.py --subject=04 --dataset=friends --session=all --task=s01  -n_clusters=20  -n_states=60 -n_batch=1 -n_replications=100 
-python generate_embeddings.py --subject=04 --dataset=friends --session=all --task=s01  -n_clusters=20  -n_states=120 -n_batch=1 -n_replications=100 
-python generate_embeddings.py --subject=05 --dataset=friends --session=all --task=s01  -n_clusters=20  -n_states=60 -n_batch=1 -n_replications=100 
-python generate_embeddings.py --subject=05 --dataset=friends --session=all --task=s01  -n_clusters=20  -n_states=120 -n_batch=1 -n_replications=100 
-python generate_embeddings.py --subject=06 --dataset=friends --session=all --task=s01  -n_clusters=20  -n_states=60 -n_batch=1 -n_replications=100 
-python generate_embeddings.py --subject=06 --dataset=friends --session=all --task=s01  -n_clusters=20  -n_states=120 -n_batch=1 -n_replications=100 
+python generate_embeddings.py --subject=01 --dataset=friends --session=all --task=s01e.[02468] --val=s01e.[13579] -n_clusters=300 -n_states=900 -n_batch=1 -n_replications=100 -fwhm=5 
+python generate_embeddings.py --subject=01 --dataset=friends --session=all --task=s01e.[02468] --val=s01e.[13579] -n_clusters=300 -n_states=900 -n_batch=1 -n_replications=100 -fwhm=8 
+python generate_embeddings.py --subject=01 --dataset=friends --session=all --task=s01e.[13579] --val=s01e.[02468] -n_clusters=300 -n_states=900 -n_batch=1 -n_replications=100 -fwhm=5 
+python generate_embeddings.py --subject=01 --dataset=friends --session=all --task=s01e.[13579] --val=s01e.[02468] -n_clusters=300 -n_states=900 -n_batch=1 -n_replications=100 -fwhm=8 
+python generate_embeddings.py --subject=02 --dataset=friends --session=all --task=s01e.[02468] --val=s01e.[13579] -n_clusters=300 -n_states=900 -n_batch=1 -n_replications=100 -fwhm=5 
+python generate_embeddings.py --subject=02 --dataset=friends --session=all --task=s01e.[02468] --val=s01e.[13579] -n_clusters=300 -n_states=900 -n_batch=1 -n_replications=100 -fwhm=8 
+python generate_embeddings.py --subject=02 --dataset=friends --session=all --task=s01e.[13579] --val=s01e.[02468] -n_clusters=300 -n_states=900 -n_batch=1 -n_replications=100 -fwhm=5 
+python generate_embeddings.py --subject=02 --dataset=friends --session=all --task=s01e.[13579] --val=s01e.[02468] -n_clusters=300 -n_states=900 -n_batch=1 -n_replications=100 -fwhm=8 
+python generate_embeddings.py --subject=03 --dataset=friends --session=all --task=s01e.[02468] --val=s01e.[13579] -n_clusters=300 -n_states=900 -n_batch=1 -n_replications=100 -fwhm=5 
+python generate_embeddings.py --subject=03 --dataset=friends --session=all --task=s01e.[02468] --val=s01e.[13579] -n_clusters=300 -n_states=900 -n_batch=1 -n_replications=100 -fwhm=8 
+python generate_embeddings.py --subject=03 --dataset=friends --session=all --task=s01e.[13579] --val=s01e.[02468] -n_clusters=300 -n_states=900 -n_batch=1 -n_replications=100 -fwhm=5 
+python generate_embeddings.py --subject=03 --dataset=friends --session=all --task=s01e.[13579] --val=s01e.[02468] -n_clusters=300 -n_states=900 -n_batch=1 -n_replications=100 -fwhm=8 
+python generate_embeddings.py --subject=04 --dataset=friends --session=all --task=s01e.[02468] --val=s01e.[13579] -n_clusters=300 -n_states=900 -n_batch=1 -n_replications=100 -fwhm=5 
+python generate_embeddings.py --subject=04 --dataset=friends --session=all --task=s01e.[02468] --val=s01e.[13579] -n_clusters=300 -n_states=900 -n_batch=1 -n_replications=100 -fwhm=8 
+python generate_embeddings.py --subject=04 --dataset=friends --session=all --task=s01e.[13579] --val=s01e.[02468] -n_clusters=300 -n_states=900 -n_batch=1 -n_replications=100 -fwhm=5 
+python generate_embeddings.py --subject=04 --dataset=friends --session=all --task=s01e.[13579] --val=s01e.[02468] -n_clusters=300 -n_states=900 -n_batch=1 -n_replications=100 -fwhm=8 
+python generate_embeddings.py --subject=05 --dataset=friends --session=all --task=s01e.[02468] --val=s01e.[13579] -n_clusters=300 -n_states=900 -n_batch=1 -n_replications=100 -fwhm=5 
+python generate_embeddings.py --subject=05 --dataset=friends --session=all --task=s01e.[02468] --val=s01e.[13579] -n_clusters=300 -n_states=900 -n_batch=1 -n_replications=100 -fwhm=8 
+python generate_embeddings.py --subject=05 --dataset=friends --session=all --task=s01e.[13579] --val=s01e.[02468] -n_clusters=300 -n_states=900 -n_batch=1 -n_replications=100 -fwhm=5 
+python generate_embeddings.py --subject=05 --dataset=friends --session=all --task=s01e.[13579] --val=s01e.[02468] -n_clusters=300 -n_states=900 -n_batch=1 -n_replications=100 -fwhm=8 
+python generate_embeddings.py --subject=06 --dataset=friends --session=all --task=s01e.[02468] --val=s01e.[13579] -n_clusters=300 -n_states=900 -n_batch=1 -n_replications=100 -fwhm=5 
+python generate_embeddings.py --subject=06 --dataset=friends --session=all --task=s01e.[02468] --val=s01e.[13579] -n_clusters=300 -n_states=900 -n_batch=1 -n_replications=100 -fwhm=8 
+python generate_embeddings.py --subject=06 --dataset=friends --session=all --task=s01e.[13579] --val=s01e.[02468] -n_clusters=300 -n_states=900 -n_batch=1 -n_replications=100 -fwhm=5 
+python generate_embeddings.py --subject=06 --dataset=friends --session=all --task=s01e.[13579] --val=s01e.[02468] -n_clusters=300 -n_states=900 -n_batch=1 -n_replications=100 -fwhm=8 
