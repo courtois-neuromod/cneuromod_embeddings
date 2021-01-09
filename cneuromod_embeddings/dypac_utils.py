@@ -58,15 +58,20 @@ def load_model(pickle_in):
     return model, mask_img
 
 
-def load_dypac(subject, root_data, fwhm=5, cluster=50, state=150, batch="even"):
+def load_dypac(subject, root_data, fwhm=5, cluster=50, state=150, batch="even", xp_type="friends-s01"):
     """Load a dypac model."""
+    if xp_type == "friends-s01_clean":
+        suffix = "_clean"
+    else:
+        suffix = ""
+
     path_data = os.path.join(
         root_data,
         f"dataset-friends_tasks-s01{batch}_cluster-{cluster}_states-{state}_batches-1_reps-100_fwhm-{fwhm}",
     )
     file_model = os.path.join(
         path_data,
-        f"{subject}_dataset-friends_tasks-s01{batch}_cluster-{cluster}_states-{state}_batches-1_reps-100_fwhm-{fwhm}.pickle",
+        f"{subject}_dataset-friends_tasks-s01{batch}_cluster-{cluster}_states-{state}_batches-1_reps-100_fwhm-{fwhm}{suffix}.pickle",
     )
     pickle_in = open(file_model, "rb")
     model, mask_img = load_model(pickle_in)

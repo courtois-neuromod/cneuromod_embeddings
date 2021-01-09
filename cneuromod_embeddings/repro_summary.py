@@ -52,7 +52,7 @@ def R_models(model1, model2, mask_img):
     return R
 
 
-def match_components(sub1, sub2, root_data, fwhm, cluster, state):
+def match_components(sub1, sub2, root_data, fwhm, cluster, state, xp_type):
     model1, mask_img1 = du.load_dypac(
         subject=sub1,
         root_data=root_data,
@@ -60,6 +60,7 @@ def match_components(sub1, sub2, root_data, fwhm, cluster, state):
         cluster=cluster,
         state=state,
         batch="even",
+        xp_type=xp_type
     )
     if sub2 == sub1:
         batch = "odd"
@@ -72,6 +73,7 @@ def match_components(sub1, sub2, root_data, fwhm, cluster, state):
         cluster=cluster,
         state=state,
         batch=batch,
+        xp_type=xp_type
     )
     mask_img = math_img(
         "img1 + img2 > 0", img1=model.masker_.mask_img, img2=model2.masker_.mask_img
@@ -135,7 +137,7 @@ def save_matx(match_matx, path_results, fwhm, cluster, state):
     pickle.dump(match_matx, open(file_save, "wb"))
 
 
-def reproducibility(n_subject=6, fwhm=5, cluster=300, state=900):
+def reproducibility(root_data, n_subject=6, fwhm=5, cluster=300, state=900, xp_type='friends-s01'):
     list_subject = du.subject_keys(n_subject)
     match_mtx = dict.fromkeys(list_subject)
     for sub in list_subject:
@@ -153,6 +155,7 @@ def reproducibility(n_subject=6, fwhm=5, cluster=300, state=900):
                 fwhm=fwhm,
                 cluster=cluster,
                 state=state,
+                xp_type=xp_type
             )
             match_mtx[sub1][sub2] = R
             match_mtx[sub2][sub1] = R.transpose()
@@ -161,7 +164,7 @@ def reproducibility(n_subject=6, fwhm=5, cluster=300, state=900):
 
 def main(args):
     match_mtx = reproducibility(
-        n_subject=6, fwhm=args.fwhm, cluster=args.cluster, state=args.state
+        root_data=args.path_parcels, n_subject=6, fwhm=args.fwhm, cluster=args.cluster, state=args.state, xp_type=args.xp_type
     )
     save_matx(match_mtx, args.path_results, args.fwhm, args.cluster, args.state)
 
@@ -170,6 +173,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("path_parcels", help="Full path to the parcels.")
     parser.add_argument("path_results", help="Path to store the results.")
+    parser.add_argument("--xp_type", help="The type of experiment [friends-s01 (default), friends-s01_clean].")
     parser.add_argument("--fwhm", type=int, help="smoothing parameter.")
     parser.add_argument("--cluster", type=int, help="number of clusters.")
     parser.add_argument("--state", type=int, help="number of states.")
