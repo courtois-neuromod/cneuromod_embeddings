@@ -76,7 +76,7 @@ def match_components(sub1, sub2, root_data, fwhm, cluster, state, xp_type):
         xp_type=xp_type
     )
     mask_img = math_img(
-        "img1 + img2 > 0", img1=model.masker_.mask_img, img2=model2.masker_.mask_img
+        "img1 + img2 > 0", img1=model1.masker_.mask_img, img2=model2.masker_.mask_img
     )
     return R_models(model1, model2, mask_img)
 
