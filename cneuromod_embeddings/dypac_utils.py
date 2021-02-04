@@ -44,7 +44,13 @@ def subject_keys(n_subject):
 
 def normalize_components(model, mask_img):
     scaler = StandardScaler()
-    x = model.components_.todense()
+    x = model.components_
+    # if the model is generated directly by dypac, it is a sparce scipy array
+    # otherwise it is a ndarray
+    if not isinstance(model.components_, np.ndarray):
+        x = x.todense()
+    else:
+        x = x.transpose()
     img_parcels = model.masker_.inverse_transform(x)
     masker = NiftiMasker(standardize=False, detrend=False, mask_img=mask_img)
     xn = scaler.fit_transform(masker.fit_transform(img_parcels).transpose())

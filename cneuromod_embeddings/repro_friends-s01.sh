@@ -8,6 +8,9 @@ echo Experiment type: $XP_TYPE
 echo Input data located in $PATH_DATA
 echo Results will be saved in $PATH_RESULTS
 
+mkdir $PATH_RESULTS
+echo $myInvocation > $PATH_RESULTS"script.log"
+
 python repro_summary.py --fwhm 5 --cluster 20  --state 60  --xp_type $XP_TYPE $PATH_DATA $PATH_RESULTS &
 python repro_summary.py --fwhm 5 --cluster 20  --state 120 --xp_type $XP_TYPE $PATH_DATA $PATH_RESULTS &
 python repro_summary.py --fwhm 5 --cluster 50  --state 150 --xp_type $XP_TYPE $PATH_DATA $PATH_RESULTS &
