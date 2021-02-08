@@ -1,3 +1,4 @@
 output/*
 .ipynb_checkpoints/
+cneuromod_embeddings.egg-info/
 __pycache__/
