@@ -16,8 +16,8 @@ def visu_match(start, n_comp, model1, model2, order, match_pair, match_val):
     for num in range(n_comp):
         ind1 = order[num + start]
         ind2 = match_pair[order[num + start]]
-        map1 = model1.masker_.inverse_transform(model1.components_[ind1, :].todense())
-        map2 = model2.masker_.inverse_transform(model2.components_[ind2, :].todense())
+        map1 = model1.masker_.inverse_transform(model1.components_[ind1, :])
+        map2 = model2.masker_.inverse_transform(model2.components_[ind2, :])
         cut_coords = plotting.find_xyz_cut_coords(map1, activation_threshold=0.1)
         plotting.plot_stat_map(
             map1,
@@ -173,7 +173,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("path_parcels", help="Full path to the parcels.")
     parser.add_argument("path_results", help="Path to store the results.")
-    parser.add_argument("--xp_type", help="The type of experiment [friends-s01 (default), friends-s01_clean].")
+    parser.add_argument("--xp_type", help="The type of experiment [friends-s01 (default), friends-s01_clean, friends-s01_clean_multi_fwhm].")
     parser.add_argument("--fwhm", type=int, help="smoothing parameter.")
     parser.add_argument("--cluster", type=int, help="number of clusters.")
     parser.add_argument("--state", type=int, help="number of states.")

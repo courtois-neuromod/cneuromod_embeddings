@@ -45,12 +45,6 @@ def subject_keys(n_subject):
 def normalize_components(model, mask_img):
     scaler = StandardScaler()
     x = model.components_
-    # if the model is generated directly by dypac, it is a sparce scipy array
-    # otherwise it is a ndarray
-    if not isinstance(model.components_, np.ndarray):
-        x = x.todense()
-    else:
-        x = x.transpose()
     img_parcels = model.masker_.inverse_transform(x)
     masker = NiftiMasker(standardize=False, detrend=False, mask_img=mask_img)
     xn = scaler.fit_transform(masker.fit_transform(img_parcels).transpose())
@@ -61,16 +55,29 @@ def load_model(pickle_in):
     model = pk.load(pickle_in)
     pickle_in.close()
     mask_img = model.masker_.mask_img_
+    # if the model is generated directly by dypac, it is a sparce scipy array
+    # otherwise it is a ndarray
+    if not isinstance(model.components_, np.ndarray):
+        model.components_ = model.components_.todense()
+    else:
+        model.components_ = model.components_.transpose()
+
     return model, mask_img
+
+
+def _get_suffix(xp_type):
+    if xp_type == "friends-s01_clean":
+        suffix = "_clean"
+    elif xp_type == "friends-s01_clean_multi_fwhm":
+        suffix = "_clean_multi_fwhm"
+    else:
+        suffix = ""
+    return suffix
 
 
 def load_dypac(subject, root_data, fwhm=5, cluster=50, state=150, batch="even", xp_type="friends-s01"):
     """Load a dypac model."""
-    if xp_type == "friends-s01_clean":
-        suffix = "_clean"
-    else:
-        suffix = ""
-
+    suffix = _get_suffix(xp_type)
     path_data = os.path.join(
         root_data,
         f"dataset-friends_tasks-s01{batch}_cluster-{cluster}_states-{state}_batches-1_reps-100_fwhm-{fwhm}",
@@ -89,35 +96,37 @@ def load_dypac(subject, root_data, fwhm=5, cluster=50, state=150, batch="even", 
     return model, mask_img
 
 
-def load_r2_intra(subject, root_data, fwhm=5, cluster=50, state=150):
+def load_r2_intra(subject, root_data, fwhm=5, cluster=50, state=150, xp_type='friends-s01'):
     """Load a stack of r2 maps."""
+    suffix = _get_suffix(xp_type)
     path_data = os.path.join(
         root_data,
         f"dataset-friends_tasks-s01even_cluster-{cluster}_states-{state}_batches-1_reps-100_fwhm-{fwhm}",
     )
     file_score = os.path.join(
         path_data,
-        f"{subject}_dataset-friends_tasks-s01even_cluster-{cluster}_states-{state}_batches-1_reps-100_fwhm-{fwhm}_r2_scores.hdf5",
+        f"{subject}_dataset-friends_tasks-s01even_cluster-{cluster}_states-{state}_batches-1_reps-100_fwhm-{fwhm}{suffix}_r2_scores.hdf5",
     )
     hdf5_file = h5py.File(file_score, "r")
     return hdf5_file
 
 
-def load_r2_inter(subject, root_data, fwhm, cluster=50, state=150):
+def load_r2_inter(subject, root_data, fwhm, cluster=50, state=150, xp_type='friends-s01'):
     """Load a stack of r2 maps."""
+    suffix = _get_suffix(xp_type)
     path_data = os.path.join(
         root_data,
         f"dataset-friends_tasks-s01even_cluster-{cluster}_states-{state}_batches-1_reps-100_fwhm-{fwhm}",
     )
     file_score = os.path.join(
         path_data,
-        f"{subject}_dataset-friends_tasks-s01even_cluster-{cluster}_states-{state}_batches-1_reps-100_fwhm-{fwhm}_inter_r2_scores.hdf5",
+        f"{subject}_dataset-friends_tasks-s01even_cluster-{cluster}_states-{state}_batches-1_reps-100_fwhm-{fwhm}{suffix}_inter_r2_scores.hdf5",
     )
     hdf5_file = h5py.File(file_score, "r")
     return hdf5_file
 
 
-def load_r2_other(atlas, root_data, fwhm):
+def load_r2_other(atlas, root_data, fwhm, xp_type='friends-s01'):
     """Load a stack of r2 maps with other atlases."""
     path_data = os.path.join(root_data, "other_atlases")
     file_score = os.path.join(path_data, f"{atlas}_fwhm-{fwhm}_r2_score.hdf5")
