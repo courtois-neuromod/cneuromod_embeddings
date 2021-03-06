@@ -59,13 +59,13 @@ def match_components(sub1, sub2, root_data, fwhm, cluster, state, xp_type):
         fwhm=fwhm,
         cluster=cluster,
         state=state,
-        batch="even",
+        batch="training",
         xp_type=xp_type
     )
     if sub2 == sub1:
-        batch = "odd"
+        batch = "test"
     else:
-        batch = "even"
+        batch = "training"
     model2, mask_img2 = du.load_dypac(
         subject=sub2,
         root_data=root_data,

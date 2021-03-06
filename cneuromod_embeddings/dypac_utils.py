@@ -65,26 +65,44 @@ def load_model(pickle_in):
     return model, mask_img
 
 
-def _get_suffix(xp_type):
+def _get_suffix(xp_type, batch="training", output_type="model"):
     if xp_type == "friends-s01_clean":
         suffix = "_clean"
+        if batch == "training":
+            task = "s01even"
+        else: 
+            task = "s01odd"
     elif xp_type == "friends-s01_clean_multi_fwhm":
         suffix = "_clean_multi_fwhm"
+        if batch == "training":
+            task = "s01even"
+        else:
+            task = "s01odd"
+    elif xp_type == "friends-s02":
+        if batch == "training":
+            task = "s01"
+        else:
+            task = "s02"
+        if output_type="model":
+            suffix = "_clean_multi_fwhm"
+        else:
+            suffix = ""
     else:
+        task = f"s01{batch}"
         suffix = ""
-    return suffix
+    return suffix, task
 
 
-def load_dypac(subject, root_data, fwhm=5, cluster=50, state=150, batch="even", xp_type="friends-s01"):
+def load_dypac(subject, root_data, fwhm=5, cluster=50, state=150, batch="training", xp_type="friends-s01"):
     """Load a dypac model."""
-    suffix = _get_suffix(xp_type)
+    suffix, task = _get_suffix(xp_type, batch=batch, output_type="model")
     path_data = os.path.join(
         root_data,
-        f"dataset-friends_tasks-s01{batch}_cluster-{cluster}_states-{state}_batches-1_reps-100_fwhm-{fwhm}",
+        f"dataset-friends_tasks-{task}_cluster-{cluster}_states-{state}_batches-1_reps-100_fwhm-{fwhm}",
     )
     file_model = os.path.join(
         path_data,
-        f"{subject}_dataset-friends_tasks-s01{batch}_cluster-{cluster}_states-{state}_batches-1_reps-100_fwhm-{fwhm}{suffix}.pickle",
+        f"{subject}_dataset-friends_tasks-{task}_cluster-{cluster}_states-{state}_batches-1_reps-100_fwhm-{fwhm}{suffix}.pickle",
     )
     pickle_in = open(file_model, "rb")
     model, mask_img = load_model(pickle_in)
@@ -98,14 +116,14 @@ def load_dypac(subject, root_data, fwhm=5, cluster=50, state=150, batch="even", 
 
 def load_r2_intra(subject, root_data, fwhm=5, cluster=50, state=150, xp_type='friends-s01'):
     """Load a stack of r2 maps."""
-    suffix = _get_suffix(xp_type)
+    suffix, task = _get_suffix(xp_type, batch="training", output_type="r2_intra")
     path_data = os.path.join(
         root_data,
-        f"dataset-friends_tasks-s01even_cluster-{cluster}_states-{state}_batches-1_reps-100_fwhm-{fwhm}",
+        f"dataset-friends_tasks-{task}_cluster-{cluster}_states-{state}_batches-1_reps-100_fwhm-{fwhm}",
     )
     file_score = os.path.join(
         path_data,
-        f"{subject}_dataset-friends_tasks-s01even_cluster-{cluster}_states-{state}_batches-1_reps-100_fwhm-{fwhm}{suffix}_r2_scores.hdf5",
+        f"{subject}_dataset-friends_tasks-{task}_cluster-{cluster}_states-{state}_batches-1_reps-100_fwhm-{fwhm}{suffix}_r2_scores.hdf5",
     )
     hdf5_file = h5py.File(file_score, "r")
     return hdf5_file
@@ -113,14 +131,14 @@ def load_r2_intra(subject, root_data, fwhm=5, cluster=50, state=150, xp_type='fr
 
 def load_r2_inter(subject, root_data, fwhm, cluster=50, state=150, xp_type='friends-s01'):
     """Load a stack of r2 maps."""
-    suffix = _get_suffix(xp_type)
+    suffix, task = _get_suffix(xp_type, batch="training", output_type="r2_inter")
     path_data = os.path.join(
         root_data,
-        f"dataset-friends_tasks-s01even_cluster-{cluster}_states-{state}_batches-1_reps-100_fwhm-{fwhm}",
+        f"dataset-friends_tasks-{task}_cluster-{cluster}_states-{state}_batches-1_reps-100_fwhm-{fwhm}",
     )
     file_score = os.path.join(
         path_data,
-        f"{subject}_dataset-friends_tasks-s01even_cluster-{cluster}_states-{state}_batches-1_reps-100_fwhm-{fwhm}{suffix}_inter_r2_scores.hdf5",
+        f"{subject}_dataset-friends_tasks-{task}_cluster-{cluster}_states-{state}_batches-1_reps-100_fwhm-{fwhm}{suffix}_inter_r2_scores.hdf5",
     )
     hdf5_file = h5py.File(file_score, "r")
     return hdf5_file
