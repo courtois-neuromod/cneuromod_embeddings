@@ -19,11 +19,17 @@ def get_root_data(xp_name):
     return root_data
 
 
-def dypac_params():
-    params = dict.fromkeys(["fwhm", "cluster", "state"])
-    params["fwhm"] = (5, 8)
-    params["cluster"] = (20, 20, 50, 50, 300)
-    params["state"] = (60, 120, 150, 300, 900)
+def dypac_params(xp_type="friends-s01"):
+    if xp_type == "friends-s01":
+        params = dict.fromkeys(["fwhm", "cluster", "state"])
+        params["fwhm"] = (5, 8)
+        params["cluster"] = (20, 20, 50, 50, 300)
+        params["state"] = (60, 120, 150, 300, 900)
+    else:
+        params = dict.fromkeys(["fwhm", "cluster", "state"])
+        params["fwhm"] = [5]
+        params["cluster"] = (64, 64, 256)
+        params["state"] = (256, 512, 1024)
     return params
 
 
@@ -83,7 +89,7 @@ def _get_suffix(xp_type, batch="training", output_type="model"):
             task = "s01"
         else:
             task = "s02"
-        if output_type="model":
+        if output_type == "model":
             suffix = "_clean_multi_fwhm"
         else:
             suffix = ""

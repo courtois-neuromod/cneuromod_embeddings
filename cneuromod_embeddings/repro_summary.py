@@ -88,13 +88,13 @@ def load_repro(root_data, fwhm, cluster, state):
     return R
 
 
-def repro_df(root_data):
+def repro_df(root_data, xp_type="friends-s01"):
     val = np.array([])
     all_label = np.array([])
     all_fwhm = np.array([])
     all_sub = np.array([])
     type_comp = np.array([])
-    params = du.dypac_params()
+    params = du.dypac_params(xp_type)
     list_subject = du.subject_keys(n_subject=6)
     for fwhm in params["fwhm"]:
         for ind, cluster in enumerate(params["cluster"]):
