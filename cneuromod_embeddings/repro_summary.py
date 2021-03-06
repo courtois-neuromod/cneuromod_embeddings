@@ -4,10 +4,44 @@ import pickle
 import argparse
 import numpy as np
 import matplotlib.pyplot as plt
+import seaborn as sns
 import pandas as pd
 from nilearn import plotting
 from nilearn.image import math_img
 from cneuromod_embeddings import dypac_utils as du
+
+
+def sns_label(x, color, label):
+    ax = plt.gca()
+    ax.text(0, .2, label, fontweight="bold", color=color,
+        ha="left", va="center", transform=ax.transAxes)
+
+
+def visu_repro(data, title="", type_comp="intra"):
+    sns.set_theme(style="white", rc={"axes.facecolor": (0, 0, 0, 0)})
+    if type_comp == "intra":
+        pal = sns.cubehelix_palette(10, rot=-.25, light=.7)
+    else: 
+        pal = sns.cubehelix_palette(20, rot=0.5, light=0.7)
+    
+    g = sns.FacetGrid(data[data['type_comp']==type_comp], row="subject", hue="subject", aspect=7, height=1, palette=pal)
+
+    g.map(sns.kdeplot, "spatial_r",
+                  bw_adjust=.5, clip_on=False,
+                        fill=True, alpha=1, linewidth=1.5)
+    g.map(sns.kdeplot, "spatial_r", clip_on=False, color="w", lw=2, bw_adjust=.5)
+    g.map(plt.axhline, y=0, lw=2, clip_on=False)
+
+    g.map(sns_label, "spatial_r")
+    g.set_xlabels(title)
+
+    # Set the subplots to overlap
+    g.fig.subplots_adjust(hspace=-.25)
+
+    # Remove axes details that don't play well with overlap
+    g.set_titles("")
+    g.set(yticks=[])
+    g.despine(bottom=True, left=True)
 
 
 def visu_match(start, n_comp, model1, model2, order, match_pair, match_val):
