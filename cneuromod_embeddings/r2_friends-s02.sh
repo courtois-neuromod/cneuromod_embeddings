@@ -2,7 +2,7 @@
 
 myInvocation="$(printf %q "$BASH_SOURCE")$((($#)) && printf ' %q' "$@")"
 export TYPE_MASK=$3
-export PATH_RESULTS=$2'/r2_friends-s02_'$TYPE_MASK'/'
+export PATH_RESULTS=$2
 export PATH_DATA=$1
 export XP_TYPE="friends-s02"
 
