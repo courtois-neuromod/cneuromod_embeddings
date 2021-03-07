@@ -98,7 +98,7 @@ def _get_suffix(xp_type, batch="training", output_type="model"):
         if output_type == "model":
             suffix = "_clean_multi_fwhm"
         elif output_type == "r2_other":
-            suffix = "score"
+            suffix = "scores"
         else:
             suffix = ""
     else:
