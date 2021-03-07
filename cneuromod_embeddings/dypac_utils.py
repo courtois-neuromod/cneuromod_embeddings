@@ -73,13 +73,19 @@ def load_model(pickle_in):
 
 def _get_suffix(xp_type, batch="training", output_type="model"):
     if xp_type == "friends-s01_clean":
-        suffix = "_clean"
+        if output_type == "r2_other":
+            suffix = "score"
+        else: 
+            suffix = "_clean"
         if batch == "training":
             task = "s01even"
         else: 
             task = "s01odd"
     elif xp_type == "friends-s01_clean_multi_fwhm":
-        suffix = "_clean_multi_fwhm"
+        if output_type == "r2_other":
+            suffix = "score"
+        else: 
+            suffix = "_clean_multi_fwhm"
         if batch == "training":
             task = "s01even"
         else:
@@ -91,6 +97,8 @@ def _get_suffix(xp_type, batch="training", output_type="model"):
             task = "s02"
         if output_type == "model":
             suffix = "_clean_multi_fwhm"
+        elif output_type == "r2_other":
+            suffix = "score"
         else:
             suffix = ""
     else:
@@ -153,7 +161,8 @@ def load_r2_inter(subject, root_data, fwhm, cluster=50, state=150, xp_type='frie
 def load_r2_other(atlas, root_data, fwhm, xp_type='friends-s01'):
     """Load a stack of r2 maps with other atlases."""
     path_data = os.path.join(root_data, "other_atlases")
-    file_score = os.path.join(path_data, f"{atlas}_fwhm-{fwhm}_r2_score.hdf5")
+    suffix, task = _get_suffix(xp_type, batch="training", output_type="r2_other")
+    file_score = os.path.join(path_data, f"{atlas}_fwhm-{fwhm}_r2_{suffix}.hdf5")
     hdf5_file = h5py.File(file_score, "r")
     return hdf5_file
 

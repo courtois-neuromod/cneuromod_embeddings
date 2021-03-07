@@ -10,6 +10,7 @@ from cneuromod_embeddings.dypac_utils import (
     load_r2_intra,
     load_r2_inter,
     load_r2_other,
+    dypac_params,
     key_params,
 )
 from cneuromod_embeddings.cortical_segmentation import cortical_segmentation
@@ -227,7 +228,7 @@ if __name__ == "__main__":
         "--xp_type",
         type=str,
         default="friends-s01",
-        help="The type of experiment [friends-s01 (default), friends-s01_clean, friends-s01_clean_multi_fwhm].",
+        help="The type of experiment [friends-s01 (default), friends-s01_clean, friends-s01_clean_multi_fwhm, friends-s02].",
     )
     parser.add_argument("--cluster", type=int, default=0, help="number of clusters.")
     parser.add_argument("--state", type=int, default=0, help="number of states.")
