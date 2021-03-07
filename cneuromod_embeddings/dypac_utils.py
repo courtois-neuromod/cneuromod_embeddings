@@ -75,16 +75,16 @@ def _get_suffix(xp_type, batch="training", output_type="model"):
     if xp_type == "friends-s01_clean":
         if output_type == "r2_other":
             suffix = "score"
-        else: 
+        else:
             suffix = "_clean"
         if batch == "training":
             task = "s01even"
-        else: 
+        else:
             task = "s01odd"
     elif xp_type == "friends-s01_clean_multi_fwhm":
         if output_type == "r2_other":
             suffix = "score"
-        else: 
+        else:
             suffix = "_clean_multi_fwhm"
         if batch == "training":
             task = "s01even"
@@ -107,7 +107,15 @@ def _get_suffix(xp_type, batch="training", output_type="model"):
     return suffix, task
 
 
-def load_dypac(subject, root_data, fwhm=5, cluster=50, state=150, batch="training", xp_type="friends-s01"):
+def load_dypac(
+    subject,
+    root_data,
+    fwhm=5,
+    cluster=50,
+    state=150,
+    batch="training",
+    xp_type="friends-s01",
+):
     """Load a dypac model."""
     suffix, task = _get_suffix(xp_type, batch=batch, output_type="model")
     path_data = os.path.join(
@@ -128,7 +136,9 @@ def load_dypac(subject, root_data, fwhm=5, cluster=50, state=150, batch="trainin
     return model, mask_img
 
 
-def load_r2_intra(subject, root_data, fwhm=5, cluster=50, state=150, xp_type='friends-s01'):
+def load_r2_intra(
+    subject, root_data, fwhm=5, cluster=50, state=150, xp_type="friends-s01"
+):
     """Load a stack of r2 maps."""
     suffix, task = _get_suffix(xp_type, batch="training", output_type="r2_intra")
     path_data = os.path.join(
@@ -143,7 +153,9 @@ def load_r2_intra(subject, root_data, fwhm=5, cluster=50, state=150, xp_type='fr
     return hdf5_file
 
 
-def load_r2_inter(subject, root_data, fwhm, cluster=50, state=150, xp_type='friends-s01'):
+def load_r2_inter(
+    subject, root_data, fwhm, cluster=50, state=150, xp_type="friends-s01"
+):
     """Load a stack of r2 maps."""
     suffix, task = _get_suffix(xp_type, batch="training", output_type="r2_inter")
     path_data = os.path.join(
@@ -158,7 +170,7 @@ def load_r2_inter(subject, root_data, fwhm, cluster=50, state=150, xp_type='frie
     return hdf5_file
 
 
-def load_r2_other(atlas, root_data, fwhm, xp_type='friends-s01'):
+def load_r2_other(atlas, root_data, fwhm, xp_type="friends-s01"):
     """Load a stack of r2 maps with other atlases."""
     path_data = os.path.join(root_data, "other_atlases")
     suffix, task = _get_suffix(xp_type, batch="training", output_type="r2_other")
