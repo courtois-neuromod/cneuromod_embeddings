@@ -33,6 +33,17 @@ def dypac_params(xp_type="friends-s01"):
     return params
 
 
+def atlas_params(xp_type):
+    params_d = dypac_params(xp_type)
+    params = {}
+    params['dypac'] = []
+    for num, state in enumerate(params_d['state']):
+        cluster = params_d['cluster'][num]
+        params['dypac'].append(f"cluster-{cluster}_state-{state}")
+    params['other'] = ['difumo256', 'difumo512', 'difumo1024', 'mist197', 'mist444', 'schaefer', 'smith']
+    return params
+
+
 def key_params(atlas, fwhm, cluster, state):
     if (atlas == "intra") | (atlas == "inter"):
         params = f"{atlas}_fwhm-{fwhm}_cluster-{cluster}_state-{state}"

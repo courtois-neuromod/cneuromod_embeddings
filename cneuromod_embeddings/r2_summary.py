@@ -12,8 +12,25 @@ from cneuromod_embeddings.dypac_utils import (
     load_r2_other,
     dypac_params,
     key_params,
+    atlas_params,
 )
 from cneuromod_embeddings.cortical_segmentation import cortical_segmentation
+
+
+def fetch_r2(path_results, xp_type):
+    r2 = {}
+    params = dypac_params(xp_type)
+    list_atlas = atlas_params(xp_type)
+    for fwhm in params['fwhm']:
+        for type_comp in ['intra', 'inter']:
+            r2[type_comp] = {}
+            for atlas in list_atlas['dypac']:
+                r2[type_comp][atlas] = os.path.join(path_results, f'r2_fwhm-{type_comp}_fwhm-{fwhm}_{atlas}.p') 
+    
+        r2['other'] = {}
+        for atlas in list_atlas['other']:
+            r2['other'][atlas] = os.path.join(path_results, f'r2_fwhm-{atlas}_fwhm-{fwhm}.p') 
+    return r2 
 
 
 def _save_r2(r2_df, path_results, atlas, fwhm, cluster, state):

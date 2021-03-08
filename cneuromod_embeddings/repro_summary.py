@@ -24,7 +24,7 @@ def visu_repro(data, title="", type_comp="intra"):
     else: 
         pal = sns.cubehelix_palette(20, rot=0.5, light=0.7)
     
-    g = sns.FacetGrid(data[data['type_comp']==type_comp], row="subject", hue="subject", aspect=7, height=1, palette=pal)
+    g = sns.FacetGrid(data[data['type_comp']==type_comp], col="params", row="subject", hue="subject", aspect=7, height=1, palette=pal)
 
     g.map(sns.kdeplot, "spatial_r",
                   bw_adjust=.5, clip_on=False,
@@ -44,19 +44,25 @@ def visu_repro(data, title="", type_comp="intra"):
     g.despine(bottom=True, left=True)
 
 
-def visu_match(start, n_comp, model1, model2, order, match_pair, match_val):
-    width_fig = 20
-    fig = plt.figure(figsize=(width_fig, n_comp * 3))
+def visu_match(start, n_comp, model1, model2, order, match_pair, match_val, fig=None, inner=None):
+    if fig == None:
+        width_fig = 20
+        fig = plt.figure(figsize=(width_fig, n_comp * 3))
+    
     for num in range(n_comp):
         ind1 = order[num + start]
         ind2 = match_pair[order[num + start]]
         map1 = model1.masker_.inverse_transform(model1.components_[ind1, :])
         map2 = model2.masker_.inverse_transform(model2.components_[ind2, :])
         cut_coords = plotting.find_xyz_cut_coords(map1, activation_threshold=0.1)
+        if inner == None:
+            ax_plot = plt.subplot(n_comp, 2, 2 * num + 1)
+        else:
+            ax_plot = plt.Subplot(fig, inner[2 * num])
         plotting.plot_stat_map(
             map1,
             display_mode="ortho",
-            axes=plt.subplot(n_comp, 2, 2 * num + 1),
+            axes=ax_plot,
             threshold=0.1,
             vmax=1,
             colorbar=False,
@@ -65,10 +71,14 @@ def visu_match(start, n_comp, model1, model2, order, match_pair, match_val):
             cmap="bwr",
             cut_coords=cut_coords,
         )
+        if inner == None:
+            ax_plot = plt.subplot(n_comp, 2, 2 * num + 2)
+        else:
+            ax_plot = plt.Subplot(fig, inner[2 * num + 1])
         plotting.plot_stat_map(
             map2,
             display_mode="ortho",
-            axes=plt.subplot(n_comp, 2, 2 * (num + 1)),
+            axes=ax_plot,
             threshold=0.1,
             vmax=1,
             colorbar=False,
