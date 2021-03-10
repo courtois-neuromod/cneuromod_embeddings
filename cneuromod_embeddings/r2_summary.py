@@ -22,7 +22,7 @@ def fetch_r2(path_results, xp_type):
     params = dypac_params(xp_type)
     list_atlas = atlas_params(xp_type)
     for fwhm in params['fwhm']:
-        for type_comp in ['intra', 'inter']:
+        for type_comp in ['intra', 'inter', 'training']:
             r2[type_comp] = {}
             for atlas in list_atlas['dypac']:
                 r2[type_comp][atlas] = os.path.join(path_results, f'r2_fwhm-{type_comp}_fwhm-{fwhm}_{atlas}.p') 
