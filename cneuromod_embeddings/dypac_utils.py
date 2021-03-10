@@ -45,7 +45,7 @@ def atlas_params(xp_type):
 
 
 def key_params(atlas, fwhm, cluster, state):
-    if (atlas == "intra") | (atlas == "inter"):
+    if (atlas == "intra") | (atlas == "inter") | (atlas=="training"):
         params = f"{atlas}_fwhm-{fwhm}_cluster-{cluster}_state-{state}"
     else:
         params = f"{atlas}_fwhm-{fwhm}"

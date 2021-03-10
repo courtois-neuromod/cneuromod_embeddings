@@ -13,6 +13,9 @@ echo Results will be saved in $PATH_RESULTS
 mkdir $PATH_RESULTS
 echo $myInvocation > $PATH_RESULTS"/r2_friends-s02.log"
 
+python r2_summary.py --type_mask $TYPE_MASK --xp_type $XP_TYPE --atlas training --fwhm 5 --cluster 64   --state 256  $PATH_DATA $PATH_RESULTS &
+python r2_summary.py --type_mask $TYPE_MASK --xp_type $XP_TYPE --atlas training --fwhm 5 --cluster 64   --state 512  $PATH_DATA $PATH_RESULTS &
+python r2_summary.py --type_mask $TYPE_MASK --xp_type $XP_TYPE --atlas training --fwhm 5 --cluster 256  --state 1024 $PATH_DATA $PATH_RESULTS &
 python r2_summary.py --type_mask $TYPE_MASK --xp_type $XP_TYPE --atlas intra --fwhm 5 --cluster 64   --state 256  $PATH_DATA $PATH_RESULTS &
 python r2_summary.py --type_mask $TYPE_MASK --xp_type $XP_TYPE --atlas intra --fwhm 5 --cluster 64   --state 512  $PATH_DATA $PATH_RESULTS &
 python r2_summary.py --type_mask $TYPE_MASK --xp_type $XP_TYPE --atlas intra --fwhm 5 --cluster 256  --state 1024 $PATH_DATA $PATH_RESULTS &

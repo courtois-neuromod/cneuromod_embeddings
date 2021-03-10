@@ -106,6 +106,7 @@ def _r2_inter(
 
 def _r2_intra(
     root_data,
+    batch="validation",
     n_subject=6,
     fwhm=5,
     cluster=300,
@@ -139,11 +140,11 @@ def _r2_intra(
             state=state,
             xp_type=xp_type,
         )
-        list_files = list(hdf5_file["validation"].keys())
+        list_files = list(hdf5_file[batch].keys())
 
         for file in list_files:
             val = np.append(
-                val, np.mean(np.squeeze(hdf5_file["validation"][file])[mask])
+                val, np.mean(np.squeeze(hdf5_file[batch][file])[mask])
             )
             type_comp = np.append(type_comp, "intra")
             all_sub = np.append(all_sub, sub)
@@ -187,6 +188,22 @@ def main(args):
     if args.atlas == "intra":
         val_r2 = _r2_intra(
             root_data=args.root_data,
+            batch="validation",
+            n_subject=6,
+            fwhm=args.fwhm,
+            cluster=args.cluster,
+            state=args.state,
+            type_mask=args.type_mask,
+            xp_type=args.xp_type,
+        )
+        _save_r2(
+            val_r2, args.path_results, args.atlas, args.fwhm, args.cluster, args.state
+        )
+    
+    elif args.atlas == "training":
+        val_r2 = _r2_intra(
+            root_data=args.root_data,
+            batch="training",
             n_subject=6,
             fwhm=args.fwhm,
             cluster=args.cluster,
