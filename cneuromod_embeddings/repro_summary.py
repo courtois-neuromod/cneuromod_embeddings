@@ -24,7 +24,9 @@ def visu_repro(data, title="", type_comp="intra"):
     else: 
         pal = sns.cubehelix_palette(20, rot=0.5, light=0.7)
     
-    g = sns.FacetGrid(data[data['type_comp']==type_comp], col="params", row="subject", hue="subject", aspect=7, height=1, palette=pal)
+    g = sns.FacetGrid(data[data['type_comp']==type_comp], col="params", 
+            row="subject", hue="subject", aspect=7, height=1, palette=pal,
+            xlim=[0, 1])
 
     g.map(sns.kdeplot, "spatial_r",
                   bw_adjust=.5, clip_on=False,

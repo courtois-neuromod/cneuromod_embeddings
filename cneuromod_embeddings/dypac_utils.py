@@ -89,8 +89,10 @@ def _get_suffix(xp_type, batch="training", output_type="model"):
         else:
             suffix = "_clean"
         if batch == "training":
+            data = "friends"
             task = "s01even"
         else:
+            data = "friends"
             task = "s01odd"
     elif xp_type == "friends-s01_clean_multi_fwhm":
         if output_type == "r2_other":
@@ -98,13 +100,17 @@ def _get_suffix(xp_type, batch="training", output_type="model"):
         else:
             suffix = "_clean_multi_fwhm"
         if batch == "training":
+            data = "friends"
             task = "s01even"
         else:
+            data = "friends"
             task = "s01odd"
     elif xp_type == "friends-s02":
         if batch == "training":
+            data = "friends"
             task = "s01"
         else:
+            data = "friends"
             task = "s02"
         if output_type == "model":
             suffix = "_clean_multi_fwhm"
@@ -112,10 +118,37 @@ def _get_suffix(xp_type, batch="training", output_type="model"):
             suffix = "scores"
         else:
             suffix = ""
+    elif xp_type == "movie10":
+        if batch == "training":
+            data = "friends"
+            task = "s01"
+        else:
+            data = "movie10"
+            task = "all"
+        if output_type == "model":
+            suffix = "_clean_multi_fwhm"
+        elif output_type == "r2_other":
+            suffix = "scores"
+        else:
+            suffix = ""
+    elif xp_type == "hcptrt":
+        if batch == "training":
+            data = "friends"
+            task = "s01"
+        else:
+            data = "hcptrt"
+            task = "all"
+        if output_type == "model":
+            suffix = "_clean_multi_fwhm"
+        elif output_type == "r2_other":
+            suffix = "scores"
+        else:
+            suffix = ""
     else:
+        data = "friends"
         task = f"s01{batch}"
         suffix = ""
-    return suffix, task
+    return suffix, task, data
 
 
 def load_dypac(
@@ -128,14 +161,14 @@ def load_dypac(
     xp_type="friends-s01",
 ):
     """Load a dypac model."""
-    suffix, task = _get_suffix(xp_type, batch=batch, output_type="model")
+    suffix, task, data = _get_suffix(xp_type, batch=batch, output_type="model")
     path_data = os.path.join(
         root_data,
-        f"dataset-friends_tasks-{task}_cluster-{cluster}_states-{state}_batches-1_reps-100_fwhm-{fwhm}",
+        f"dataset-{data}_tasks-{task}_cluster-{cluster}_states-{state}_batches-1_reps-100_fwhm-{fwhm}",
     )
     file_model = os.path.join(
         path_data,
-        f"{subject}_dataset-friends_tasks-{task}_cluster-{cluster}_states-{state}_batches-1_reps-100_fwhm-{fwhm}{suffix}.pickle",
+        f"{subject}_dataset-{data}_tasks-{task}_cluster-{cluster}_states-{state}_batches-1_reps-100_fwhm-{fwhm}{suffix}.pickle",
     )
     pickle_in = open(file_model, "rb")
     model, mask_img = load_model(pickle_in)
@@ -151,14 +184,14 @@ def load_r2_intra(
     subject, root_data, fwhm=5, cluster=50, state=150, xp_type="friends-s01"
 ):
     """Load a stack of r2 maps."""
-    suffix, task = _get_suffix(xp_type, batch="training", output_type="r2_intra")
+    suffix, task, data = _get_suffix(xp_type, batch="training", output_type="r2_intra")
     path_data = os.path.join(
         root_data,
-        f"dataset-friends_tasks-{task}_cluster-{cluster}_states-{state}_batches-1_reps-100_fwhm-{fwhm}",
+        f"dataset-{data}_tasks-{task}_cluster-{cluster}_states-{state}_batches-1_reps-100_fwhm-{fwhm}",
     )
     file_score = os.path.join(
         path_data,
-        f"{subject}_dataset-friends_tasks-{task}_cluster-{cluster}_states-{state}_batches-1_reps-100_fwhm-{fwhm}{suffix}_r2_scores.hdf5",
+        f"{subject}_dataset-{data}_tasks-{task}_cluster-{cluster}_states-{state}_batches-1_reps-100_fwhm-{fwhm}{suffix}_r2_scores.hdf5",
     )
     hdf5_file = h5py.File(file_score, "r")
     return hdf5_file
@@ -168,14 +201,14 @@ def load_r2_inter(
     subject, root_data, fwhm, cluster=50, state=150, xp_type="friends-s01"
 ):
     """Load a stack of r2 maps."""
-    suffix, task = _get_suffix(xp_type, batch="training", output_type="r2_inter")
+    suffix, task, data = _get_suffix(xp_type, batch="training", output_type="r2_inter")
     path_data = os.path.join(
         root_data,
-        f"dataset-friends_tasks-{task}_cluster-{cluster}_states-{state}_batches-1_reps-100_fwhm-{fwhm}",
+        f"dataset-{data}_tasks-{task}_cluster-{cluster}_states-{state}_batches-1_reps-100_fwhm-{fwhm}",
     )
     file_score = os.path.join(
         path_data,
-        f"{subject}_dataset-friends_tasks-{task}_cluster-{cluster}_states-{state}_batches-1_reps-100_fwhm-{fwhm}{suffix}_inter_r2_scores.hdf5",
+        f"{subject}_dataset-{data}_tasks-{task}_cluster-{cluster}_states-{state}_batches-1_reps-100_fwhm-{fwhm}{suffix}_inter_r2_scores.hdf5",
     )
     hdf5_file = h5py.File(file_score, "r")
     return hdf5_file
@@ -184,7 +217,7 @@ def load_r2_inter(
 def load_r2_other(atlas, root_data, fwhm, xp_type="friends-s01"):
     """Load a stack of r2 maps with other atlases."""
     path_data = os.path.join(root_data, "other_atlases")
-    suffix, task = _get_suffix(xp_type, batch="training", output_type="r2_other")
+    suffix, task, data = _get_suffix(xp_type, batch="training", output_type="r2_other")
     file_score = os.path.join(path_data, f"{atlas}_fwhm-{fwhm}_r2_{suffix}.hdf5")
     hdf5_file = h5py.File(file_score, "r")
     return hdf5_file
