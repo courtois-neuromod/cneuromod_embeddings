@@ -1,6 +1,6 @@
 #/bin/bash
 myInvocation="$(printf %q "$BASH_SOURCE")$((($#)) && printf ' %q' "$@")"
-export XP_TYPE="movie10"
+export XP_TYPE="hcptrt"
 export PATH_DATA=$1
 export PATH_RESULTS=$2/repro_$XP_TYPE/
 

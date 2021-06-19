@@ -70,7 +70,7 @@ def visu_match(start, n_comp, model1, model2, order, match_pair, match_val, fig=
             colorbar=False,
             draw_cross=False,
             title=f"test",
-            cmap="bwr",
+  #          cmap="bwr",
             cut_coords=cut_coords,
         )
         if inner == None:
