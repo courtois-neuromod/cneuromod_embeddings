@@ -28,11 +28,11 @@ for subject in list_subject:
 
         # Save mask only once
         if num == 0:
-            file_mask = os.path.join(root_models, f"mask_{subject}.nii.gz")
+            file_mask = os.path.join(root_models, f"{subject}_space-MNI152NLin2009cAsym_label-GM_mask.nii.gz")
             mask_img.to_filename(file_mask)
 
         # Save all models
         parcels = model.masker_.inverse_transform(model.components_)    
-        file_parcels = os.path.join(root_models, f"dypac{state}_{subject}.nii.gz")
+        file_parcels = os.path.join(root_models, f"{subject}_space-MNI152NLin2009cAsym_desc-dypac{state}_components.nii.gz")
         parcels.to_filename(file_parcels)
 
